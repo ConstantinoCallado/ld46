@@ -13,6 +13,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float MinimumX = -90F;
         public float MaximumX = 90F;
         public bool clampHorizontalRotation = false;
+        public Quaternion m_BaseCharacterRot;
         public float MinimumY = -45F;
         public float MaximumY = 45F;
         public bool smooth;
@@ -28,6 +29,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
+
+            if(clampHorizontalRotation)
+            {
+                m_BaseCharacterRot = character.localRotation;
+            }
         }
 
 
@@ -127,8 +133,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             q.w = 1.0f;
 
             float angleY = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.y);
+            float baseY = 2.0f * Mathf.Rad2Deg * Mathf.Atan(m_BaseCharacterRot.y / m_BaseCharacterRot.w);
 
-            angleY = Mathf.Clamp(angleY, MinimumY, MaximumY);
+            angleY = Mathf.Clamp(angleY, MinimumY + baseY, MaximumY + baseY);
 
             q.y = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleY);
 

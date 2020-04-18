@@ -29,7 +29,7 @@ public class Hero : MonoBehaviour
                 // Check the behaviour depending on the object clicked
 
                 // If player clicked a disk after clicking a plate
-                if (objectHit.GetComponent<Disk>() != null && lastPlateClicked != null)
+                if (lastPlateClicked != null && objectHit.GetComponent<Disk>() != null)
                 {
                     // Equip disk!
                     Disk clickedDisk = objectHit.GetComponent<Disk>();
@@ -45,6 +45,12 @@ public class Hero : MonoBehaviour
                     DiskManager.diskManagerRef.ShowDisksInDeck(true);
                 }
 
+                else if (lastPlateClicked == null && objectHit.GetComponent<CrossFader>() != null)
+                {
+                    CrossFader crossFader = objectHit.GetComponent<CrossFader>();
+                    crossFader.Interact();
+                }
+
                 /*
                 // Player clicked somewhere else
                 else
@@ -53,7 +59,7 @@ public class Hero : MonoBehaviour
                 }
                 */
                 // Hide the deck
-                if(!lastPlateClicked)
+                if (!lastPlateClicked)
                 {
                     DiskManager.diskManagerRef.ShowDisksInDeck(false);
                 }
