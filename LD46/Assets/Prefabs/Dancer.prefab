@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 2352783859875165805}
   - component: {fileID: 6817107034500529624}
   - component: {fileID: 6838614243684917516}
-  - component: {fileID: 3496001947778867351}
   - component: {fileID: 3496001947778867344}
+  - component: {fileID: 3496001947778867351}
+  - component: {fileID: -5797393497642695284}
   m_Layer: 0
   m_Name: Dancer
   m_TagString: Untagged
@@ -126,27 +127,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &3496001947778867351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2352783859875165802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e3c1681192c0a4798f2c6b5e4bdb0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  MIN_MOOD: 0
-  MAX_MOOD: 100
-  START_MOOD: 10
-  currentMood: 100
-  loveMoodFactor: 5
-  neutralMoodFactor: 1
-  hateMoodFactor: -5
-  exitTransform: {fileID: 0}
 --- !u!195 &3496001947778867344
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -169,3 +149,34 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3496001947778867351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352783859875165802}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e3c1681192c0a4798f2c6b5e4bdb0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dancerColor: 0
+  currentState: 0
+  moodActive: 0
+  manager: {fileID: 0}
+  TEST_time: 0
+  TEST_Color: 0
+--- !u!114 &-5797393497642695284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352783859875165802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3eb5eb7e10baa4e909c70e8e7658c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateName: 0
