@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 1560291346}
   - component: {fileID: 1560291345}
   - component: {fileID: 1560291344}
+  - component: {fileID: 558780257}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -237,7 +238,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8274446063884822464}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -379,7 +380,7 @@ MonoBehaviour:
     XSensitivity: 2
     YSensitivity: 2
     clampVerticalRotation: 1
-    MinimumX: 0
+    MinimumX: 27
     MaximumX: 80
     clampHorizontalRotation: 1
     MinimumY: -45
@@ -463,3 +464,16 @@ MonoBehaviour:
   m_FootstepSounds: []
   m_JumpSound: {fileID: 0}
   m_LandSound: {fileID: 0}
+--- !u!114 &558780257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274446063884822464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c573c2f09b5a854591efd5ac205f043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 139773645938616357}

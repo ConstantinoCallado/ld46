@@ -5,35 +5,31 @@ using UnityEngine.AI;
 
 public class DancerMood : MonoBehaviour
 {
-    public enum MoodStates { RageQuit = -2, Bored = -1, Neutral = 0, HavingFun = 1, OnFire = 2};
-    public enum MusicColor { Magenta = 0, Cyan = 1, Yellow = 2};
     public int[,] reactions = new int[,] { { 1, 0, -1 }, {-1, 1, 0 }, {0, -1, 1 } };
+    public Material[] moodMaterials;
 
-    public MusicColor dancerColor = MusicColor.Magenta;
-    public MoodStates currentState = MoodStates.Neutral;
+    public GameEnums.MusicColor dancerColor = GameEnums.MusicColor.Magenta;
+    public GameEnums.MoodStates currentMood = GameEnums.MoodStates.Neutral;
     public DancerManager manager;
 
-    public float TEST_time;
-    public MusicColor TEST_Color;
+    void Awake()
+    {
+        dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
+        GetComponent<Renderer>().material = moodMaterials[(int)dancerColor];
+
+        ShowMoodHearts_DEBUG();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState = MoodStates.Neutral;
-        TEST_time = 0.0f;
-        TEST_Color = MusicColor.Yellow;
-        //TEST_Color = (MusicColor)Random.Range(0, 3);
+        currentMood = GameEnums.MoodStates.Neutral;
     }
 
     // Update is called once per frame
     void Update()
     {
-        TEST_time += Time.deltaTime;
-        if (TEST_time > 5.0f)
-        {
-            TEST_time -= 5.0f;
-            ChangeMood(TEST_Color);
-        }
+ 
     }
 
     void Leave()
@@ -42,28 +38,82 @@ public class DancerMood : MonoBehaviour
         enabled = false;
     }
 
-    void ChangeMood(MusicColor receivedColor)
+    void SetMoodFromInt(int numericMood)
     {
-        if (currentState == MoodStates.OnFire)
+        if (numericMood < (int)GameEnums.MoodStates.RageQuit)
         {
-            // If I am on fire, the changes in the music don't affect me
+            numericMood = (int)GameEnums.MoodStates.RageQuit;
         }
-        else
+        else if (numericMood > (int)GameEnums.MoodStates.OnFire)
         {
-            int numericState = (int)currentState + reactions[(int)dancerColor, (int)receivedColor];
-            if (numericState < (int)MoodStates.RageQuit)
+            numericMood = (int)GameEnums.MoodStates.OnFire;
+        }
+        currentMood = (GameEnums.MoodStates)numericMood;
+        if (currentMood == GameEnums.MoodStates.RageQuit)
+        {
+            Leave();
+        }
+
+        ShowMoodHearts_DEBUG();
+    }
+
+    public void MusicChanged(GameEnums.MusicColor receivedColor)
+    {
+        if (currentMood != GameEnums.MoodStates.OnFire)
+        {
+            int reaction = reactions[(int)dancerColor, (int)receivedColor];
+            if (reaction != 0)
             {
-                numericState = (int)MoodStates.RageQuit;
+                int numericMood = (int)currentMood + reaction;
+                SetMoodFromInt(numericMood);
             }
-            else if (numericState > (int)MoodStates.OnFire)
+        }
+    }
+
+    public void TooSoonChange(GameEnums.MusicColor currentColor)
+    {
+        // The too soon doesn't make us lose the OnFire state.
+        if (currentMood != GameEnums.MoodStates.OnFire)
+        {
+            if (dancerColor == currentColor)
             {
-                numericState = (int)MoodStates.OnFire;
+                int reaction = reactions[(int)dancerColor, (int)currentColor];
+                if (reaction < 0)
+                {
+                    int numericMood = (int)currentMood + reaction;
+                    SetMoodFromInt(numericMood);
+                }
             }
-            currentState = (MoodStates)numericState;
-            if (currentState == MoodStates.RageQuit)
+        }
+    }
+
+    public void TooLateChange()
+    {
+        // The too late makes everybody lose one mood state.
+        int numericMood = (int)currentMood - 1;
+        SetMoodFromInt(numericMood);
+    }
+
+    void ShowMoodHearts_DEBUG()
+    {
+        if (!GameEnums.DEBUGGING)
+        {
+            return;
+        }
+        int i = 0;
+        int numericMood = 1 + (int)currentMood;
+        foreach (Transform child in transform)
+        {
+            Renderer rendererComp = child.GetComponent<Renderer>();
+            if (i <= numericMood)
             {
-                Leave();
+                rendererComp.enabled = true;
             }
+            else
+            {
+                rendererComp.enabled = false;
+            }
+            i++;
         }
     }
 

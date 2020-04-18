@@ -5,20 +5,18 @@ using UnityEngine.AI;
 
 public class DancerManager : MonoBehaviour
 {
-    public Transform entranceNodes;
-    public Transform dancingSpots;
-    public Transform dancingArea;
-    public Transform exitNodes;
-
     public GameObject dancerPrefab;
 
     public float DANCERS_DELAY = 10f;
 
-    public int MAX_DANCERS = 10;
+    public int MAX_DANCERS = 30;
+
+    public Transform entranceList;
+    public Transform dancingArea;
+    public Transform exitList;
+
     private float lastDancerTime = 0f;
-
     private List<GameObject> dancers;
-
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +29,8 @@ public class DancerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TEST_MusicChange();
+
         lastDancerTime += Time.deltaTime;
         if (lastDancerTime >= DANCERS_DELAY)
         {
@@ -48,9 +48,10 @@ public class DancerManager : MonoBehaviour
         Vector3 dancerDestination = GetDancingSpot();
         GameObject dancer = Instantiate(dancerPrefab, dancerEntrance, Quaternion.identity);
 
-        DancerState dancerState = dancer.GetComponent<DancerState>();
-        dancerState.SetState(DancerState.DancerStateNames.Created);
-        dancerState.MoveToDestination(dancerDestination);
+        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+        dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
+        dancerStateComp.MoveToDestination(dancerDestination);
+        dancerStateComp.manager = this;
         dancer.GetComponent<DancerMood>().manager = this;
 
         dancers.Add(dancer);
@@ -59,15 +60,20 @@ public class DancerManager : MonoBehaviour
     public void LeaveDancer(GameObject dancer)
     {
         Vector3 dancerExit = GetDancerExit();
-        NavMeshAgent agent = dancer.GetComponent<NavMeshAgent>();
-        agent.destination = dancerExit;
-        agent.isStopped = false;
+        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+        dancerStateComp.SetState(GameEnums.DancerStateNames.Leaving);
+        dancerStateComp.MoveToDestination(dancerExit);
+    }
+
+    public void RemoveDancer(GameObject dancer)
+    {
+        dancers.Remove(dancer);
     }
 
     Vector3 GetDancerEntrance()
     {
-        int randomIndex = Random.Range(0,entranceNodes.childCount);
-        return entranceNodes.GetChild(randomIndex).transform.position;
+        int randomIndex = Random.Range(0, entranceList.childCount);
+        return entranceList.GetChild(randomIndex).transform.position;
     }
 
     Vector3 GetDancingSpot()
@@ -78,17 +84,90 @@ public class DancerManager : MonoBehaviour
         float randomZ = Random.Range(topRight.z, bottomLeft.z);
 
         return new Vector3(randomX, 0.0f, randomZ);
-        //OLD CODE Using spots
-        /*
-        int randomIndex = Random.Range(0, dancingSpots.childCount);
-        return dancingSpots.GetChild(randomIndex).transform.position;
-        */
     }
 
     Vector3 GetDancerExit()
     {
-        int randomIndex = Random.Range(0, exitNodes.childCount);
-        return exitNodes.GetChild(randomIndex).transform.position;
+        int randomIndex = Random.Range(0, exitList.childCount);
+        return exitList.GetChild(randomIndex).transform.position;
     }
+
+    void TooSoonChange(GameEnums.MusicColor musicColor)
+    {
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.TooSoonChange(musicColor);
+            }
+        }
+    }
+
+    void PerfectChange(GameEnums.MusicColor musicColor)
+    {
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.MusicChanged(musicColor);
+            }
+        }
+    }
+
+    void TooLateChange(GameEnums.MusicColor musicColor)
+    {
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.TooLateChange();
+            }
+        }
+    }
+
+    void TEST_MusicChange()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            TooSoonChange(GameEnums.MusicColor.Cyan);
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            TooSoonChange(GameEnums.MusicColor.Magenta);
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            TooSoonChange(GameEnums.MusicColor.Yellow);
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            PerfectChange(GameEnums.MusicColor.Cyan);
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            PerfectChange(GameEnums.MusicColor.Magenta);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            PerfectChange(GameEnums.MusicColor.Yellow);
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            TooLateChange(GameEnums.MusicColor.Cyan);
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            TooLateChange(GameEnums.MusicColor.Magenta);
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            TooLateChange(GameEnums.MusicColor.Yellow);
+        }
+
+    }
+
 
 }
