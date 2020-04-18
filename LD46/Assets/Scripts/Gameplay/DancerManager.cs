@@ -19,7 +19,7 @@ public class DancerManager : MonoBehaviour
     private float lastDancerTime = 0f;
     public List<GameObject> dancers;
 
-    private DancerMood.MusicColor currentMusicColor;
+    private GameEnums.MusicColor currentMusicColor;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,7 @@ public class DancerManager : MonoBehaviour
         GameObject dancer = Instantiate(dancerPrefab, dancerEntrance, Quaternion.identity);
 
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
-        dancerStateComp.SetState(DancerState.DancerStateNames.Created);
+        dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
         dancerStateComp.MoveToDestination(dancerDestination);
         dancer.GetComponent<DancerMood>().manager = this;
 
@@ -63,7 +63,7 @@ public class DancerManager : MonoBehaviour
     {
         Vector3 dancerExit = GetDancerExit();
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
-        dancerStateComp.SetState(DancerState.DancerStateNames.Leaving);
+        dancerStateComp.SetState(GameEnums.DancerStateNames.Leaving);
         dancerStateComp.MoveToDestination(dancerExit);
     }
 
@@ -89,7 +89,7 @@ public class DancerManager : MonoBehaviour
         return exitNodes.GetChild(randomIndex).transform.position;
     }
 
-    void ChangeMusic(DancerMood.MusicColor musicColor)
+    void ChangeMusic(GameEnums.MusicColor musicColor)
     {
         foreach (GameObject dancer in dancers)
         {
@@ -129,18 +129,18 @@ public class DancerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            currentMusicColor = DancerMood.MusicColor.Cyan;
-            ChangeMusic(DancerMood.MusicColor.Cyan);
+            currentMusicColor = GameEnums.MusicColor.Cyan;
+            ChangeMusic(GameEnums.MusicColor.Cyan);
         }
         else if (Input.GetKeyDown(KeyCode.M))
         {
-            currentMusicColor = DancerMood.MusicColor.Magenta;
-            ChangeMusic(DancerMood.MusicColor.Magenta);
+            currentMusicColor = GameEnums.MusicColor.Magenta;
+            ChangeMusic(GameEnums.MusicColor.Magenta);
         }
         else if (Input.GetKeyDown(KeyCode.Y))
         {
-            currentMusicColor = DancerMood.MusicColor.Yellow;
-            ChangeMusic(DancerMood.MusicColor.Yellow);
+            currentMusicColor = GameEnums.MusicColor.Yellow;
+            ChangeMusic(GameEnums.MusicColor.Yellow);
         }
     }
 

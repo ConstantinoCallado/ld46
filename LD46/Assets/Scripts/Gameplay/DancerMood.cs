@@ -5,18 +5,16 @@ using UnityEngine.AI;
 
 public class DancerMood : MonoBehaviour
 {
-    public enum MoodStates { RageQuit = -2, Bored = -1, Neutral = 0, HavingFun = 1, OnFire = 2};
-    public enum MusicColor { Magenta = 0, Cyan = 1, Yellow = 2};
     public int[,] reactions = new int[,] { { 1, 0, -1 }, {-1, 1, 0 }, {0, -1, 1 } };
     public Material[] moodMaterials;
 
-    public MusicColor dancerColor = MusicColor.Magenta;
-    public MoodStates currentMood = MoodStates.Neutral;
+    public GameEnums.MusicColor dancerColor = GameEnums.MusicColor.Magenta;
+    public GameEnums.MoodStates currentMood = GameEnums.MoodStates.Neutral;
     public DancerManager manager;
 
     void Awake()
     {
-        dancerColor = (MusicColor)Random.Range(0, 3);
+        dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
         GetComponent<Renderer>().material = moodMaterials[(int)dancerColor];
 
         TEST_ShowMoodHearts();
@@ -25,7 +23,7 @@ public class DancerMood : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentMood = MoodStates.Neutral;
+        currentMood = GameEnums.MoodStates.Neutral;
     }
 
     // Update is called once per frame
@@ -42,16 +40,16 @@ public class DancerMood : MonoBehaviour
 
     void SetMoodFromInt(int numericMood)
     {
-        if (numericMood < (int)MoodStates.RageQuit)
+        if (numericMood < (int)GameEnums.MoodStates.RageQuit)
         {
-            numericMood = (int)MoodStates.RageQuit;
+            numericMood = (int)GameEnums.MoodStates.RageQuit;
         }
-        else if (numericMood > (int)MoodStates.OnFire)
+        else if (numericMood > (int)GameEnums.MoodStates.OnFire)
         {
-            numericMood = (int)MoodStates.OnFire;
+            numericMood = (int)GameEnums.MoodStates.OnFire;
         }
-        currentMood = (MoodStates)numericMood;
-        if (currentMood == MoodStates.RageQuit)
+        currentMood = (GameEnums.MoodStates)numericMood;
+        if (currentMood == GameEnums.MoodStates.RageQuit)
         {
             Leave();
         }
@@ -59,9 +57,9 @@ public class DancerMood : MonoBehaviour
         TEST_ShowMoodHearts();
     }
 
-    public void MusicChanged(MusicColor receivedColor)
+    public void MusicChanged(GameEnums.MusicColor receivedColor)
     {
-        if (currentMood != MoodStates.OnFire)
+        if (currentMood != GameEnums.MoodStates.OnFire)
         {
             int numericMood = (int)currentMood + reactions[(int)dancerColor, (int)receivedColor];
             SetMoodFromInt(numericMood);
@@ -69,7 +67,7 @@ public class DancerMood : MonoBehaviour
 
     }
 
-    public void TooSoon(MusicColor currentColor)
+    public void TooSoon(GameEnums.MusicColor currentColor)
     {
         if (dancerColor == currentColor)
         {
