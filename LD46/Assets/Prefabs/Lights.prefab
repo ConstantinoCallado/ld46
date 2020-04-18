@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644376686235121162}
   - component: {fileID: 4951101677549642942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FXManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}

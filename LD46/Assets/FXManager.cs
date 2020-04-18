@@ -36,7 +36,6 @@ public class FXManager : MonoBehaviour
 
     public void SetPartyStatus(GameEnums.PartyStatus s) 
     {
-        // Mathf.Sin(Time.realtimeSinceStartup);
         switch (s) 
         {
             case GameEnums.PartyStatus.Dead:
@@ -61,26 +60,20 @@ public class FXManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
 
         _lensDistorsion.intensity.value = Mathf.Sin(Time.realtimeSinceStartup*8f)*8f;
 
-        if (Input.GetKeyDown(KeyCode.U))
+        /*if (Input.GetKeyDown(KeyCode.U))
             SetPartyStatus(GameEnums.PartyStatus.Dead);
         if (Input.GetKeyDown(KeyCode.I))
             SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
         if (Input.GetKeyDown(KeyCode.O))
             SetPartyStatus(GameEnums.PartyStatus.Super);
         if (Input.GetKeyDown(KeyCode.P))
-            SetPartyStatus(GameEnums.PartyStatus.PartyHard);
+            SetPartyStatus(GameEnums.PartyStatus.PartyHard);*/
     }
 
     private void OnDestroy()
