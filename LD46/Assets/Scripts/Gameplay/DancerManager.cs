@@ -17,7 +17,7 @@ public class DancerManager : MonoBehaviour
     public int MAX_DANCERS = 10;
 
     private float lastDancerTime = 0f;
-    private List<GameObject> dancers;
+    public List<GameObject> dancers;
 
     private DancerMood.MusicColor currentMusicColor;
 
@@ -62,9 +62,9 @@ public class DancerManager : MonoBehaviour
     public void LeaveDancer(GameObject dancer)
     {
         Vector3 dancerExit = GetDancerExit();
-        NavMeshAgent agentComp = dancer.GetComponent<NavMeshAgent>();
-        agentComp.destination = dancerExit;
-        agentComp.isStopped = false;
+        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+        dancerStateComp.SetState(DancerState.DancerStateNames.Leaving);
+        dancerStateComp.MoveToDestination(dancerExit);
     }
 
     Vector3 GetDancerEntrance()

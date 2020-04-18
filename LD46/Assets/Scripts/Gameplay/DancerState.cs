@@ -32,7 +32,12 @@ public class DancerState : MonoBehaviour
         }
         else if (stateName == DancerStateNames.Leaving)
         {
-
+            Vector3 groundPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+            float distance = Vector3.Distance(groundPosition, destination);
+            if (Mathf.Abs(distance) < 0.5f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -44,6 +49,8 @@ public class DancerState : MonoBehaviour
     public void MoveToDestination(Vector3 newDestination)
     {
         destination = newDestination;
-        GetComponent<NavMeshAgent>().destination = destination;
+        NavMeshAgent agentComp = GetComponent<NavMeshAgent>();
+        agentComp.destination = destination;
+        agentComp.isStopped = false;
     }
 }
