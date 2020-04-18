@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LuisMiTest.unity
+    guid: 5a5af7803a69c864b8e69b425f5a69de
   m_configObjects: {}
