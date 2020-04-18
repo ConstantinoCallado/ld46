@@ -54,6 +54,7 @@ public class DancerManager : MonoBehaviour
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
         dancerStateComp.MoveToDestination(dancerDestination);
+        dancerStateComp.manager = this;
         dancer.GetComponent<DancerMood>().manager = this;
 
         dancers.Add(dancer);
@@ -65,6 +66,11 @@ public class DancerManager : MonoBehaviour
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Leaving);
         dancerStateComp.MoveToDestination(dancerExit);
+    }
+
+    public void RemoveDancer(GameObject dancer)
+    {
+        dancers.Remove(dancer);
     }
 
     Vector3 GetDancerEntrance()
@@ -89,7 +95,19 @@ public class DancerManager : MonoBehaviour
         return exitNodes.GetChild(randomIndex).transform.position;
     }
 
-    void ChangeMusic(GameEnums.MusicColor musicColor)
+    void TooSoonChange(GameEnums.MusicColor musicColor)
+    {
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.TooSoonChange(musicColor);
+            }
+        }
+    }
+
+    void PerfectChange(GameEnums.MusicColor musicColor)
     {
         foreach (GameObject dancer in dancers)
         {
@@ -101,47 +119,66 @@ public class DancerManager : MonoBehaviour
         }
     }
 
-    void TooSoon()
+    void TooLateChange(GameEnums.MusicColor musicColor)
     {
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
             if (dancerMoodComp.enabled)
             {
-                dancerMoodComp.TooSoon(currentMusicColor);
+                dancerMoodComp.TooLateChange();
             }
         }
     }
 
-    void TooLate()
+    void TEST_MusicChange()
     {
-        foreach (GameObject dancer in dancers)
-        {
-            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
-            if (dancerMoodComp.enabled)
-            {
-                dancerMoodComp.TooLate();
-            }
-        }
-    }
-
-        void TEST_MusicChange()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             currentMusicColor = GameEnums.MusicColor.Cyan;
-            ChangeMusic(GameEnums.MusicColor.Cyan);
+            TooSoonChange(GameEnums.MusicColor.Cyan);
         }
-        else if (Input.GetKeyDown(KeyCode.M))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             currentMusicColor = GameEnums.MusicColor.Magenta;
-            ChangeMusic(GameEnums.MusicColor.Magenta);
+            TooSoonChange(GameEnums.MusicColor.Magenta);
         }
-        else if (Input.GetKeyDown(KeyCode.Y))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             currentMusicColor = GameEnums.MusicColor.Yellow;
-            ChangeMusic(GameEnums.MusicColor.Yellow);
+            TooSoonChange(GameEnums.MusicColor.Yellow);
         }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            currentMusicColor = GameEnums.MusicColor.Cyan;
+            PerfectChange(GameEnums.MusicColor.Cyan);
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            currentMusicColor = GameEnums.MusicColor.Magenta;
+            PerfectChange(GameEnums.MusicColor.Magenta);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            currentMusicColor = GameEnums.MusicColor.Yellow;
+            PerfectChange(GameEnums.MusicColor.Yellow);
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            currentMusicColor = GameEnums.MusicColor.Cyan;
+            TooLateChange(GameEnums.MusicColor.Cyan);
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            currentMusicColor = GameEnums.MusicColor.Magenta;
+            TooLateChange(GameEnums.MusicColor.Magenta);
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            currentMusicColor = GameEnums.MusicColor.Yellow;
+            TooLateChange(GameEnums.MusicColor.Yellow);
+        }
+
     }
 
 

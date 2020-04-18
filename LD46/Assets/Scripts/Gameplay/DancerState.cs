@@ -9,6 +9,8 @@ public class DancerState : MonoBehaviour
 
     private Vector3 destination;
 
+    public DancerManager manager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class DancerState : MonoBehaviour
             float distance = Vector3.Distance(groundPosition, destination);
             if (Mathf.Abs(distance) < 0.5f)
             {
+                manager.RemoveDancer(gameObject);
                 Destroy(gameObject);
             }
         }

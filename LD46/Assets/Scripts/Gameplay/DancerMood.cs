@@ -17,7 +17,7 @@ public class DancerMood : MonoBehaviour
         dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
         GetComponent<Renderer>().material = moodMaterials[(int)dancerColor];
 
-        TEST_ShowMoodHearts();
+        ShowMoodHearts_DEBUG();
     }
 
     // Start is called before the first frame update
@@ -54,36 +54,52 @@ public class DancerMood : MonoBehaviour
             Leave();
         }
 
-        TEST_ShowMoodHearts();
+        ShowMoodHearts_DEBUG();
     }
 
     public void MusicChanged(GameEnums.MusicColor receivedColor)
     {
         if (currentMood != GameEnums.MoodStates.OnFire)
         {
-            int numericMood = (int)currentMood + reactions[(int)dancerColor, (int)receivedColor];
-            SetMoodFromInt(numericMood);
+            int reaction = reactions[(int)dancerColor, (int)receivedColor];
+            if (reaction != 0)
+            {
+                int numericMood = (int)currentMood + reaction;
+                SetMoodFromInt(numericMood);
+            }
         }
-
     }
 
-    public void TooSoon(GameEnums.MusicColor currentColor)
+    public void TooSoonChange(GameEnums.MusicColor currentColor)
     {
-        if (dancerColor == currentColor)
+        // The too soon doesn't make us lose the OnFire state.
+        if (currentMood != GameEnums.MoodStates.OnFire)
         {
-            int numericMood = (int)currentMood - 1;
-            SetMoodFromInt(numericMood);
+            if (dancerColor == currentColor)
+            {
+                int reaction = reactions[(int)dancerColor, (int)currentColor];
+                if (reaction < 0)
+                {
+                    int numericMood = (int)currentMood + reaction;
+                    SetMoodFromInt(numericMood);
+                }
+            }
         }
     }
 
-    public void TooLate()
+    public void TooLateChange()
     {
+        // The too late makes everybody lose one mood state.
         int numericMood = (int)currentMood - 1;
         SetMoodFromInt(numericMood);
     }
 
-    void TEST_ShowMoodHearts()
+    void ShowMoodHearts_DEBUG()
     {
+        if (!GameEnums.DEBUGGING)
+        {
+            return;
+        }
         int i = 0;
         int numericMood = 1 + (int)currentMood;
         foreach (Transform child in transform)
