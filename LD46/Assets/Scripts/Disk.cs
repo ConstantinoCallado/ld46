@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dancer : MonoBehaviour
+public enum SongColor { White, Magenta, Cyan, Yellow };
+
+public class Disk : MonoBehaviour
 {
+    public SongColor songColor;
+    public float duration = 10f;
+
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
