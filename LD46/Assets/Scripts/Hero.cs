@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    public static Hero heroRef;
     public Camera mainCamera;
     private Plate lastPlateClicked = null;
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
-        
+        heroRef = this;    
     }
 
     // Update is called once per frame

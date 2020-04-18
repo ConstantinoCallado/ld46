@@ -20,6 +20,7 @@ public class Table : MonoBehaviour
                 Debug.Log("Table doing CrossFade!");
                 dancerManager.PerfectChange(plateLeft.disk.musicColor);
             }
+            plateRight.DestroyDisk();
         }
         else
         {
@@ -28,6 +29,7 @@ public class Table : MonoBehaviour
                 Debug.Log("Table doing CrossFade!");
                 dancerManager.PerfectChange(plateRight.disk.musicColor);
             }
+            plateLeft.DestroyDisk();
         }
     }
 }
