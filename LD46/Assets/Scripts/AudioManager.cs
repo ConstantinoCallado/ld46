@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     private int musicSamplesBIndex;
     private int musicSamplesCIndex;
 
+    public static AudioManager audioManagerRef;
+
     public Sound currentMusicSample;
 
     // list of gameplay sounds
@@ -24,6 +26,8 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
+        audioManagerRef = this;
+
         // Initializing the music sample Audio sources
         musicSamplesAIndex = 0;
         musicSamplesBIndex = 0;
@@ -61,7 +65,7 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-    public void PlayMusicSample(int turntable, int recordType) 
+    public void PlayMusicSample(GameEnums.TurnTable turntable, GameEnums.MusicColor recordType) 
     {
         AudioSource turntableAudioSource = null;
         AudioSource otherTurntableAudioSource = null;
@@ -69,16 +73,16 @@ public class AudioManager : MonoBehaviour
 
         switch (turntable) 
         {
-            case 0:
+            case GameEnums.TurnTable.Left:
                 turntableAudioSource = _leftTurnTableAudioSource;
                 otherTurntableAudioSource = _rightTurnTableAudioSource;
                 break;
-            case 1:
+            case GameEnums.TurnTable.Right:
                 turntableAudioSource = _rightTurnTableAudioSource;
                 otherTurntableAudioSource = _leftTurnTableAudioSource;
                 break;
             default:
-                Debug.LogWarning("Invalid turntable: " + turntable);
+                Debug.LogWarning("Invalid turntable: " + turntable.ToString());
                 break;
         }
 
@@ -102,7 +106,7 @@ public class AudioManager : MonoBehaviour
         turntableAudioSource.Play();
     }
 
-    private Sound GetMusicSample(int recordType) 
+    private Sound GetMusicSample(GameEnums.MusicColor recordType) 
     {
         Sound musicSample = null;
         Sound[] musicSampleList = null;
@@ -110,14 +114,14 @@ public class AudioManager : MonoBehaviour
 
         switch (recordType)
         {
-            case 0:
+            case GameEnums.MusicColor.Magenta:
                 musicSampleList = musicSamplesA;
                 break;
-            case 1:
+            case GameEnums.MusicColor.Cyan:
                 musicSampleList = musicSamplesB;
                 musicSampleIndex = ref musicSamplesBIndex;
                 break;
-            case 2:
+            case GameEnums.MusicColor.Yellow:
                 musicSampleList = musicSamplesC;
                 musicSampleIndex = ref musicSamplesCIndex;
                 break;
@@ -126,10 +130,10 @@ public class AudioManager : MonoBehaviour
         }
 
         if (musicSampleList == null) 
-            Debug.LogWarning("The record type " + recordType + "doesn't exists.");
+            Debug.LogWarning("The record type " + recordType.ToString() + "doesn't exists.");
 
         if (musicSampleList.Length == 0)
-            Debug.LogWarning("There are no music samples for the record type " + recordType + ". Please, add music samples in the AudioManager.");
+            Debug.LogWarning("There are no music samples for the record type " + recordType.ToString() + ". Please, add music samples in the AudioManager.");
 
         if(musicSampleList != null && musicSampleList.Length > 0) { 
             musicSample = musicSampleList[musicSampleIndex];
@@ -141,27 +145,5 @@ public class AudioManager : MonoBehaviour
         }
 
         return musicSample;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        PlayMusicSample(0,0);
-
-        Invoke("Test", 3);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void Test() 
-    {
-
-        PlayMusicSample(1, 1);
-
-        Invoke("Test", 3);
     }
 }

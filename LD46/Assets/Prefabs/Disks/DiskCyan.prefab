@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2f680baa9c6820244b9d5ef2648a00bd, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2704785802672630946, guid: 398fbea998b23f2408b17ad67c5663fc,
         type: 3}
       propertyPath: songColor
@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: musicColor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4286703142016549421, guid: 398fbea998b23f2408b17ad67c5663fc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e3a376b5cfedb1d42a4f3e516b43945c, type: 2}
     - target: {fileID: 4650715657132554939, guid: 398fbea998b23f2408b17ad67c5663fc,
         type: 3}
       propertyPath: m_LocalPosition.x
