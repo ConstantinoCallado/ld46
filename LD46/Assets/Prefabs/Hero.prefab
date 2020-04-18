@@ -238,7 +238,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8274446063884822464}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -476,3 +476,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c573c2f09b5a854591efd5ac205f043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 139773645938616357}
