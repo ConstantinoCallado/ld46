@@ -13,4 +13,16 @@ public class Disk : MonoBehaviour
     {
         
     }
+
+    public void Throwed()
+    {
+        StartCoroutine(CoroutineThrow());
+    }
+
+    public IEnumerator CoroutineThrow()
+    {
+        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
 }
