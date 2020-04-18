@@ -394,8 +394,8 @@ MonoBehaviour:
   exitNodes: {fileID: 1781992578}
   dancerPrefab: {fileID: 2352783859875165802, guid: 18962a5f2d324b14884e8ac56101f957,
     type: 3}
-  DANCERS_DELAY: 0
-  MAX_DANCERS: 10
+  DANCERS_DELAY: 2
+  MAX_DANCERS: 20
 --- !u!1 &734314897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,7 +1330,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8274446062248489819, guid: 99e3a2a67e4ee7645982e7a8ec82bada,
         type: 3}

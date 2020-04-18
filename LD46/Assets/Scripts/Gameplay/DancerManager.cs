@@ -15,10 +15,11 @@ public class DancerManager : MonoBehaviour
     public float DANCERS_DELAY = 10f;
 
     public int MAX_DANCERS = 10;
-    private float lastDancerTime = 0f;
 
+    private float lastDancerTime = 0f;
     private List<GameObject> dancers;
 
+    private DancerMood.MusicColor currentMusicColor;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,8 @@ public class DancerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TEST_MusicChange();
+
         lastDancerTime += Time.deltaTime;
         if (lastDancerTime >= DANCERS_DELAY)
         {
@@ -48,9 +51,9 @@ public class DancerManager : MonoBehaviour
         Vector3 dancerDestination = GetDancingSpot();
         GameObject dancer = Instantiate(dancerPrefab, dancerEntrance, Quaternion.identity);
 
-        DancerState dancerState = dancer.GetComponent<DancerState>();
-        dancerState.SetState(DancerState.DancerStateNames.Created);
-        dancerState.MoveToDestination(dancerDestination);
+        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+        dancerStateComp.SetState(DancerState.DancerStateNames.Created);
+        dancerStateComp.MoveToDestination(dancerDestination);
         dancer.GetComponent<DancerMood>().manager = this;
 
         dancers.Add(dancer);
@@ -59,9 +62,9 @@ public class DancerManager : MonoBehaviour
     public void LeaveDancer(GameObject dancer)
     {
         Vector3 dancerExit = GetDancerExit();
-        NavMeshAgent agent = dancer.GetComponent<NavMeshAgent>();
-        agent.destination = dancerExit;
-        agent.isStopped = false;
+        NavMeshAgent agentComp = dancer.GetComponent<NavMeshAgent>();
+        agentComp.destination = dancerExit;
+        agentComp.isStopped = false;
     }
 
     Vector3 GetDancerEntrance()
@@ -78,11 +81,6 @@ public class DancerManager : MonoBehaviour
         float randomZ = Random.Range(topRight.z, bottomLeft.z);
 
         return new Vector3(randomX, 0.0f, randomZ);
-        //OLD CODE Using spots
-        /*
-        int randomIndex = Random.Range(0, dancingSpots.childCount);
-        return dancingSpots.GetChild(randomIndex).transform.position;
-        */
     }
 
     Vector3 GetDancerExit()
@@ -90,5 +88,61 @@ public class DancerManager : MonoBehaviour
         int randomIndex = Random.Range(0, exitNodes.childCount);
         return exitNodes.GetChild(randomIndex).transform.position;
     }
+
+    void ChangeMusic(DancerMood.MusicColor musicColor)
+    {
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.MusicChanged(musicColor);
+            }
+        }
+    }
+
+    void TooSoon()
+    {
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.TooSoon(currentMusicColor);
+            }
+        }
+    }
+
+    void TooLate()
+    {
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.TooLate();
+            }
+        }
+    }
+
+        void TEST_MusicChange()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            currentMusicColor = DancerMood.MusicColor.Cyan;
+            ChangeMusic(DancerMood.MusicColor.Cyan);
+        }
+        else if (Input.GetKeyDown(KeyCode.M))
+        {
+            currentMusicColor = DancerMood.MusicColor.Magenta;
+            ChangeMusic(DancerMood.MusicColor.Magenta);
+        }
+        else if (Input.GetKeyDown(KeyCode.Y))
+        {
+            currentMusicColor = DancerMood.MusicColor.Yellow;
+            ChangeMusic(DancerMood.MusicColor.Yellow);
+        }
+    }
+
 
 }
