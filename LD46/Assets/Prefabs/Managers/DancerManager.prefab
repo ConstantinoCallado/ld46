@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 72888278048210888}
   - component: {fileID: 72888278048210889}
+  - component: {fileID: 916190370}
   m_Layer: 0
   m_Name: DancerManager
   m_TagString: Untagged
@@ -113,6 +114,20 @@ MonoBehaviour:
   entranceList: {fileID: 3408158670318904056}
   dancingArea: {fileID: 72888279001797145}
   exitList: {fileID: 72888279112079142}
+  spawner: {fileID: 916190370}
+--- !u!114 &916190370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72888278048210895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e79228b053e184897465a1cb956f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPhase: 0
 --- !u!1 &72888278505647325
 GameObject:
   m_ObjectHideFlags: 0

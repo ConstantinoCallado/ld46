@@ -15,34 +15,24 @@ public class DancerManager : MonoBehaviour
     public Transform dancingArea;
     public Transform exitList;
 
-    private float lastDancerTime = 0f;
     private List<GameObject> dancers;
+
+    public DancerSpawner spawner;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawner = GetComponent<DancerSpawner>();
         dancers = new List<GameObject>();
-        lastDancerTime = 0f;
-        CreateDancer();
     }
 
     // Update is called once per frame
     void Update()
     {
         TEST_MusicChange();
-
-        lastDancerTime += Time.deltaTime;
-        if (lastDancerTime >= DANCERS_DELAY)
-        {
-            lastDancerTime -= DANCERS_DELAY;
-            if (dancers.Count < MAX_DANCERS)
-            {
-                CreateDancer();
-            }
-        }
     }
 
-    void CreateDancer()
+    public void SpawnDancer()
     {
         Vector3 dancerEntrance = GetDancerEntrance();
         Vector3 dancerDestination = GetDancingSpot();
