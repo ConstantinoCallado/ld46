@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: songColor
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2704785802672630946, guid: 398fbea998b23f2408b17ad67c5663fc,
+        type: 3}
+      propertyPath: musicColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4650715657132554939, guid: 398fbea998b23f2408b17ad67c5663fc,
         type: 3}
       propertyPath: m_LocalPosition.x
