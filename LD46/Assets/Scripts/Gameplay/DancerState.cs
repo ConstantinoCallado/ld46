@@ -23,8 +23,6 @@ public class DancerState : MonoBehaviour
         {
             Vector3 groundPosition = new Vector3(transform.position.x, 0f, transform.position.z);
             float distance = Vector3.Distance(groundPosition, destination);
-            print("Ground pos " + groundPosition + " destiny " + destination);
-            print("Distance " + distance);
             if (Mathf.Abs(distance) < 0.5f)
             {
                 stateName = DancerStateNames.Dancing;
