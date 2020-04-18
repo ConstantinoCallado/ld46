@@ -266,6 +266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47161004bc6195b4cbef312dce44c33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plateLeft: {fileID: 2357175173800391329}
+  plateRight: {fileID: 2357175172230195194}
+  crossFader: {fileID: 2733753064053863197}
+  dancerManager: {fileID: 0}
 --- !u!1 &9111432075904098829
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +478,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9054184333998510487}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2357175172230195194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6706056634932000365, guid: ef522020f45497a48863320356c2a7f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 9054184333998510487}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df400c238fcbd14ea6d1628f63e939b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9054184334478017740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,3 +565,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9054184334478017740}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2357175173800391329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6706056634932000365, guid: ef522020f45497a48863320356c2a7f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 9054184334478017740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df400c238fcbd14ea6d1628f63e939b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -92,7 +92,7 @@ public class DancerManager : MonoBehaviour
         return exitList.GetChild(randomIndex).transform.position;
     }
 
-    void TooSoonChange(GameEnums.MusicColor musicColor)
+    public void TooSoonChange(GameEnums.MusicColor musicColor)
     {
         foreach (GameObject dancer in dancers)
         {
@@ -104,7 +104,7 @@ public class DancerManager : MonoBehaviour
         }
     }
 
-    void PerfectChange(GameEnums.MusicColor musicColor)
+    public void PerfectChange(GameEnums.MusicColor musicColor)
     {
         foreach (GameObject dancer in dancers)
         {
@@ -116,7 +116,7 @@ public class DancerManager : MonoBehaviour
         }
     }
 
-    void TooLateChange(GameEnums.MusicColor musicColor)
+    public void TooLateChange(GameEnums.MusicColor musicColor)
     {
         foreach (GameObject dancer in dancers)
         {

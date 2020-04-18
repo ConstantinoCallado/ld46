@@ -5,8 +5,14 @@ using UnityEngine;
 public class CrossFader : MonoBehaviour
 {
     private float maxKnobRangeX = 0.12f;
+    private Table djTable;
     public bool isLeft = true;
     public Transform knobTransform;
+
+    public void Awake()
+    {
+        djTable = transform.parent.GetComponent<Table>();
+    }
 
     public void Start()
     {
@@ -16,6 +22,8 @@ public class CrossFader : MonoBehaviour
     public void Interact()
     {
         isLeft = !isLeft;
+
+        djTable.DoCrossFade();
 
         MoveKnob();
     }
