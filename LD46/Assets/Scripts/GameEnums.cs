@@ -10,5 +10,6 @@ public class GameEnums
     public enum MusicColor { Magenta = 0, Cyan = 1, Yellow = 2, White = 3 };
     public enum DancerStateNames { Inactive = 0, Created = 1, Dancing = 2, Leaving = 3 };
     public enum TurnTable { Left = 0, Right = 1 };
+    public enum PartyStatus { Dead = 0, WarmingUp = 1, Super = 2, PartyHard = 3};
 
 }
