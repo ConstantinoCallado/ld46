@@ -1638,31 +1638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2357175172230195194, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: disk
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2357175173800391329, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: hasDisk
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2357175173800391329, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: disk
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4407974627545169523, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateL
-      objectReference: {fileID: 0}
-    - target: {fileID: 4407974627991153448, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_Name
-      value: PlateR
-      objectReference: {fileID: 0}
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1671,12 +1646,12 @@ PrefabInstance:
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.94
+      value: 3.104
       objectReference: {fileID: 0}
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.92
+      value: -5.996
       objectReference: {fileID: 0}
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
