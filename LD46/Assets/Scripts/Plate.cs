@@ -12,10 +12,19 @@ public class Plate : MonoBehaviour
     public Disk disk;
     private float diskRotationSpeed = 150f;
 
+    public Transform armPivot;
+    private int armIdleAngle = -15;
+    private int armEndAngle = 30;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        RestoreArm();
+    }
+
+    void RestoreArm()
+    {
+        armPivot.transform.localEulerAngles = new Vector3(0, armIdleAngle, 0);
     }
 
     // Update is called once per frame
