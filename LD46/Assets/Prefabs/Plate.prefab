@@ -133,7 +133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101037432339265690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0.02, z: 0.25}
+  m_LocalPosition: {x: 0.25, y: 0.01, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7184413484124336136}
@@ -270,6 +270,7 @@ MonoBehaviour:
   anchor: {fileID: 3176405657161573260}
   disk: {fileID: 0}
   armPivot: {fileID: 6474896279456793872}
+  isSpinning: 0
 --- !u!135 &1783422860705494970
 SphereCollider:
   m_ObjectHideFlags: 0

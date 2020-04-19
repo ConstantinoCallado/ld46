@@ -5,31 +5,31 @@ using UnityEngine.AI;
 
 public class DancerMood : MonoBehaviour
 {
-    public int[,] reactions = new int[,] { { 1, 0, -1 }, {-1, 1, 0 }, {0, -1, 1 } };
+    public int[,] reactions = new int[,] { { 1, 0, -1 }, { -1, 1, 0 }, { 0, -1, 1 } };
     public Material[] moodMaterials;
 
     public GameEnums.MusicColor dancerColor = GameEnums.MusicColor.Magenta;
     public GameEnums.MoodStates currentMood = GameEnums.MoodStates.Neutral;
     public DancerManager manager;
 
+    public Animator animator;
+
     void Awake()
     {
         dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
-        GetComponent<Renderer>().material = moodMaterials[(int)dancerColor];
-
-        ShowMoodHearts_DEBUG();
+        currentMood = GameEnums.MoodStates.Neutral;
+        PlayCurrentMoodAnimation();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentMood = GameEnums.MoodStates.Neutral;
     }
 
     // Update is called once per frame
     void Update()
     {
- 
+
     }
 
     void Leave()
@@ -54,6 +54,8 @@ public class DancerMood : MonoBehaviour
             Leave();
         }
 
+        PlayCurrentMoodAnimation();
+
         ShowMoodHearts_DEBUG();
     }
 
@@ -65,6 +67,10 @@ public class DancerMood : MonoBehaviour
             if (reaction != 0)
             {
                 int numericMood = (int)currentMood + reaction;
+                if (numericMood >= (int)GameEnums.MoodStates.OnFire)
+                {
+                    DancersOnFireCounter.dancersOnFire += 1;
+                }
                 SetMoodFromInt(numericMood);
             }
         }
@@ -94,15 +100,16 @@ public class DancerMood : MonoBehaviour
         SetMoodFromInt(numericMood);
     }
 
-    void ShowMoodHearts_DEBUG()
+    public void ShowMoodHearts_DEBUG()
     {
         if (!GameEnums.DEBUGGING)
         {
             return;
         }
+
         int i = 0;
         int numericMood = 1 + (int)currentMood;
-        foreach (Transform child in transform)
+        /*foreach (Transform child in transform)
         {
             Renderer rendererComp = child.GetComponent<Renderer>();
             if (i <= numericMood)
@@ -114,7 +121,62 @@ public class DancerMood : MonoBehaviour
                 rendererComp.enabled = false;
             }
             i++;
+        }*/
+    }
+
+    void PlayCurrentMoodAnimation()
+    {
+        PlayAnimation(currentMood);
+    }
+
+    void PlayAnimation(GameEnums.MoodStates moodState)
+    {
+        if (moodState == GameEnums.MoodStates.Bored)
+        {
+            PlayBoredAnimation();
+        }
+        else if (moodState == GameEnums.MoodStates.Neutral)
+        {
+            PlayNeutralAnimation();
+        }
+        else if (moodState == GameEnums.MoodStates.HavingFun)
+        {
+            PlayHavingFunAnimation();
+        }
+        else if (moodState == GameEnums.MoodStates.OnFire)
+        {
+            PlayOnFireAnimation();
         }
     }
+
+    void PlayBoredAnimation()
+    {
+        animator.SetBool("isBored", true);
+        animator.SetBool("isFun", false);
+        animator.SetBool("isOnFire", false);
+    }
+
+    void PlayNeutralAnimation()
+    {
+        animator.SetBool("isBored", false);
+        animator.SetBool("isFun", false);
+        animator.SetBool("isOnFire", false);
+    }
+
+    void PlayHavingFunAnimation()
+    {
+        animator.SetBool("isBored", false);
+        animator.SetBool("isFun", true);
+        animator.SetBool("isOnFire", false);
+    }
+
+    void PlayOnFireAnimation()
+    {
+        animator.SetBool("isBored", false);
+        animator.SetBool("isFun", true);
+        animator.SetBool("isOnFire", true);
+    }
+
+
 
 }

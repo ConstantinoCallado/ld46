@@ -19,11 +19,23 @@ public class DancerManager : MonoBehaviour
 
     public DancerSpawner spawner;
 
+    private Rect dancingRect;
+
+    void Awake()
+    {
+        dancers = new List<GameObject>();
+        spawner = GetComponent<DancerSpawner>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        spawner = GetComponent<DancerSpawner>();
-        dancers = new List<GameObject>();
+        Vector3 topRight = dancingArea.Find("TopRight").transform.position;
+        Vector3 bottomLeft = dancingArea.Find("BottomLeft").transform.position;
+
+        int width = (int)Mathf.Abs(topRight.x - bottomLeft.x);
+        int height = (int)Mathf.Abs(topRight.z - bottomLeft.z);
+        dancingRect = new Rect(bottomLeft.x, bottomLeft.z, width, height);
     }
 
     // Update is called once per frame
@@ -37,6 +49,7 @@ public class DancerManager : MonoBehaviour
         Vector3 dancerEntrance = GetDancerEntrance();
         Vector3 dancerDestination = GetDancingSpot();
         GameObject dancer = Instantiate(dancerPrefab, dancerEntrance, Quaternion.identity);
+        print("dancerEntrance " + dancerEntrance);
 
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
@@ -58,6 +71,7 @@ public class DancerManager : MonoBehaviour
         DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
         dancerMoodComp.manager = this;
         dancerMoodComp.enabled = true;
+        dancerMoodComp.ShowMoodHearts_DEBUG();
 
         dancers.Add(dancer);
     }
@@ -68,6 +82,12 @@ public class DancerManager : MonoBehaviour
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Leaving);
         dancerStateComp.MoveToDestination(dancerExit);
+    }
+
+    public bool IsDancerInsideDancingArea(Transform dancer)
+    {
+        Vector2 point = new Vector2(dancer.position.x, dancer.position.y);
+        return dancingRect.Contains(point);
     }
 
     public void RemoveDancer(GameObject dancer)
@@ -123,6 +143,7 @@ public class DancerManager : MonoBehaviour
 
     public void TooLateChange(GameEnums.MusicColor musicColor)
     {
+        DancersOnFireCounter.dancersOnFire = 0;
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();

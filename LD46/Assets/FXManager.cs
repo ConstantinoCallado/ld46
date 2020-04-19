@@ -12,7 +12,6 @@ public class FXManager : MonoBehaviour
     private PostProcessVolume _volume;
     private Bloom _bloom = null;
     private ChromaticAberration _chromaticAberration = null;
-    private LensDistortion _lensDistorsion = null;
 
     private void Awake()
     {
@@ -27,16 +26,11 @@ public class FXManager : MonoBehaviour
         _chromaticAberration.enabled.Override(true);
         _chromaticAberration.intensity.Override(0f);
 
-        _lensDistorsion = ScriptableObject.CreateInstance<LensDistortion>();
-        _lensDistorsion.enabled.Override(true);
-        _lensDistorsion.intensity.Override(0f);
-
-        _volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _bloom, _chromaticAberration, _lensDistorsion);
+        _volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _bloom, _chromaticAberration);
     }
 
     public void SetPartyStatus(GameEnums.PartyStatus s) 
     {
-        // Mathf.Sin(Time.realtimeSinceStartup);
         switch (s) 
         {
             case GameEnums.PartyStatus.Dead:
@@ -53,25 +47,18 @@ public class FXManager : MonoBehaviour
                 break;
             case GameEnums.PartyStatus.PartyHard:  
                 _bloom.intensity.value = 1f;
-                _chromaticAberration.intensity.value = 0.5f; 
-                _lensDistorsion.intensity.value = 20f;
+                _chromaticAberration.intensity.value = 0.5f;
                 break;
             default:
                 break;
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
 
-        _lensDistorsion.intensity.value = Mathf.Sin(Time.realtimeSinceStartup*8f)*8f;
+        //_lensDistorsion.intensity.value = ((Mathf.Sin(Time.realtimeSinceStartup)));
 
         if (Input.GetKeyDown(KeyCode.U))
             SetPartyStatus(GameEnums.PartyStatus.Dead);

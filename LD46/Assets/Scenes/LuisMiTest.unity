@@ -912,6 +912,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8380696572726908869, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: dancerManager
+      value: 
+      objectReference: {fileID: 1997711778}
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -980,7 +985,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41174
+  m_Name: pb_Mesh63528
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3235,6 +3240,18 @@ Transform:
   m_Father: {fileID: 1724358144}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!114 &1997711778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 72888278048210889, guid: d58af22d8f21a8847a167f20ac41a56b,
+    type: 3}
+  m_PrefabInstance: {fileID: 859638138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1edc4077f963bd46a7e3ca5404effc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6221497372033843290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3570,6 +3587,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
+    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
