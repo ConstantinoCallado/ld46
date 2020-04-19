@@ -18,9 +18,11 @@ public class DancerMood : MonoBehaviour
 
     public Animator animator;
 
+    public ParticleSystem likeParticle;
+    public ParticleSystem hateParticle;
+
     void Awake()
     {
-        //dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
         currentMood = GameEnums.MoodStates.Neutral;
         PlayCurrentMoodAnimation();
         defaultMaterial = bodyRenderer.materials[1];
@@ -52,6 +54,14 @@ public class DancerMood : MonoBehaviour
         else if (numericMood > (int)GameEnums.MoodStates.OnFire)
         {
             numericMood = (int)GameEnums.MoodStates.OnFire;
+        }
+        if ((int)currentMood > numericMood)
+        {
+            hateParticle.Emit(1);
+        }
+        else if ((int)currentMood < numericMood)
+        {
+            likeParticle.Emit(1);
         }
         currentMood = (GameEnums.MoodStates)numericMood;
         if (currentMood == GameEnums.MoodStates.RageQuit)

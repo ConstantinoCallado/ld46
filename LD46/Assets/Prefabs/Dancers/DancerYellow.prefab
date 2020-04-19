@@ -257,6 +257,8 @@ MonoBehaviour:
   bodyRenderer: {fileID: 8686682350322706043}
   onFireMaterial: {fileID: 2100000, guid: d76aec7bafd2614498dad083c557a573, type: 2}
   animator: {fileID: 1923403510901308292}
+  likeParticle: {fileID: 2986413584222124419}
+  hateParticle: {fileID: 8838120506627168913}
 --- !u!114 &-5797393497642695284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +590,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1489430654067428288}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &2986413584222124419 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4456973861211189827, guid: da8593c4fc227d74db957316ac45db7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1489430654067428288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2299009955450995424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -665,6 +673,12 @@ PrefabInstance:
 --- !u!4 &8838120506627168914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7296102535715477618, guid: 18ed1b891ac864f42a685f9673664b7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2299009955450995424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8838120506627168913 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7296102535715477617, guid: 18ed1b891ac864f42a685f9673664b7f,
     type: 3}
   m_PrefabInstance: {fileID: 2299009955450995424}
   m_PrefabAsset: {fileID: 0}
