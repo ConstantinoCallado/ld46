@@ -20,6 +20,8 @@ public class Plate : MonoBehaviour
     public bool isSpinning = false;
     Coroutine spinCoroutine;
 
+    private Material onOffMaterial;
+
     // Trail
     public Transform needleSocket;
     public Transform needleTrail;
@@ -33,7 +35,13 @@ public class Plate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(turntable != null)
+        {
+            Material[] turntableMaterials = turntable.GetComponent<Renderer>().materials;
 
+            if (turntableMaterials.Length > 1)
+                onOffMaterial = turntableMaterials[1];
+        }
 
         RestoreArm();
     }
@@ -125,7 +133,8 @@ public class Plate : MonoBehaviour
         spinCoroutine = StartCoroutine(SpinCoroutine());
 
         // set emission of the turntable dark material to true
-        
+        if(onOffMaterial != null)
+            onOffMaterial.EnableKeyword("_EMISSION");
     }
 
     public void StopSpinning()
@@ -136,6 +145,8 @@ public class Plate : MonoBehaviour
         RestoreArm();
 
         // set emission of the turntable dark material to false
+        if (onOffMaterial != null)
+            onOffMaterial.DisableKeyword("_EMISSION");
     }
 
     public IEnumerator SpinCoroutine()
