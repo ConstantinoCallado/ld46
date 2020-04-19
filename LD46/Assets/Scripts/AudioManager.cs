@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
-    public void PlayMusicSample(GameEnums.TurnTable turntable, GameEnums.MusicColor recordType) 
+    public void PlayRecord(GameEnums.TurnTable turntable, GameEnums.MusicColor recordType) 
     {
         AudioSource turntableAudioSource = null;
         AudioSource otherTurntableAudioSource = null;
@@ -113,6 +113,32 @@ public class AudioManager : MonoBehaviour
         turntableAudioSource.pitch = musicSample.pitch;
         turntableAudioSource.loop = musicSample.loop;
         turntableAudioSource.Play();
+    }
+
+    public void StopRecord(GameEnums.TurnTable turntable) 
+    {
+        AudioSource turntableAudioSource = null;
+
+        switch (turntable)
+        {
+            case GameEnums.TurnTable.Left:
+                turntableAudioSource = _leftTurnTableAudioSource;
+                break;
+            case GameEnums.TurnTable.Right:
+                turntableAudioSource = _rightTurnTableAudioSource;
+                break;
+            default:
+                Debug.LogWarning("Invalid turntable: " + turntable.ToString());
+                break;
+        }
+
+        if (turntableAudioSource == null)
+        {
+            Debug.LogWarning("An AudioSource component for the turntable is missing. Please add both AudioSource components to the AudioManager object.");
+            return;
+        }
+
+        turntableAudioSource.Stop(); // TO DO : Should be crossfaded
     }
 
     private Sound GetMusicSample(GameEnums.MusicColor recordType) 
