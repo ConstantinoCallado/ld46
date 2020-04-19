@@ -49,12 +49,15 @@ public class DancerManager : MonoBehaviour
         Vector3 dancerEntrance = GetDancerEntrance();
         Vector3 dancerDestination = GetDancingSpot();
         GameObject dancer = Instantiate(dancerPrefab, dancerEntrance, Quaternion.identity);
+        print("dancerEntrance " + dancerEntrance);
 
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
         dancerStateComp.MoveToDestination(dancerDestination);
         dancerStateComp.manager = this;
-        dancer.GetComponent<DancerMood>().manager = this;
+        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+        dancerMoodComp.manager = this;
+        dancerMoodComp.PlayWalkAnimation();
 
         dancers.Add(dancer);
     }
@@ -81,6 +84,9 @@ public class DancerManager : MonoBehaviour
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Leaving);
         dancerStateComp.MoveToDestination(dancerExit);
+        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+        dancerMoodComp.enabled = true;
+        dancerMoodComp.PlayWalkAnimation();
     }
 
     public bool IsDancerInsideDancingArea(Transform dancer)
