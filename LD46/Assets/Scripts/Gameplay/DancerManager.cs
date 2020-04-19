@@ -55,7 +55,9 @@ public class DancerManager : MonoBehaviour
         dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
         dancerStateComp.MoveToDestination(dancerDestination);
         dancerStateComp.manager = this;
-        dancer.GetComponent<DancerMood>().manager = this;
+        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+        dancerMoodComp.manager = this;
+        dancerMoodComp.PlayWalkAnimation();
 
         dancers.Add(dancer);
     }
@@ -82,6 +84,9 @@ public class DancerManager : MonoBehaviour
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Leaving);
         dancerStateComp.MoveToDestination(dancerExit);
+        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+        dancerMoodComp.enabled = true;
+        dancerMoodComp.PlayWalkAnimation();
     }
 
     public bool IsDancerInsideDancingArea(Transform dancer)

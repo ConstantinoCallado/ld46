@@ -149,6 +149,16 @@ public class DancerMood : MonoBehaviour
         }
     }
 
+    public void PlayWalkAnimation()
+    {
+        animator.SetBool("isWalking", true);
+    }
+
+    public void StopWalkAnimation()
+    {
+        animator.SetBool("isWalking", false);
+    }
+
     void PlayBoredAnimation()
     {
         animator.SetBool("isBored", true);
