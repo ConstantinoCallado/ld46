@@ -872,6 +872,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6706056634932000365, guid: ef522020f45497a48863320356c2a7f5,
+        type: 3}
+      propertyPath: turntable
+      value: 
+      objectReference: {fileID: 7714110141549141436}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef522020f45497a48863320356c2a7f5, type: 3}
 --- !u!4 &7079733033146493428 stripped
@@ -892,6 +897,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df400c238fcbd14ea6d1628f63e939b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7714110141549141436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5315633896798703347, guid: ef522020f45497a48863320356c2a7f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2507074050672563023}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3454729937822593178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1105,6 +1116,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6706056634932000365, guid: ef522020f45497a48863320356c2a7f5,
+        type: 3}
+      propertyPath: turntable
+      value: 
+      objectReference: {fileID: 4273347339255535561}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef522020f45497a48863320356c2a7f5, type: 3}
 --- !u!4 &3603934279410787201 stripped
@@ -1125,3 +1141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df400c238fcbd14ea6d1628f63e939b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4273347339255535561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5315633896798703347, guid: ef522020f45497a48863320356c2a7f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8253152110516476218}
+  m_PrefabAsset: {fileID: 0}
