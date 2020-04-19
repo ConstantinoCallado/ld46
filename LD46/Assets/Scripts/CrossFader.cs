@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CrossFader : MonoBehaviour
 {
-    private float maxKnobRangeX = 0.12f;
+    private float maxKnobRangeX = 0.15f;
     private Table djTable;
     public bool isLeft = true;
     public Transform knobTransform;

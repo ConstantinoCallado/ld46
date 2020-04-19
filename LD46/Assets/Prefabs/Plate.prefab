@@ -301,6 +301,37 @@ Transform:
   m_Father: {fileID: 6474896279456793872}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1185153097313668632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 69847523273057853}
+  m_Layer: 0
+  m_Name: turntable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &69847523273057853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185153097313668632}
+  m_LocalRotation: {x: 0.060878463, y: -0.0015912119, z: -0.0049496773, w: -0.99813163}
+  m_LocalPosition: {x: 0.55752456, y: -1.335559, z: 0.01392892}
+  m_LocalScale: {x: 0.5505222, y: 0.55052245, z: 0.5505223}
+  m_Children:
+  - {fileID: 6890568365252829932}
+  m_Father: {fileID: 4650715657132554939}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -6.9810004, y: 0.149, z: 0.559}
 --- !u!1 &2101037432339265690
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4650715657132554939}
   - component: {fileID: 6706056634932000365}
-  - component: {fileID: 1783422860705494970}
+  - component: {fileID: 3695002035665857080}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -446,6 +477,7 @@ Transform:
   - {fileID: 631932059710445432}
   - {fileID: 3176405657161573260}
   - {fileID: 6474896279456793872}
+  - {fileID: 69847523273057853}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -468,8 +500,8 @@ MonoBehaviour:
   needleSocket: {fileID: 6326282816138774684}
   needleTrail: {fileID: 631932059710445432}
   trailTarget: {fileID: 5993555925626806605}
---- !u!135 &1783422860705494970
-SphereCollider:
+--- !u!65 &3695002035665857080
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -479,8 +511,88 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.7111604, y: 0.329006, z: 0.7230854}
+  m_Center: {x: 0.024364829, y: -0.07100365, z: -0.08279328}
+--- !u!1 &5315633896798703347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6890568365252829932}
+  - component: {fileID: 8195662761218399945}
+  - component: {fileID: 221997340262647019}
+  m_Layer: 0
+  m_Name: turntable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6890568365252829932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315633896798703347}
+  m_LocalRotation: {x: 0.052536063, y: -0.00041919568, z: -0.00594368, w: 0.99860126}
+  m_LocalPosition: {x: -0.988036, y: 2.2310014, z: 0.13500544}
+  m_LocalScale: {x: 0.009417799, y: 0.009417799, z: 0.009417799}
+  m_Children: []
+  m_Father: {fileID: 69847523273057853}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 6.0230002, y: -0.08400001, z: -0.68600005}
+--- !u!33 &8195662761218399945
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315633896798703347}
+  m_Mesh: {fileID: 3763969199698075636, guid: d97956eddae7ea84488facb59f1b3821, type: 3}
+--- !u!23 &221997340262647019
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315633896798703347}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 020d31db7676f194abfea5b4e5d850b8, type: 2}
+  - {fileID: 2100000, guid: e5646f936ed6f6144ae2de74cf3884b1, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &7401076465243316852
 GameObject:
   m_ObjectHideFlags: 0

@@ -348,6 +348,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: sfx_ambience_crowd
+    clip: {fileID: 8300000, guid: b75a85fb46dbf4541988d7e72285cb4a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   musicSamplesA:
   - name: electronic1
     clip: {fileID: 8300000, guid: d3a0b6e2b7f2b6a4eb9f9f02bd9e0441, type: 3}
