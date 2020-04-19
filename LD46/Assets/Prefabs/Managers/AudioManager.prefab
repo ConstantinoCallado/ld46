@@ -239,7 +239,115 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a583d912acc6c7c408aee1bd844de72d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: sfx_awww
+    clip: {fileID: 8300000, guid: 07560148a79f94545bbc1e46c7daf7cc, type: 3}
+    volume: 1
+    pitch: 3
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_boo
+    clip: {fileID: 8300000, guid: 94e406d72388adc45a6bb1795d71e9e9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_broken_record
+    clip: {fileID: 8300000, guid: 3a3b74294b3f31d4bbc5ee218c6faa5d, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_crossfader
+    clip: {fileID: 8300000, guid: b95bcbf41fec97344acdfe9691783871, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_crossfader_blocked
+    clip: {fileID: 8300000, guid: 4305db5c0732ef344b8e291e0d10d84b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_crowd_big
+    clip: {fileID: 8300000, guid: 37913da2368d02f498ceb063f8bfaa3b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_crowd_small
+    clip: {fileID: 8300000, guid: 7db0182cd80a3aa40977ef17ad715455, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_needle_skip
+    clip: {fileID: 8300000, guid: 34bdfcb0fa9c87f4087c8f24347e496d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_nooo
+    clip: {fileID: 8300000, guid: 948904340ce5fce4eb127a12c7e4d922, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_scratch1
+    clip: {fileID: 8300000, guid: 64f51124429d4a7428d049ae81d25f9e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_scratch2
+    clip: {fileID: 8300000, guid: 962a19562e6a1d647a5b6468a12f24ad, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_scratch3
+    clip: {fileID: 8300000, guid: 5d451956bfb56ed4686b6f042e1ea42e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_scratch4
+    clip: {fileID: 8300000, guid: 1f52e78ff1db3ed4f8a9a9ad6600f447, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_smooth
+    clip: {fileID: 8300000, guid: d45f6eedc86b49e4090ab0810d34ef39, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_smooth_scratch
+    clip: {fileID: 8300000, guid: 68ec06e9da78fe540b1bdb2058b20f6e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_throw
+    clip: {fileID: 8300000, guid: 1029f4b271fe09b43b57551b342efcf4, type: 3}
+    volume: 0.1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_wohoo
+    clip: {fileID: 8300000, guid: 529cae4b853a325409370940c6a701d8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: sfx_yeah
+    clip: {fileID: 8300000, guid: 762d808dbb2e9604493085f6dd367a51, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   musicSamplesA:
   - name: electronic1
     clip: {fileID: 8300000, guid: d3a0b6e2b7f2b6a4eb9f9f02bd9e0441, type: 3}

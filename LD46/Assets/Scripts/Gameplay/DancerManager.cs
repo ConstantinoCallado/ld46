@@ -21,10 +21,13 @@ public class DancerManager : MonoBehaviour
 
     private Rect dancingRect;
 
+    public int dancersOnFire;
+
     void Awake()
     {
         dancers = new List<GameObject>();
         spawner = GetComponent<DancerSpawner>();
+        dancersOnFire = 0;
     }
 
     // Start is called before the first frame update
@@ -36,6 +39,8 @@ public class DancerManager : MonoBehaviour
         int width = (int)Mathf.Abs(topRight.x - bottomLeft.x);
         int height = (int)Mathf.Abs(topRight.z - bottomLeft.z);
         dancingRect = new Rect(bottomLeft.x, bottomLeft.z, width, height);
+
+        UpdatePartyStatus();
     }
 
     // Update is called once per frame
@@ -212,5 +217,36 @@ public class DancerManager : MonoBehaviour
 
     }
 
+    public void IncreaseDancersOnFire(int quantity)
+    {
+        dancersOnFire += quantity;
+        UpdatePartyStatus();
+    }
 
+    public void SetDancersOnFire(int quantity)
+    {
+        dancersOnFire = quantity;
+        UpdatePartyStatus();
+    }
+
+    void UpdatePartyStatus()
+    {
+        int percentage = (100 * dancersOnFire) / MAX_DANCERS;
+        if (percentage == 0)
+        {
+            FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.Dead);
+        }
+        else if (0 < percentage && percentage <= 25)
+        {
+            FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
+        }
+        else if (25 < percentage && percentage <= 60)
+        {
+            FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.Super);
+        }
+        else
+        {
+            FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.PartyHard);
+        }
+    }
 }
