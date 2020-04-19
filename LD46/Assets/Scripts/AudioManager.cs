@@ -14,8 +14,6 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager audioManagerRef;
 
-    public Sound currentMusicSample;
-
     // list of gameplay sounds
     public Sound[] sounds;
 
@@ -63,6 +61,17 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void StopSound(string name)
+    {
+        Sound s = Array.Find(sounds, sounds => sounds.name == name);
+        if (s == null) 
+        {
+            Debug.LogWarning("StopSound: " + name + " not found!");
+            return;
+        }
+        s.source.Stop();
     }
 
     public void PlayMusicSample(GameEnums.TurnTable turntable, GameEnums.MusicColor recordType) 
