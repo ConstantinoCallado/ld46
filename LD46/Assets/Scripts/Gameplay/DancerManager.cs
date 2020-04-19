@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class DancerManager : MonoBehaviour
 {
-    public GameObject dancerPrefab;
+    public List<GameObject> dancerPrefabs;
 
     public float DANCERS_DELAY = 10f;
 
@@ -48,7 +48,8 @@ public class DancerManager : MonoBehaviour
     {
         Vector3 dancerEntrance = GetDancerEntrance();
         Vector3 dancerDestination = GetDancingSpot();
-        GameObject dancer = Instantiate(dancerPrefab, dancerEntrance, Quaternion.identity);
+        GameObject randomDancer = GetRandomDancer();
+        GameObject dancer = Instantiate(randomDancer, dancerEntrance, Quaternion.identity);
         print("dancerEntrance " + dancerEntrance);
 
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
@@ -65,7 +66,8 @@ public class DancerManager : MonoBehaviour
     public void SpawnDancerAtDestiny()
     {
         Vector3 dancerDestination = GetDancingSpot();
-        GameObject dancer = Instantiate(dancerPrefab, dancerDestination, Quaternion.identity);
+        GameObject randomDancer = GetRandomDancer();
+        GameObject dancer = Instantiate(randomDancer, dancerDestination, Quaternion.identity);
 
         DancerState dancerStateComp = dancer.GetComponent<DancerState>();
         dancerStateComp.SetState(GameEnums.DancerStateNames.Dancing);
@@ -120,6 +122,12 @@ public class DancerManager : MonoBehaviour
     {
         int randomIndex = Random.Range(0, exitList.childCount);
         return exitList.GetChild(randomIndex).transform.position;
+    }
+
+    GameObject GetRandomDancer()
+    {
+        int randomInt = Random.Range(0, dancerPrefabs.Count);
+        return dancerPrefabs[randomInt];
     }
 
     public void TooSoonChange(GameEnums.MusicColor musicColor)
