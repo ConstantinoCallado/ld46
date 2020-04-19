@@ -40,7 +40,7 @@ public class DancerManager : MonoBehaviour
         int height = (int)Mathf.Abs(topRight.z - bottomLeft.z);
         dancingRect = new Rect(bottomLeft.x, bottomLeft.z, width, height);
 
-        UpdatePartyStatus();
+        FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
     }
 
     // Update is called once per frame
