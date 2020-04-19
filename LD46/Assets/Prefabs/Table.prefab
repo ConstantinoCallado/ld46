@@ -48,8 +48,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playList:
   - {fileID: 3680430633056951466, guid: f6c5abadbdb00ba4ca7f72921891d53f, type: 3}
+  - {fileID: 3680430633056951466, guid: e581bfe90d5650d4585697d66b2511ab, type: 3}
+  - {fileID: 3680430633056951466, guid: 874392d5e1962114196510bc1d282e86, type: 3}
   - {fileID: 3680430633056951466, guid: e5a99aec9b4069b4ea7e55929039d910, type: 3}
+  - {fileID: 3680430633056951466, guid: fd59278b7dc0ca44c9cc74c08877fe3d, type: 3}
+  - {fileID: 3680430633056951466, guid: c511ec6f54fe72541ada0dce285b37ee, type: 3}
   - {fileID: 3680430633056951466, guid: 5dfc102211455854bae4e49e69073951, type: 3}
+  - {fileID: 3680430633056951466, guid: 79595f76b6c1bcf44b4707dd8da877d8, type: 3}
+  - {fileID: 3680430633056951466, guid: a3f185319cd136941a58bc54e971f07e, type: 3}
   refreshDiskDelay: 1
   amountDisksInDeck: 3
   disksInDeck: []
@@ -207,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2587877778251798580}
   m_LocalRotation: {x: -0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 1.5, z: 2.3}
+  m_LocalPosition: {x: 0, y: 1.3700004, z: 2.2599995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6253958448568924058}
@@ -238,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2587877778445751732}
   m_LocalRotation: {x: -0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0.5, y: 1.35, z: 2.15}
+  m_LocalPosition: {x: 0.5, y: 1.2200004, z: 2.1099997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7889701050254369305}
@@ -395,7 +401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6620883215896718006}
   m_LocalRotation: {x: -0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: -0.5, y: 1.35, z: 2.15}
+  m_LocalPosition: {x: -0.5, y: 1.22, z: 2.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2587877778096101145}
