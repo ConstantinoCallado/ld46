@@ -45,7 +45,6 @@ public class DancerState : MonoBehaviour
             stateName = GameEnums.DancerStateNames.MoodActive;
             DancerMood dancerMoodComponent = GetComponent<DancerMood>();
             dancerMoodComponent.enabled = true;
-            dancerMoodComponent.ShowMoodHearts_DEBUG();
         }
     }
 
@@ -59,7 +58,6 @@ public class DancerState : MonoBehaviour
             GetComponent<NavMeshAgent>().isStopped = true;
             DancerMood dancerMoodComp = GetComponent<DancerMood>();
             dancerMoodComp.enabled = true;
-            dancerMoodComp.ShowMoodHearts_DEBUG();
             dancerMoodComp.StopWalkAnimation();
             RotateToDJ();
         }
