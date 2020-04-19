@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4650715657132554939}
   - component: {fileID: 2704785802672630946}
-  - component: {fileID: 1015738229872393750}
+  - component: {fileID: 4756891831114708936}
   m_Layer: 0
   m_Name: Disk
   m_TagString: Untagged
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicColor: 0
   duration: 10
---- !u!135 &1015738229872393750
-SphereCollider:
+--- !u!65 &4756891831114708936
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -58,8 +58,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.503106, y: 0.039853692, z: 0.5068615}
+  m_Center: {x: -0.0012097955, y: 0.013292015, z: -0.00009033084}
 --- !u!1001 &5791724578307829752
 PrefabInstance:
   m_ObjectHideFlags: 0
