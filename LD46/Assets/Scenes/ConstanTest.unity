@@ -1305,11 +1305,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1923687436339213881, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: limitTrailLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923687436339213881, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: distIncrement
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923687436339213881, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: maxPositions
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045942052417543616, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: m_Positions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045942052417543616, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451619195370882059, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: m_Time
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8380696572726908869, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: dancerManager
       value: 
       objectReference: {fileID: 668954187}
+    - target: {fileID: 8458884290910586607, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458884290910586607, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8458884290910586607, guid: f24fe4544a15b4f44990fcf404db5809,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -18,8 +18,11 @@ public class Plate : MonoBehaviour
     private int armEndAngle = 28;
 
     public bool isSpinning = false;
-
     Coroutine spinCoroutine;
+
+    // Trail
+    public Transform needleSocket;
+    public Transform needleTrail;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,19 @@ public class Plate : MonoBehaviour
         if(isSpinning)
         {
             anchor.Rotate(Vector3.up * diskRotationSpeed * Time.deltaTime, Space.Self);
+            /*Vector3 localDisplacement = needleSocket.position - needleTrail.transform.position;
+
+            Debug.Log(localDisplacement);
+
+            Vector3[] vertexPositions = new Vector3[needleTrail.positionCount];
+            needleTrail.GetPositions(vertexPositions);
+            for(int i=0; i<vertexPositions.Length; i++)
+            {
+                vertexPositions[i] = vertexPositions[i] + localDisplacement;
+            }
+            needleTrail.SetPositions(vertexPositions);*/
+
+            //needleTrail.transform.position = needleSocket.position;
         }
     }
 
@@ -53,12 +69,16 @@ public class Plate : MonoBehaviour
         disk.transform.parent = anchor;
         disk.transform.localPosition = Vector3.zero;
         disk.transform.localRotation = Quaternion.identity;
+
+        needleTrail.transform.parent = disk.transform;
     }
 
     public void DestroyDisk()
     {
         if(disk)
         {
+            needleTrail.transform.parent = needleSocket;
+
             disk.transform.Translate(disk.transform.up * 0.02f);
             disk.transform.parent = null;
             disk.gameObject.GetComponent<Collider>().enabled = false;
@@ -73,6 +93,7 @@ public class Plate : MonoBehaviour
     public void StartSpinning()
     {
         isSpinning = true;
+        armPivot.localRotation = Quaternion.Euler(0, armStartingAngle, 0);
         if (spinCoroutine != null) StopCoroutine(SpinCoroutine());
         spinCoroutine = StartCoroutine(SpinCoroutine());
     }
@@ -80,12 +101,16 @@ public class Plate : MonoBehaviour
     public void StopSpinning()
     {
         isSpinning = false;
+        needleTrail.gameObject.SetActive(false);
         if (spinCoroutine != null) StopCoroutine(spinCoroutine);
         RestoreArm();
     }
 
     public IEnumerator SpinCoroutine()
     {
+        yield return new WaitForEndOfFrame();
+        needleTrail.gameObject.SetActive(true);
+
         float startSongTime = Time.time;
         float songDuration = 0;
 
