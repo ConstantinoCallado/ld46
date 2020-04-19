@@ -6,10 +6,17 @@ public class Table : MonoBehaviour
 {
     public Plate plateLeft;
     public Plate plateRight;
-
     public CrossFader crossFader;
+
+    public float blockedTime = 0.2f;
+    public float tooSoonTime = 0.5f;
+    public float perfectTime = 0.3f;
+
     public DancerManager dancerManager;
 
+    public ParticleSystem particleTooSoon;
+    public ParticleSystem particleSmooth;
+    public ParticleSystem particleTooLate;
 
     public void DoCrossFade()
     {
@@ -17,9 +24,31 @@ public class Table : MonoBehaviour
         {
             if (plateLeft.disk)
             {
-                Debug.Log("Table doing CrossFade!");
                 plateLeft.StartSpinning();
                 dancerManager.PerfectChange(plateLeft.disk.musicColor);
+
+                if(plateRight.disk)
+                {
+                    switch (plateRight.musicStatus)
+                    {
+                        case GameEnums.MusicStatus.Blocked:
+                            dancerManager.TooSoonChange(plateLeft.disk.musicColor);
+                            break;
+                        case GameEnums.MusicStatus.TooSoon:
+                            particleTooSoon.Emit(1);
+                            dancerManager.TooSoonChange(plateLeft.disk.musicColor);
+                            break;
+                        case GameEnums.MusicStatus.Perfect:
+                            particleSmooth.Emit(1);
+                            dancerManager.PerfectChange(plateLeft.disk.musicColor);
+                            break;
+                        case GameEnums.MusicStatus.TooLate:
+                            particleTooLate.Emit(1);
+                            dancerManager.TooLateChange(plateLeft.disk.musicColor);
+                            break;
+                    }
+                }
+                
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor); // Plays the music for the left turntable
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Right); // Stops the right turntable record
@@ -30,9 +59,31 @@ public class Table : MonoBehaviour
         {
             if (plateRight.disk)
             {
-                Debug.Log("Table doing CrossFade!");
                 plateRight.StartSpinning();
-                dancerManager.PerfectChange(plateRight.disk.musicColor);
+
+                if (plateLeft.disk)
+                {
+                    switch (plateLeft.musicStatus)
+                    {
+                        case GameEnums.MusicStatus.Blocked:
+                            dancerManager.TooSoonChange(plateRight.disk.musicColor);
+                            break;
+                        case GameEnums.MusicStatus.TooSoon:
+                            particleTooSoon.Emit(1);
+                            dancerManager.TooSoonChange(plateRight.disk.musicColor);
+                            break;
+                        case GameEnums.MusicStatus.Perfect:
+                            particleSmooth.Emit(1);
+                            dancerManager.PerfectChange(plateRight.disk.musicColor);
+                            break;
+                        case GameEnums.MusicStatus.TooLate:
+                            particleTooLate.Emit(1);
+                            dancerManager.TooLateChange(plateRight.disk.musicColor);
+                            break;
+                    }
+                }
+
+
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Left); // Stops the right turntable record

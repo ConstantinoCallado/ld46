@@ -13,5 +13,6 @@ public class GameEnums
     public enum DancerStateNames { Inactive = 0, Created = 1, MoodActive = 2, Dancing = 3, Leaving = 4 };
     public enum TurnTable { Left = 0, Right = 1 };
     public enum PartyStatus { Dead = 0, WarmingUp = 1, Super = 2, PartyHard = 3};
+    public enum MusicStatus { Blocked = 0, TooSoon = 1, Perfect = 2, TooLate = 3 };
 
 }
