@@ -14,6 +14,10 @@ public class Table : MonoBehaviour
 
     public DancerManager dancerManager;
 
+    public ParticleSystem particleTooSoon;
+    public ParticleSystem particleSmooth;
+    public ParticleSystem particleTooLate;
+
     public void DoCrossFade()
     {
         if(crossFader.isLeft)
@@ -31,12 +35,15 @@ public class Table : MonoBehaviour
                             dancerManager.TooSoonChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooSoon:
+                            particleTooSoon.Emit(1);
                             dancerManager.TooSoonChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.Perfect:
+                            particleSmooth.Emit(1);
                             dancerManager.PerfectChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
+                            particleTooLate.Emit(1);
                             dancerManager.TooLateChange(plateLeft.disk.musicColor);
                             break;
                     }
@@ -59,16 +66,19 @@ public class Table : MonoBehaviour
                     switch (plateLeft.musicStatus)
                     {
                         case GameEnums.MusicStatus.Blocked:
-                            dancerManager.TooSoonChange(plateLeft.disk.musicColor);
+                            dancerManager.TooSoonChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooSoon:
-                            dancerManager.TooSoonChange(plateLeft.disk.musicColor);
+                            particleTooSoon.Emit(1);
+                            dancerManager.TooSoonChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.Perfect:
-                            dancerManager.PerfectChange(plateLeft.disk.musicColor);
+                            particleSmooth.Emit(1);
+                            dancerManager.PerfectChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
-                            dancerManager.TooLateChange(plateLeft.disk.musicColor);
+                            particleTooLate.Emit(1);
+                            dancerManager.TooLateChange(plateRight.disk.musicColor);
                             break;
                     }
                 }

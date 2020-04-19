@@ -7,7 +7,6 @@ public class Disk : MonoBehaviour
 {
     private bool _broken = false;
     public GameEnums.MusicColor musicColor;
-    public float duration = 10f;
 
     // Start is called before the first frame update
     void Start()
