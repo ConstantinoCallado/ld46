@@ -79,7 +79,6 @@ public class DancerManager : MonoBehaviour
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
             dancerMoodComp.manager = this;
             dancerMoodComp.enabled = true;
-            dancerMoodComp.ShowMoodHearts_DEBUG();
 
             dancers.Add(dancer);
         }
