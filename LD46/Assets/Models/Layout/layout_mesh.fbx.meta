@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: floor_color4
+    second: {fileID: 2100000, guid: 2e6d1b0c0a15dd34f8f954a46014bcce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: wall
     second: {fileID: 2100000, guid: 39d2136089484e24d8b07fab2a5d2a83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall_golden
+    second: {fileID: 2100000, guid: 5393a3026a205af4680437f4dfb17189, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
