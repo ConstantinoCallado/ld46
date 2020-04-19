@@ -65,7 +65,7 @@ public class DancerState : MonoBehaviour
 
     void RotateToDJ()
     {
-        Vector3 target = new Vector3(0.0f, 0.0f, -7.0f);
+        Vector3 target = new Vector3(0.0f, 0.0f, 10.0f);
 
         Vector3 targetDirection = target - transform.position;
 

@@ -11,6 +11,7 @@ public class FlowManager : MonoBehaviour
 
     public Transform canvas;
     public GameObject dancerManager;
+    public Hero heroComponent;
 
     void Awake()
     {
@@ -83,5 +84,7 @@ public class FlowManager : MonoBehaviour
         dancerManager.GetComponent<DancerSpawner>().enabled = true;
 
         ChangeScene(GameEnums.FlowStates.Playing);
+
+        heroComponent.enabled = true;
     }
 }
