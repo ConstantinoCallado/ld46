@@ -159,7 +159,7 @@ public class DancerMood : MonoBehaviour
     void ChangeBodyMaterial(Material newMaterial)
     {
         Material[] matArray = bodyRenderer.materials;
-        matArray[1] = defaultMaterial;
+        matArray[1] = newMaterial;
         bodyRenderer.materials = matArray;
     }
 
