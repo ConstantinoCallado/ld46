@@ -82,7 +82,7 @@ public class DancerMood : MonoBehaviour
                 int numericMood = (int)currentMood + reaction;
                 if (numericMood >= (int)GameEnums.MoodStates.OnFire)
                 {
-                    DancersOnFireCounter.dancersOnFire += 1;
+                    manager.IncreaseDancersOnFire(1);
                 }
                 SetMoodFromInt(numericMood);
             }
@@ -109,6 +109,7 @@ public class DancerMood : MonoBehaviour
     public void TooLateChange()
     {
         // The too late makes everybody lose one mood state.
+        manager.SetDancersOnFire(0);
         int numericMood = (int)currentMood - 1;
         SetMoodFromInt(numericMood);
     }
