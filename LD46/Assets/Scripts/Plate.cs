@@ -25,9 +25,13 @@ public class Plate : MonoBehaviour
     public Transform needleTrail;
     public Transform trailTarget;
 
+    public GameObject turntable;
+
     // Start is called before the first frame update
     void Start()
     {
+
+
         RestoreArm();
     }
 
@@ -101,6 +105,9 @@ public class Plate : MonoBehaviour
         armPivot.localRotation = Quaternion.Euler(0, armStartingAngle, 0);
         if (spinCoroutine != null) StopCoroutine(SpinCoroutine());
         spinCoroutine = StartCoroutine(SpinCoroutine());
+
+        // set emission of the turntable dark material to true
+        
     }
 
     public void StopSpinning()
@@ -109,6 +116,8 @@ public class Plate : MonoBehaviour
         needleTrail.gameObject.SetActive(false);
         if (spinCoroutine != null) StopCoroutine(spinCoroutine);
         RestoreArm();
+
+        // set emission of the turntable dark material to false
     }
 
     public IEnumerator SpinCoroutine()
