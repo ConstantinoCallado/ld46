@@ -10,9 +10,9 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _currentTurnTableAudioSource = null;
 
-    private int musicSamplesAIndex;
-    private int musicSamplesBIndex;
-    private int musicSamplesCIndex;
+    private int musicSamplesAIndex = 0;
+    private int musicSamplesBIndex = 0;
+    private int musicSamplesCIndex = 0;
 
     public static AudioManager audioManagerRef;
 
@@ -27,11 +27,6 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         audioManagerRef = this;
-
-        // Initializing the music sample Audio sources
-        musicSamplesAIndex = 0;
-        musicSamplesBIndex = 0;
-        musicSamplesCIndex = 0;
 
         Component[] turntableAudioSources = GetComponents(typeof(AudioSource));
 
@@ -52,6 +47,14 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+    }
+
+    void Start()
+    {
+        // Initializing the music sample Audio sources
+        musicSamplesAIndex = UnityEngine.Random.Range(0, musicSamplesA.Length - 1);
+        musicSamplesBIndex = UnityEngine.Random.Range(0, musicSamplesB.Length - 1);
+        musicSamplesCIndex = UnityEngine.Random.Range(0, musicSamplesC.Length - 1);
     }
 
     public void PlaySound(string name) 
