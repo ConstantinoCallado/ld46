@@ -350,7 +350,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: sfx_ambience_crowd
     clip: {fileID: 8300000, guid: b75a85fb46dbf4541988d7e72285cb4a, type: 3}
-    volume: 1
+    volume: 0.35
     pitch: 1
     loop: 1
     source: {fileID: 0}
