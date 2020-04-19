@@ -47,7 +47,7 @@ public class FXManager : MonoBehaviour
             case GameEnums.PartyStatus.Dead:
                 _bloomIntensity = 0.0f;
                 _chromaticAberrationIntensity = 0f;
-                _saturationIntensity = -25f;
+                _saturationIntensity = -35f;
                 _brightnessIntensity = -10f;
                 break;
             case GameEnums.PartyStatus.WarmingUp:
@@ -84,7 +84,6 @@ public class FXManager : MonoBehaviour
         if (Mathf.Abs(_chromaticAberration.intensity.value - _chromaticAberrationIntensity) > 0.01f)
             _chromaticAberration.intensity.value = Mathf.Lerp(_chromaticAberration.intensity.value, _chromaticAberrationIntensity, 0.75f * Time.deltaTime);
 
-        
         if (Mathf.Abs(_colorGrading.saturation.value - _saturationIntensity) > 0.01f)
             _colorGrading.saturation.value = Mathf.Lerp(_colorGrading.saturation.value, _saturationIntensity, 0.75f * Time.deltaTime);
 
