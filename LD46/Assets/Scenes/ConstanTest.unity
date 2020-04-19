@@ -418,7 +418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &614535822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,6 +1167,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
+      propertyPath: m_MouseLook.lockCursor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
+      propertyPath: m_MouseLook.MinimumY
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
+      propertyPath: m_MouseLook.MaximumY
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
+      propertyPath: m_MouseLook.MaximumX
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
+      propertyPath: m_MouseLook.MinimumX
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 8274446063884822464, guid: 99e3a2a67e4ee7645982e7a8ec82bada,
         type: 3}
       propertyPath: m_Name
@@ -1236,41 +1256,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2167011324880090308, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4407974627545169527, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.51399994
-      objectReference: {fileID: 0}
-    - target: {fileID: 4407974627545169527, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.03999981
-      objectReference: {fileID: 0}
-    - target: {fileID: 4407974627991153452, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.514
-      objectReference: {fileID: 0}
-    - target: {fileID: 4407974627991153452, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 8338613420729216937, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.556
-      objectReference: {fileID: 0}
-    - target: {fileID: 8338613420729216937, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.272
-      objectReference: {fileID: 0}
     - target: {fileID: 8380696572726908869, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: dancerManager
