@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Spawn
 {
     public int seconds;
@@ -14,6 +15,7 @@ public class Spawn
     }
 }
 
+[System.Serializable]
 public class SpawnerPhase
 {
     public int startTime;
@@ -40,29 +42,14 @@ public class SpawnerPhase
 
 public class DancerSpawner : MonoBehaviour
 {
-    public List<SpawnerPhase> phases;
-
     public int currentPhase = 0;
+    public int startDancers = 2;
+    public List<SpawnerPhase> phases;
 
     private float currentTime = 0.0f;
     private float nextSpawn = 0.0f;
 
     private DancerManager manager;
-
-    void Awake()
-    {
-        currentPhase = 0;
-        phases = new List<SpawnerPhase>();
-        phases.Add(new SpawnerPhase(0, 60));
-        Spawn s1 = new Spawn(10, 1);
-        phases[0].AddSpawn(s1);
-
-        phases.Add(new SpawnerPhase(60, 99999));
-        Spawn s2 = new Spawn(10, 1);
-        phases[1].AddSpawn(s2);
-        Spawn s3 = new Spawn(20, 2);
-        phases[1].AddSpawn(s3);
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +57,11 @@ public class DancerSpawner : MonoBehaviour
         manager = GetComponent<DancerManager>();
         currentTime = 0.0f;
         nextSpawn = phases[currentPhase].GetRandomSpawn().seconds;
+
+        for (int i = 0; i < startDancers; i++)
+        {
+            manager.SpawnDancerAtDestiny();
+        }
     }
 
     // Update is called once per frame

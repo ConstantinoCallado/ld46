@@ -18,12 +18,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float MaximumY = 45F;
         public bool smooth;
         public float smoothTime = 5f;
-        public bool lockCursor = true;
-
+        public bool lockCursor = false;
 
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
         private bool m_cursorIsLocked = true;
+
+        public void Start()
+        {
+            if(!lockCursor)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
 
         public void Init(Transform character, Transform camera)
         {
@@ -39,37 +47,45 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
-
-            m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
-            m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
-
-            if(clampVerticalRotation)
-                m_CameraTargetRot = ClampRotationAroundXAxis (m_CameraTargetRot);
-
-            if(clampHorizontalRotation)
+            if(lockCursor)
             {
-                m_CharacterTargetRot = ClampRotationAroundYAxis(m_CharacterTargetRot);
-            }
+                float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+                float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 
-            if (smooth)
-            {
-                character.localRotation = Quaternion.Slerp (character.localRotation, m_CharacterTargetRot,
-                    smoothTime * Time.deltaTime);
-                camera.localRotation = Quaternion.Slerp (camera.localRotation, m_CameraTargetRot,
-                    smoothTime * Time.deltaTime);
+                m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+                m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+                if (clampVerticalRotation)
+                    m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+
+                if (clampHorizontalRotation)
+                {
+                    m_CharacterTargetRot = ClampRotationAroundYAxis(m_CharacterTargetRot);
+                }
+
+                if (smooth)
+                {
+                    character.localRotation = Quaternion.Slerp(character.localRotation, m_CharacterTargetRot,
+                        smoothTime * Time.deltaTime);
+                    camera.localRotation = Quaternion.Slerp(camera.localRotation, m_CameraTargetRot,
+                        smoothTime * Time.deltaTime);
+                }
+                else
+                {
+                    character.localRotation = m_CharacterTargetRot;
+                    camera.localRotation = m_CameraTargetRot;
+                }
+
+                //UpdateCursorLock();
             }
             else
             {
-                character.localRotation = m_CharacterTargetRot;
-                camera.localRotation = m_CameraTargetRot;
-            }
+                // Camera follow the cursor with a delay
 
-            UpdateCursorLock();
+            }
         }
 
-        public void SetCursorLock(bool value)
+        /*public void SetCursorLock(bool value)
         {
             lockCursor = value;
             if(!lockCursor)
@@ -107,7 +123,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-        }
+        }*/
 
         Quaternion ClampRotationAroundXAxis(Quaternion q)
         {
