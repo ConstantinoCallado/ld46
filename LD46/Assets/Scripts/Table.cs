@@ -22,6 +22,24 @@ public class Table : MonoBehaviour
     {
         if(crossFader.isLeft)
         {
+            if (plateRight.disk)
+            {
+                switch (plateRight.musicStatus)
+                {
+                    case GameEnums.MusicStatus.Blocked:
+                        break;
+                    case GameEnums.MusicStatus.TooSoon:
+                        particleTooSoon.Emit(1);
+                        break;
+                    case GameEnums.MusicStatus.Perfect:
+                        particleSmooth.Emit(1);
+                        break;
+                    case GameEnums.MusicStatus.TooLate:
+                        particleTooLate.Emit(1);
+                        break;
+                }
+            }
+
             if (plateLeft.disk)
             {
                 plateLeft.StartSpinning();
@@ -35,15 +53,12 @@ public class Table : MonoBehaviour
                             dancerManager.TooSoonChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooSoon:
-                            particleTooSoon.Emit(1);
                             dancerManager.TooSoonChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.Perfect:
-                            particleSmooth.Emit(1);
                             dancerManager.PerfectChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
-                            particleTooLate.Emit(1);
                             dancerManager.TooLateChange(plateLeft.disk.musicColor);
                             break;
                     }
@@ -57,6 +72,24 @@ public class Table : MonoBehaviour
         }
         else
         {
+            if (plateLeft.disk)
+            {
+                switch (plateLeft.musicStatus)
+                {
+                    case GameEnums.MusicStatus.Blocked:
+                        break;
+                    case GameEnums.MusicStatus.TooSoon:
+                        particleTooSoon.Emit(1);
+                        break;
+                    case GameEnums.MusicStatus.Perfect:
+                        particleSmooth.Emit(1);
+                        break;
+                    case GameEnums.MusicStatus.TooLate:
+                        particleTooLate.Emit(1);
+                        break;
+                }
+            }
+
             if (plateRight.disk)
             {
                 plateRight.StartSpinning();
@@ -69,20 +102,16 @@ public class Table : MonoBehaviour
                             dancerManager.TooSoonChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooSoon:
-                            particleTooSoon.Emit(1);
                             dancerManager.TooSoonChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.Perfect:
-                            particleSmooth.Emit(1);
                             dancerManager.PerfectChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
-                            particleTooLate.Emit(1);
                             dancerManager.TooLateChange(plateRight.disk.musicColor);
                             break;
                     }
                 }
-
 
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
             }
