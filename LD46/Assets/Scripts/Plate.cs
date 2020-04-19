@@ -18,8 +18,12 @@ public class Plate : MonoBehaviour
     private int armEndAngle = 28;
 
     public bool isSpinning = false;
-
     Coroutine spinCoroutine;
+
+    // Trail
+    public Transform needleSocket;
+    public Transform needleTrail;
+    public Transform trailTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,21 @@ public class Plate : MonoBehaviour
         if(isSpinning)
         {
             anchor.Rotate(Vector3.up * diskRotationSpeed * Time.deltaTime, Space.Self);
+            needleTrail.Rotate(Vector3.up * diskRotationSpeed * Time.deltaTime, Space.Self);
+            /*Vector3 localDisplacement = needleSocket.position - needleTrail.transform.position;
+
+            Debug.Log(localDisplacement);
+
+            Vector3[] vertexPositions = new Vector3[needleTrail.positionCount];
+            needleTrail.GetPositions(vertexPositions);
+            for(int i=0; i<vertexPositions.Length; i++)
+            {
+                vertexPositions[i] = vertexPositions[i] + localDisplacement;
+            }
+            needleTrail.SetPositions(vertexPositions);*/
+
+            //needleTrail.transform.position = needleSocket.position;
+            trailTarget.transform.position = needleSocket.position;
         }
     }
 
@@ -53,12 +72,19 @@ public class Plate : MonoBehaviour
         disk.transform.parent = anchor;
         disk.transform.localPosition = Vector3.zero;
         disk.transform.localRotation = Quaternion.identity;
+
+        //needleTrail.transform.parent = disk.transform;
+        //needleTrail.transform.localPosition = Vector3.zero;
+        //needleTrail.transform.localRotation = Quaternion.identity;
+        //trailTarget.transform.parent = disk.transform;
     }
 
     public void DestroyDisk()
     {
         if(disk)
         {
+            //needleTrail.transform.parent = needleSocket;
+
             disk.transform.Translate(disk.transform.up * 0.02f);
             disk.transform.parent = null;
             Rigidbody diskRigidBody = disk.gameObject.AddComponent<Rigidbody>();
@@ -72,6 +98,7 @@ public class Plate : MonoBehaviour
     public void StartSpinning()
     {
         isSpinning = true;
+        armPivot.localRotation = Quaternion.Euler(0, armStartingAngle, 0);
         if (spinCoroutine != null) StopCoroutine(SpinCoroutine());
         spinCoroutine = StartCoroutine(SpinCoroutine());
     }
@@ -79,12 +106,22 @@ public class Plate : MonoBehaviour
     public void StopSpinning()
     {
         isSpinning = false;
+        needleTrail.gameObject.SetActive(false);
         if (spinCoroutine != null) StopCoroutine(spinCoroutine);
         RestoreArm();
     }
 
     public IEnumerator SpinCoroutine()
     {
+        Color colorWhiteNeutral = new Vector4(2f, 2f, 2f, 1.0f);
+        needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorWhiteNeutral);
+        Color colorGreenPerfect = new Vector4(0f, 2f, 0f, 1.0f);
+
+        yield return new WaitForEndOfFrame();
+        needleTrail.gameObject.SetActive(true);
+        yield return new WaitForEndOfFrame();
+        needleTrail.GetComponent<TrailRenderer_Local>().Reset();
+
         float startSongTime = Time.time;
         float songDuration = 0;
 
@@ -96,10 +133,21 @@ public class Plate : MonoBehaviour
         Quaternion initialRotation = Quaternion.Euler(0, armStartingAngle, 0);
         Quaternion finalRotation = Quaternion.Euler(0, armEndAngle, 0);
 
+
+        while (Time.time <= startSongTime + songDuration * 0.8)
+        {
+            armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
+            yield return new WaitForEndOfFrame();
+        }
+
+        needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorGreenPerfect);
+
         while (Time.time <= startSongTime + songDuration)
         {
             armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
             yield return new WaitForEndOfFrame();
         }
+
+        needleTrail.gameObject.SetActive(false);
     }
 }
