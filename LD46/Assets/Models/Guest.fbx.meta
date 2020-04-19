@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: 73bfc37ad8adf9b4cadbaf2b8e39be1e
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -72,7 +75,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: root_JNT
+    - boneName: center_JNT
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}

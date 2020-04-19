@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Take 001
+    second: onFire
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -26,9 +26,8 @@ ModelImporter:
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'guest_rig:center_JNT' has translation animation
-      that will be discarded.\n\t'guest_rig:neck_JNT' has translation animation that
-      will be discarded.\n\t'guest_rig:L_shoulder_JNT' has translation animation
+      to improve retargeting quality.\n\t'guest_rig:neck_JNT' has translation animation
+      that will be discarded.\n\t'guest_rig:L_shoulder_JNT' has translation animation
       that will be discarded.\n\t'guest_rig:R_shoulder_JNT' has translation animation
       that will be discarded.\n\t'guest_rig:pelvis_JNT' is inbetween humanoid transforms
       and has rotation animation that will be discarded.\n\t'guest_rig:L_ball_JNT'
@@ -47,7 +46,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: onFire
       takeName: Take 001
       internalID: 0
       firstFrame: 1
@@ -116,7 +115,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: guest_rig:root_JNT
+    - boneName: guest_rig:center_JNT
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}

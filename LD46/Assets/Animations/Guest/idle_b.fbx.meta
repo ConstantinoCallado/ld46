@@ -110,7 +110,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: guest_rig:root_JNT
+    - boneName: guest_rig:center_JNT
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}
