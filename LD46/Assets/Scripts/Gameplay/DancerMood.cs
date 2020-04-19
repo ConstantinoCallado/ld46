@@ -16,14 +16,14 @@ public class DancerMood : MonoBehaviour
     {
         dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
         GetComponent<Renderer>().material = moodMaterials[(int)dancerColor];
+        currentMood = GameEnums.MoodStates.Neutral;
 
-        ShowMoodHearts_DEBUG();
+        //ShowMoodHearts_DEBUG();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentMood = GameEnums.MoodStates.Neutral;
     }
 
     // Update is called once per frame
@@ -65,6 +65,10 @@ public class DancerMood : MonoBehaviour
             if (reaction != 0)
             {
                 int numericMood = (int)currentMood + reaction;
+                if (numericMood >= (int)GameEnums.MoodStates.OnFire)
+                {
+                    DancersOnFireCounter.dancersOnFire += 1;
+                }
                 SetMoodFromInt(numericMood);
             }
         }
@@ -94,12 +98,13 @@ public class DancerMood : MonoBehaviour
         SetMoodFromInt(numericMood);
     }
 
-    void ShowMoodHearts_DEBUG()
+    public void ShowMoodHearts_DEBUG()
     {
         if (!GameEnums.DEBUGGING)
         {
             return;
         }
+
         int i = 0;
         int numericMood = 1 + (int)currentMood;
         foreach (Transform child in transform)
