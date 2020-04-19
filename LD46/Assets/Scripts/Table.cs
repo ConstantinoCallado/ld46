@@ -19,7 +19,7 @@ public class Table : MonoBehaviour
             {
                 Debug.Log("Table doing CrossFade!");
                 dancerManager.PerfectChange(plateLeft.disk.musicColor);
-                AudioManager.audioManagerRef.PlayMusicSample(GameEnums.TurnTable.Left, plateLeft.disk.musicColor);
+                AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor);
             }
             plateRight.DestroyDisk();
         }
@@ -29,7 +29,7 @@ public class Table : MonoBehaviour
             {
                 Debug.Log("Table doing CrossFade!");
                 dancerManager.PerfectChange(plateRight.disk.musicColor);
-                AudioManager.audioManagerRef.PlayMusicSample(GameEnums.TurnTable.Right, plateRight.disk.musicColor);
+                AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);
             }
             plateLeft.DestroyDisk();
         }
