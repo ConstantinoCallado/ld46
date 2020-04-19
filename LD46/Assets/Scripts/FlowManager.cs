@@ -9,6 +9,9 @@ public class FlowManager : MonoBehaviour
 
     private GameEnums.FlowStates nextScene = GameEnums.FlowStates.TitleScreen;
 
+    public Transform canvas;
+    public GameObject dancerManager;
+
     void Awake()
     {
         currentState = GameEnums.FlowStates.TitleScreen;
@@ -55,7 +58,6 @@ public class FlowManager : MonoBehaviour
 
     void OnTitleScreenStart()
     {
-
     }
 
     void OnPreparingStart()
@@ -72,5 +74,14 @@ public class FlowManager : MonoBehaviour
     {
 
     }
-    
+
+    public void OnPlayButtonClick()
+    {
+        canvas.Find("TitleScreen").gameObject.SetActive(false);
+        // Enable both the manager and the spawner so the dancers start appearing
+        dancerManager.GetComponent<DancerManager>().enabled = true;
+        dancerManager.GetComponent<DancerSpawner>().enabled = true;
+
+        ChangeScene(GameEnums.FlowStates.Playing);
+    }
 }

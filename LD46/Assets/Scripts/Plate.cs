@@ -81,7 +81,6 @@ public class Plate : MonoBehaviour
 
             disk.transform.Translate(disk.transform.up * 0.02f);
             disk.transform.parent = null;
-            disk.gameObject.GetComponent<Collider>().enabled = false;
             Rigidbody diskRigidBody = disk.gameObject.AddComponent<Rigidbody>();
             diskRigidBody.AddTorque(new Vector3(Random.Range(-50, 50), Random.Range(-50, 50), Random.Range(-50, 50)), ForceMode.VelocityChange);
             diskRigidBody.AddForce(((disk.transform.position - Hero.heroRef.mainCamera.transform.position).normalized + (Vector3.up * 1.5f)) * Random.Range(4, 7), ForceMode.VelocityChange);

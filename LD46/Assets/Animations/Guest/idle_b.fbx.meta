@@ -8,7 +8,7 @@ ModelImporter:
     second: idle_b
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -79,8 +79,8 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -110,7 +110,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: guest_rig:root_JNT
+    - boneName: guest_rig:center_JNT
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}
