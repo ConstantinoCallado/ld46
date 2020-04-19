@@ -28,6 +28,10 @@ public class DancerState : MonoBehaviour
         {
             CheckDistanceToDanceSpot();
         }
+        else if (stateName == GameEnums.DancerStateNames.Dancing)
+        {
+            RotateToDJ();
+        }
         else if (stateName == GameEnums.DancerStateNames.Leaving)
         {
             CheckDestroyDancer();
@@ -56,7 +60,20 @@ public class DancerState : MonoBehaviour
             DancerMood dancerMoodComp = GetComponent<DancerMood>();
             dancerMoodComp.enabled = true;
             dancerMoodComp.ShowMoodHearts_DEBUG();
+            dancerMoodComp.StopWalkAnimation();
+            RotateToDJ();
         }
+    }
+
+    void RotateToDJ()
+    {
+        Vector3 target = new Vector3(0.0f, 0.0f, -7.0f);
+
+        Vector3 targetDirection = target - transform.position;
+
+        float singleStep = 5.0f * Time.deltaTime; 
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
     void CheckDestroyDancer()
