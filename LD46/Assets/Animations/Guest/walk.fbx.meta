@@ -8,7 +8,7 @@ ModelImporter:
     second: walk
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -32,22 +32,7 @@ ModelImporter:
       and has rotation animation that will be discarded.\n\t'guest_rig:L_ball_JNT'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'guest_rig:R_ball_JNT'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tLeftLowerLeg
-      average position error 21.0 mm and maximum position error 26.2 mm at time 0:
-      1 (0.0%) Frame 1\n\tLeftFoot average position error 15.6 mm and maximum position
-      error 21.7 mm at time 0: 1 (0.0%) Frame 1\n\tRightLowerLeg average position
-      error 15.3 mm and maximum position error 31.6 mm at time 0: 9 (16.0%) Frame
-      9\n\tRightFoot average position error 5.6 mm and maximum position error 22.9
-      mm at time 0: 9 (16.0%) Frame 9\n\tLeftUpperArm average position error 2.1
-      mm and maximum position error 10.6 mm at time 0: 9 (16.0%) Frame 9\n\tLeftLowerArm
-      average position error 2.1 mm and maximum position error 10.6 mm at time 0:
-      9 (16.0%) Frame 9\n\tLeftHand average position error 2.1 mm and maximum position
-      error 10.6 mm at time 0: 9 (16.0%) Frame 9\n\tRightUpperArm average position
-      error 1.8 mm and maximum position error 6.9 mm at time 0: 9 (16.0%) Frame 9\n\tRightLowerArm
-      average position error 1.8 mm and maximum position error 6.9 mm at time 0:
-      9 (16.0%) Frame 9\n\tRightHand average position error 1.8 mm and maximum position
-      error 6.9 mm at time 0: 9 (16.0%) Frame 9\n\tHead average position error 0.7
-      mm and maximum position error 3.6 mm at time 0: 9 (16.0%) Frame 9\n"
+    animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
@@ -98,8 +83,8 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
