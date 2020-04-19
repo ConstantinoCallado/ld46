@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4bc23fe977db242be779dfa64f42a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicColor: 3
+  musicColor: 0
   duration: 10
 --- !u!135 &1015738229872393750
 SphereCollider:
@@ -141,7 +141,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a4ab477e098d5cd4b83e0d92076069b1, type: 2}
+      objectReference: {fileID: 2100000, guid: 5125eeebbe4c8604aacb8d5fb682037e, type: 2}
     - target: {fileID: -927199367670048503, guid: 3e9bcb1f6e45955429e7fe04032ae85b,
         type: 3}
       propertyPath: m_Name
