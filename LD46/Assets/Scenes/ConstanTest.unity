@@ -121,6 +121,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: b78c43fd2c527b54e808d25893d9e841, type: 2}
+--- !u!1001 &151552516
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7730137739001616187, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.993745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.003263
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.37936
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d59f47f9dd75c6542a5a8d290379406a, type: 3}
 --- !u!1 &180968248
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294612387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0.5, z: 5}
+  m_LocalPosition: {x: -5, y: 0.5, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -394,7 +463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506013796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0.5, z: 5}
+  m_LocalPosition: {x: 5, y: 0.5, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1167,26 +1236,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
-      propertyPath: m_MouseLook.lockCursor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
-      propertyPath: m_MouseLook.MinimumY
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
-      propertyPath: m_MouseLook.MaximumY
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
-      propertyPath: m_MouseLook.MaximumX
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1560291344, guid: 99e3a2a67e4ee7645982e7a8ec82bada, type: 3}
-      propertyPath: m_MouseLook.MinimumX
-      value: 35
-      objectReference: {fileID: 0}
     - target: {fileID: 8274446063884822464, guid: 99e3a2a67e4ee7645982e7a8ec82bada,
         type: 3}
       propertyPath: m_Name
