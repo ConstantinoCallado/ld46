@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: musicColor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2704785802672630946, guid: 398fbea998b23f2408b17ad67c5663fc,
+        type: 3}
+      propertyPath: duration
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4286703142016549421, guid: 398fbea998b23f2408b17ad67c5663fc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
