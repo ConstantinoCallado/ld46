@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Disk : MonoBehaviour
 {
+    private bool _broken = false;
     public GameEnums.MusicColor musicColor;
     public float duration = 10f;
 
@@ -16,6 +17,7 @@ public class Disk : MonoBehaviour
 
     public void Throwed()
     {
+        AudioManager.audioManagerRef.PlaySound("sfx_throw");
         StartCoroutine(CoroutineThrow());
     }
 
@@ -23,5 +25,15 @@ public class Disk : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!_broken && collision.gameObject.tag == "layout") 
+        {
+            AudioManager.audioManagerRef.PlaySound("sfx_broken_record");
+            _broken = true;
+        }
+
     }
 }

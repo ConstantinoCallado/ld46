@@ -10,7 +10,7 @@ Material:
   m_Name: ball_light
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 0
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -74,4 +74,4 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.759434, g: 0.9567611, b: 1, a: 1}
-    - _EmissionColor: {r: 0.31764707, g: 0.3254902, b: 1, a: 1}
+    - _EmissionColor: {r: 0.4198113, g: 0.42270568, b: 1, a: 1}
