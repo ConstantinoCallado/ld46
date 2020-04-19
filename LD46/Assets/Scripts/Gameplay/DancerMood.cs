@@ -12,13 +12,18 @@ public class DancerMood : MonoBehaviour
     public GameEnums.MoodStates currentMood = GameEnums.MoodStates.Neutral;
     public DancerManager manager;
 
+    public Renderer bodyRenderer;
+    public Material onFireMaterial;
+    private Material defaultMaterial;
+
     public Animator animator;
 
     void Awake()
     {
-        dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
+        //dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
         currentMood = GameEnums.MoodStates.Neutral;
         PlayCurrentMoodAnimation();
+        defaultMaterial = bodyRenderer.materials[1];
     }
 
     // Start is called before the first frame update
@@ -142,11 +147,20 @@ public class DancerMood : MonoBehaviour
         else if (moodState == GameEnums.MoodStates.HavingFun)
         {
             PlayHavingFunAnimation();
+            ChangeBodyMaterial(defaultMaterial);
         }
         else if (moodState == GameEnums.MoodStates.OnFire)
         {
             PlayOnFireAnimation();
+            ChangeBodyMaterial(onFireMaterial);
         }
+    }
+
+    void ChangeBodyMaterial(Material newMaterial)
+    {
+        Material[] matArray = bodyRenderer.materials;
+        matArray[1] = defaultMaterial;
+        bodyRenderer.materials = matArray;
     }
 
     public void PlayWalkAnimation()
