@@ -69,8 +69,10 @@ public class DancerState : MonoBehaviour
 
         Vector3 targetDirection = target - transform.position;
 
-        float singleStep = 5.0f * Time.deltaTime; 
+        float singleStep = 5.0f * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+        newDirection.y = 0f;
+        
         transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
