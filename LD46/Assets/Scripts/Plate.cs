@@ -20,14 +20,29 @@ public class Plate : MonoBehaviour
     public bool isSpinning = false;
     Coroutine spinCoroutine;
 
+    private Material onOffMaterial;
+
     // Trail
     public Transform needleSocket;
     public Transform needleTrail;
     public Transform trailTarget;
 
+    // Music status
+    public Table table;
+    public GameEnums.MusicStatus musicStatus = GameEnums.MusicStatus.Blocked;
+    public GameObject turntable;
+
     // Start is called before the first frame update
     void Start()
     {
+        if(turntable != null)
+        {
+            Material[] turntableMaterials = turntable.GetComponent<Renderer>().materials;
+
+            if (turntableMaterials.Length > 1)
+                onOffMaterial = turntableMaterials[1];
+        }
+
         RestoreArm();
     }
 
@@ -101,6 +116,10 @@ public class Plate : MonoBehaviour
         armPivot.localRotation = Quaternion.Euler(0, armStartingAngle, 0);
         if (spinCoroutine != null) StopCoroutine(SpinCoroutine());
         spinCoroutine = StartCoroutine(SpinCoroutine());
+
+        // set emission of the turntable dark material to true
+        if(onOffMaterial != null)
+            onOffMaterial.EnableKeyword("_EMISSION");
     }
 
     public void StopSpinning()
@@ -109,13 +128,19 @@ public class Plate : MonoBehaviour
         needleTrail.gameObject.SetActive(false);
         if (spinCoroutine != null) StopCoroutine(spinCoroutine);
         RestoreArm();
+
+        // set emission of the turntable dark material to false
+        if (onOffMaterial != null)
+            onOffMaterial.DisableKeyword("_EMISSION");
     }
 
     public IEnumerator SpinCoroutine()
     {
-        Color colorWhiteNeutral = new Vector4(2f, 2f, 2f, 1.0f);
+        Color colorWhiteNeutral = new Vector4(1f, 1f, 1f, 1.0f);
+        Color colorGreenPerfect = new Vector4(0f, 1f, 0f, 1.0f);
+        Color colorRedBad = new Vector4(1f, 0f, 0f, 1.0f);
+
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorWhiteNeutral);
-        Color colorGreenPerfect = new Vector4(0f, 2f, 0f, 1.0f);
 
         yield return new WaitForEndOfFrame();
         needleTrail.gameObject.SetActive(true);
@@ -123,31 +148,39 @@ public class Plate : MonoBehaviour
         needleTrail.GetComponent<TrailRenderer_Local>().Reset();
 
         float startSongTime = Time.time;
-        float songDuration = 0;
-
-        if (disk)
-        {
-            songDuration = disk.duration;
-        }
+        float songDuration = AudioManager.audioManagerRef.GetCurrentRecordDuration();
 
         Quaternion initialRotation = Quaternion.Euler(0, armStartingAngle, 0);
         Quaternion finalRotation = Quaternion.Euler(0, armEndAngle, 0);
 
+        musicStatus = GameEnums.MusicStatus.Blocked;
 
-        while (Time.time <= startSongTime + songDuration * 0.8)
+        while (Time.time <= startSongTime + songDuration * table.blockedTime)
         {
             armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
             yield return new WaitForEndOfFrame();
         }
 
+        musicStatus = GameEnums.MusicStatus.TooSoon;
+
+        while (Time.time <= startSongTime + songDuration * (table.tooSoonTime+ table.blockedTime))
+        {
+            armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
+            yield return new WaitForEndOfFrame();
+        }
+
+        musicStatus = GameEnums.MusicStatus.Perfect;
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorGreenPerfect);
 
-        while (Time.time <= startSongTime + songDuration)
+        while (Time.time <= startSongTime + songDuration * (table.tooSoonTime + table.blockedTime + table.perfectTime))
         {
             armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
             yield return new WaitForEndOfFrame();
         }
 
-        needleTrail.gameObject.SetActive(false);
+        musicStatus = GameEnums.MusicStatus.TooLate;
+
+        needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorRedBad);
+        AudioManager.audioManagerRef.PlaySound("sfx_needle_skip");
     }
 }
