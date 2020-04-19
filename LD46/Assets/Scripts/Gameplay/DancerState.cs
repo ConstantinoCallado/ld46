@@ -21,24 +21,52 @@ public class DancerState : MonoBehaviour
     {
         if (stateName == GameEnums.DancerStateNames.Created)
         {
-            Vector3 groundPosition = new Vector3(transform.position.x, 0f, transform.position.z);
-            float distance = Vector3.Distance(groundPosition, destination);
-            if (Mathf.Abs(distance) < 0.5f)
-            {
-                stateName = GameEnums.DancerStateNames.Dancing;
-                GetComponent<NavMeshAgent>().isStopped = true;
-                GetComponent<DancerMood>().enabled = true;
-            }
+            CheckEnterDanceArea();
+            CheckDistanceToDanceSpot();
+        }
+        else if (stateName == GameEnums.DancerStateNames.MoodActive)
+        {
+            CheckDistanceToDanceSpot();
         }
         else if (stateName == GameEnums.DancerStateNames.Leaving)
         {
-            Vector3 groundPosition = new Vector3(transform.position.x, 0f, transform.position.z);
-            float distance = Vector3.Distance(groundPosition, destination);
-            if (Mathf.Abs(distance) < 0.5f)
-            {
-                manager.RemoveDancer(gameObject);
-                Destroy(gameObject);
-            }
+            CheckDestroyDancer();
+        }
+    }
+
+    void CheckEnterDanceArea()
+    {
+        if (manager.IsDancerInsideDancingArea(transform))
+        {
+            stateName = GameEnums.DancerStateNames.MoodActive;
+            DancerMood dancerMoodComponent = GetComponent<DancerMood>();
+            dancerMoodComponent.enabled = true;
+            dancerMoodComponent.ShowMoodHearts_DEBUG();
+        }
+    }
+
+    void CheckDistanceToDanceSpot()
+    {
+        Vector3 groundPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+        float distance = Vector3.Distance(groundPosition, destination);
+        if (Mathf.Abs(distance) < 0.5f)
+        {
+            stateName = GameEnums.DancerStateNames.Dancing;
+            GetComponent<NavMeshAgent>().isStopped = true;
+            DancerMood dancerMoodComp = GetComponent<DancerMood>();
+            dancerMoodComp.enabled = true;
+            dancerMoodComp.ShowMoodHearts_DEBUG();
+        }
+    }
+
+    void CheckDestroyDancer()
+    {
+        Vector3 groundPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+        float distance = Vector3.Distance(groundPosition, destination);
+        if (Mathf.Abs(distance) < 0.5f)
+        {
+            manager.RemoveDancer(gameObject);
+            Destroy(gameObject);
         }
     }
 
