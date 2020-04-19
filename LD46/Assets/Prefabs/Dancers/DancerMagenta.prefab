@@ -164,10 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e3c1681192c0a4798f2c6b5e4bdb0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moodMaterials:
-  - {fileID: 2100000, guid: a08e75e09c0a2ba40b9c6dd4b707f395, type: 2}
-  - {fileID: 2100000, guid: 51b61155d0b012e4db284a9fa79b38eb, type: 2}
-  - {fileID: 2100000, guid: d94bdb96550d5e34bbe4db8a9d9089dd, type: 2}
   dancerColor: 0
   currentMood: 0
   manager: {fileID: 0}
@@ -374,6 +370,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fda4ac48130af014fbe091e3e69f30dc, type: 2}
+    - target: {fileID: -6057140222963153312, guid: f6aa506cd202fad45b025ec94da0b5c6,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4429339513535105021, guid: f6aa506cd202fad45b025ec94da0b5c6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
