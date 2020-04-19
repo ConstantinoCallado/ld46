@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class DancerMood : MonoBehaviour
 {
     public int[,] reactions = new int[,] { { 1, 0, -1 }, { -1, 1, 0 }, { 0, -1, 1 } };
-    public Material[] moodMaterials;
 
     public GameEnums.MusicColor dancerColor = GameEnums.MusicColor.Magenta;
     public GameEnums.MoodStates currentMood = GameEnums.MoodStates.Neutral;
@@ -47,6 +46,7 @@ public class DancerMood : MonoBehaviour
 
     void SetMoodFromInt(int numericMood)
     {
+        float waitValue = Random.value;
         if (numericMood < (int)GameEnums.MoodStates.RageQuit)
         {
             numericMood = (int)GameEnums.MoodStates.RageQuit;
@@ -57,11 +57,13 @@ public class DancerMood : MonoBehaviour
         }
         if ((int)currentMood > numericMood)
         {
-            hateParticle.Emit(1);
+            StartCoroutine(WaitAndEmitParticle(waitValue, hateParticle));
+            //hateParticle.Emit(1);
         }
         else if ((int)currentMood < numericMood)
         {
-            likeParticle.Emit(1);
+            StartCoroutine(WaitAndEmitParticle(waitValue, likeParticle));
+            //likeParticle.Emit(1);
         }
         currentMood = (GameEnums.MoodStates)numericMood;
         if (currentMood == GameEnums.MoodStates.RageQuit)
@@ -69,7 +71,7 @@ public class DancerMood : MonoBehaviour
             Leave();
         }
 
-        StartCoroutine(WaitAndPlayAnimation());
+        StartCoroutine(WaitAndPlayAnimation(waitValue));
     }
 
     public void MusicChanged(GameEnums.MusicColor receivedColor)
@@ -186,10 +188,16 @@ public class DancerMood : MonoBehaviour
         animator.SetBool("isOnFire", true);
     }
 
-    IEnumerator WaitAndPlayAnimation()
+    IEnumerator WaitAndPlayAnimation(float waitTime)
     {
-        yield return new WaitForSeconds(Random.value);
+        yield return new WaitForSeconds(waitTime);
         PlayCurrentMoodAnimation();
+    }
+
+    IEnumerator WaitAndEmitParticle(float waitTime, ParticleSystem particleSys)
+    {
+        yield return new WaitForSeconds(waitTime);
+        particleSys.Emit(1);
     }
 
 }
