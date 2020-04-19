@@ -114,7 +114,6 @@ MonoBehaviour:
   entranceList: {fileID: 3408158670318904056}
   dancingArea: {fileID: 72888279001797145}
   exitList: {fileID: 72888279112079142}
-  dancers: []
   spawner: {fileID: 916190370}
 --- !u!114 &916190370
 MonoBehaviour:
@@ -132,19 +131,17 @@ MonoBehaviour:
   startDancers: 2
   phases:
   - startTime: 0
-    endTime: 10
+    endTime: 60
     spawns:
     - seconds: 10
       dancers: 1
-  - startTime: 10
+  - startTime: 60
     endTime: 9999
     spawns:
     - seconds: 10
       dancers: 1
     - seconds: 20
       dancers: 2
-  currentTime: 0
-  nextSpawn: 0
 --- !u!1 &72888278505647325
 GameObject:
   m_ObjectHideFlags: 0
