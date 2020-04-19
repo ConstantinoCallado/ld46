@@ -39,8 +39,8 @@ public class Hero : MonoBehaviour
                     DiskManager.diskManagerRef.UseDisk(clickedDisk);
                 }
 
-                // Player clicked a plate!
-                else if (lastPlateClicked == null && objectHit.GetComponent<Plate>() != null)
+                // Player clicked a plate not spinning
+                else if (lastPlateClicked == null && objectHit.GetComponent<Plate>() != null && !objectHit.GetComponent<Plate>().isSpinning)
                 {
                     lastPlateClicked = objectHit.GetComponent<Plate>();
                     DiskManager.diskManagerRef.ShowDisksInDeck(true);
@@ -52,13 +52,13 @@ public class Hero : MonoBehaviour
                     crossFader.Interact();
                 }
 
-                /*
+                
                 // Player clicked somewhere else
                 else
                 {
                     lastPlateClicked = null;
                 }
-                */
+                
                 // Hide the deck
                 if (!lastPlateClicked)
                 {
