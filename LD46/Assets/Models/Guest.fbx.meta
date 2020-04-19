@@ -2,8 +2,46 @@ fileFormatVersion: 2
 guid: 73bfc37ad8adf9b4cadbaf2b8e39be1e
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
-  externalObjects: {}
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dancer_m_eyes
+    second: {fileID: 2100000, guid: 3beb6f5c7916afe4a8e190d0595845ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dancer_m_goggles_glass
+    second: {fileID: 2100000, guid: 5ce8d19515d5d7040a428811ff448a61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dancer_m_hair
+    second: {fileID: 2100000, guid: 3beb6f5c7916afe4a8e190d0595845ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dancer_m_shoes_goggles
+    second: {fileID: 2100000, guid: c79e54ecb0b906a4f8d7a9f5478dc5ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dancer_m_skin
+    second: {fileID: 2100000, guid: a7b97bb730bcd19439cc89f88f88def8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: guest_color
+    second: {fileID: 2100000, guid: 5473f501354b87d41a1616732028f936, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: guest_mat
+    second: {fileID: 2100000, guid: b9024a7b73ef2734a8a056cab84257fb, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -72,7 +110,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: root_JNT
+    - boneName: center_JNT
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}

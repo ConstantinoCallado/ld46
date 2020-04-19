@@ -8,7 +8,7 @@ ModelImporter:
     second: fun
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -23,9 +23,8 @@ ModelImporter:
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'guest_rig:center_JNT' has translation animation
-      that will be discarded.\n\t'guest_rig:neck_JNT' has translation animation that
-      will be discarded.\n\t'guest_rig:L_shoulder_JNT' has translation animation
+      to improve retargeting quality.\n\t'guest_rig:neck_JNT' has translation animation
+      that will be discarded.\n\t'guest_rig:L_shoulder_JNT' has translation animation
       that will be discarded.\n\t'guest_rig:R_shoulder_JNT' has translation animation
       that will be discarded.\n\t'guest_rig:pelvis_JNT' is inbetween humanoid transforms
       and has rotation animation that will be discarded.\n"
@@ -80,8 +79,8 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -111,7 +110,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: guest_rig:root_JNT
+    - boneName: guest_rig:center_JNT
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}
