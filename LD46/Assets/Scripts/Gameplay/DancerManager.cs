@@ -47,6 +47,21 @@ public class DancerManager : MonoBehaviour
         dancers.Add(dancer);
     }
 
+    public void SpawnDancerAtDestiny()
+    {
+        Vector3 dancerDestination = GetDancingSpot();
+        GameObject dancer = Instantiate(dancerPrefab, dancerDestination, Quaternion.identity);
+
+        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+        dancerStateComp.SetState(GameEnums.DancerStateNames.Dancing);
+        dancerStateComp.manager = this;
+        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+        dancerMoodComp.manager = this;
+        dancerMoodComp.enabled = true;
+
+        dancers.Add(dancer);
+    }
+
     public void LeaveDancer(GameObject dancer)
     {
         Vector3 dancerExit = GetDancerExit();
