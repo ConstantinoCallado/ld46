@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3496001947778867351}
   - component: {fileID: -5797393497642695284}
   m_Layer: 0
-  m_Name: Dancer
+  m_Name: DancerCyan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,9 +251,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a08e75e09c0a2ba40b9c6dd4b707f395, type: 2}
   - {fileID: 2100000, guid: 51b61155d0b012e4db284a9fa79b38eb, type: 2}
   - {fileID: 2100000, guid: d94bdb96550d5e34bbe4db8a9d9089dd, type: 2}
-  dancerColor: 0
+  dancerColor: 1
   currentMood: 0
   manager: {fileID: 0}
+  bodyRenderer: {fileID: 8686682350322706043}
+  onFireMaterial: {fileID: 2100000, guid: d76aec7bafd2614498dad083c557a573, type: 2}
   animator: {fileID: 1923403510901308292}
 --- !u!114 &-5797393497642695284
 MonoBehaviour:
@@ -794,6 +796,12 @@ Transform:
 --- !u!95 &1923403510901308292 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 73bfc37ad8adf9b4cadbaf2b8e39be1e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3549393144272387556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8686682350322706043 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5317820769263950751, guid: 73bfc37ad8adf9b4cadbaf2b8e39be1e,
     type: 3}
   m_PrefabInstance: {fileID: 3549393144272387556}
   m_PrefabAsset: {fileID: 0}
