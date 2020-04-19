@@ -9,9 +9,15 @@ public class FXManager : MonoBehaviour
 
     public static GameEnums.PartyStatus status;
 
+    private float _bloomIntensity = 0f;
+    private float _chromaticAberrationIntensity = 0f;
+    private float _saturationIntensity = 0f;
+    private float _brightnessIntensity = 0f;
+
     private PostProcessVolume _volume;
     private Bloom _bloom = null;
     private ChromaticAberration _chromaticAberration = null;
+    private ColorGrading _colorGrading = null;
 
     private void Awake()
     {
@@ -26,7 +32,12 @@ public class FXManager : MonoBehaviour
         _chromaticAberration.enabled.Override(true);
         _chromaticAberration.intensity.Override(0f);
 
-        _volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _bloom, _chromaticAberration);
+        _colorGrading = ScriptableObject.CreateInstance<ColorGrading>();
+        _colorGrading.enabled.Override(true);
+        _colorGrading.saturation.Override(0f);
+        _colorGrading.brightness.Override(0f);
+
+        _volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, _bloom, _chromaticAberration, _colorGrading);
     }
 
     public void SetPartyStatus(GameEnums.PartyStatus s) 
@@ -34,20 +45,28 @@ public class FXManager : MonoBehaviour
         switch (s) 
         {
             case GameEnums.PartyStatus.Dead:
-                _bloom.intensity.value = 0;
-                _chromaticAberration.intensity.value = 0;
+                _bloomIntensity = 0.0f;
+                _chromaticAberrationIntensity = 0f;
+                _saturationIntensity = -25f;
+                _brightnessIntensity = -10f;
                 break;
             case GameEnums.PartyStatus.WarmingUp:
-                _bloom.intensity.value = 0.15f;
-                _chromaticAberration.intensity.value = 0.15f;
+                _bloomIntensity = 0.15f;
+                _chromaticAberrationIntensity = 0.1f;
+                _saturationIntensity = 0f;
+                _brightnessIntensity = 0f;
                 break;
             case GameEnums.PartyStatus.Super:
-                _bloom.intensity.value = 0.7f;
-                _chromaticAberration.intensity.value = 0.3f;
+                _bloomIntensity = 0.6f;
+                _chromaticAberrationIntensity = 0.3f;
+                _saturationIntensity = 5f;
+                _brightnessIntensity = 5f;
                 break;
-            case GameEnums.PartyStatus.PartyHard:  
-                _bloom.intensity.value = 1f;
-                _chromaticAberration.intensity.value = 0.5f;
+            case GameEnums.PartyStatus.PartyHard:
+                _bloomIntensity = 1.1f;
+                _chromaticAberrationIntensity = 0.6f;
+                _saturationIntensity = 10f;
+                _brightnessIntensity = 10f;
                 break;
             default:
                 break;
@@ -57,9 +76,22 @@ public class FXManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //_lensDistorsion.intensity.value = ((Mathf.Sin(Time.realtimeSinceStartup)));
 
+        if (Mathf.Abs(_bloom.intensity.value - _bloomIntensity) > 0.01f)
+            _bloom.intensity.value = Mathf.Lerp(_bloom.intensity.value, _bloomIntensity, 0.75f * Time.deltaTime);
+
+        if (Mathf.Abs(_chromaticAberration.intensity.value - _chromaticAberrationIntensity) > 0.01f)
+            _chromaticAberration.intensity.value = Mathf.Lerp(_chromaticAberration.intensity.value, _chromaticAberrationIntensity, 0.75f * Time.deltaTime);
+
+        
+        if (Mathf.Abs(_colorGrading.saturation.value - _saturationIntensity) > 0.01f)
+            _colorGrading.saturation.value = Mathf.Lerp(_colorGrading.saturation.value, _saturationIntensity, 0.75f * Time.deltaTime);
+
+        if (Mathf.Abs(_colorGrading.brightness.value - _brightnessIntensity) > 0.01f)
+            _colorGrading.brightness.value = Mathf.Lerp(_colorGrading.brightness.value, _brightnessIntensity, 0.75f * Time.deltaTime);
+
+        // Testing
         if (Input.GetKeyDown(KeyCode.U))
             SetPartyStatus(GameEnums.PartyStatus.Dead);
         if (Input.GetKeyDown(KeyCode.I))
