@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource _leftTurnTableAudioSource;
     private AudioSource _rightTurnTableAudioSource;
 
+    private AudioSource _currentTurnTableAudioSource = null;
+
     private int musicSamplesAIndex;
     private int musicSamplesBIndex;
     private int musicSamplesCIndex;
@@ -113,6 +115,16 @@ public class AudioManager : MonoBehaviour
         turntableAudioSource.pitch = musicSample.pitch;
         turntableAudioSource.loop = musicSample.loop;
         turntableAudioSource.Play();
+
+        _currentTurnTableAudioSource = turntableAudioSource;
+    }
+
+    public float GetCurrentRecordDuration() 
+    {
+        if (_currentTurnTableAudioSource == null)
+            return 0f;
+        else
+            return _currentTurnTableAudioSource.clip.length;
     }
 
     public void StopRecord(GameEnums.TurnTable turntable) 

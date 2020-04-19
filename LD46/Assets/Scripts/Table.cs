@@ -22,7 +22,7 @@ public class Table : MonoBehaviour
                 dancerManager.PerfectChange(plateLeft.disk.musicColor);
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor); // Plays the music for the left turntable
             }
-            AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Right);
+            AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Right); // Stops the right turntable record
             plateRight.DestroyDisk();
             plateRight.StopSpinning();
         }
@@ -35,7 +35,7 @@ public class Table : MonoBehaviour
                 dancerManager.PerfectChange(plateRight.disk.musicColor);
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
             }
-            AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Left);
+            AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Left); // Stops the right turntable record
             plateLeft.DestroyDisk();
             plateLeft.StopSpinning();
         }
