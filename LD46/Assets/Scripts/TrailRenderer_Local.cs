@@ -34,12 +34,12 @@ public class TrailRenderer_Local : MonoBehaviour
         Reset();
     }
 
-    void Reset()
+    public void Reset()
     {
         // Wipe out any old positions in the LineRenderer
         myLine.numPositions = 0;
         // Then set the first position to our object's current local position
-        AddPoint(objToFollow.localPosition);
+        //AddPoint(objToFollow.position - transform.position);
     }
 
     // Add a new point to the line renderer on demand
@@ -87,12 +87,13 @@ public class TrailRenderer_Local : MonoBehaviour
     void Update()
     {
         // Get the current position of the object in local space
-        Vector3 curPosition = objToFollow.position - transform.position;
+        Vector3 targetPosition = Quaternion.Inverse(transform.rotation) * (objToFollow.position - transform.position);
+
         // Check to see if object has moved far enough
-        if (Vector3.Distance(curPosition, lastPosition) > distIncrement)
+        if (Vector3.Distance(targetPosition, lastPosition) > distIncrement)
         {
             // ..and add the point to the trail if so
-            AddPoint(curPosition);
+            AddPoint(targetPosition);
         }
     }
 }

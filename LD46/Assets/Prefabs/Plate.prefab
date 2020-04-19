@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4650715657132554939}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459554857828562651
 GameObject:
@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &631932059710445432
 Transform:
   m_ObjectHideFlags: 0
@@ -55,13 +55,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459554857828562651}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_Children: []
-  m_Father: {fileID: 6326282816138774684}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0315, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5993555925626806605}
+  m_Father: {fileID: 4650715657132554939}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7427741085201475502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,10 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21baf4c181c2bd0409e67ac7e4de3be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objToFollow: {fileID: 6326282816138774684}
+  objToFollow: {fileID: 5993555925626806605}
   distIncrement: 0.01
-  limitTrailLength: 0
-  maxPositions: 10
+  limitTrailLength: 1
+  maxPositions: 40
 --- !u!120 &6333099593372716119
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -120,13 +121,13 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.7
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.03910446
-        value: 0.15714264
+        time: 0
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -134,17 +135,17 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.1396648
-        value: 0.14285932
-        inSlope: 0
-        outSlope: 0
+        time: 0.82867086
+        value: 0.028130062
+        inSlope: 0.12500449
+        outSlope: 0.12500449
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        inWeight: 0.33188432
+        outWeight: 0.2093184
       - serializedVersion: 3
-        time: 0.95530725
-        value: 0
+        time: 1
+        value: 0.03905487
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -185,11 +186,11 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 1
+    alignment: 0
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!1 &464201708788595450
 GameObject:
@@ -294,10 +295,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962715472535130829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0297, y: 0.0167, z: -0.3446}
+  m_LocalPosition: {x: -0.024, y: 0.0167, z: -0.3258}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 631932059710445432}
+  m_Children: []
   m_Father: {fileID: 6474896279456793872}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -331,7 +331,7 @@ Transform:
   - {fileID: 6326282816138774684}
   - {fileID: 7184413484124336136}
   m_Father: {fileID: 4650715657132554939}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2897862518722898904
 GameObject:
@@ -443,6 +443,7 @@ Transform:
   m_Children:
   - {fileID: 464201708788595454}
   - {fileID: 2897862518722898908}
+  - {fileID: 631932059710445432}
   - {fileID: 3176405657161573260}
   - {fileID: 6474896279456793872}
   m_Father: {fileID: 0}
@@ -466,6 +467,7 @@ MonoBehaviour:
   isSpinning: 0
   needleSocket: {fileID: 6326282816138774684}
   needleTrail: {fileID: 631932059710445432}
+  trailTarget: {fileID: 5993555925626806605}
 --- !u!135 &1783422860705494970
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -479,6 +481,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7401076465243316852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5993555925626806605}
+  m_Layer: 0
+  m_Name: TrailTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5993555925626806605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401076465243316852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 631932059710445432}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2796345253653142290
 PrefabInstance:
   m_ObjectHideFlags: 0
