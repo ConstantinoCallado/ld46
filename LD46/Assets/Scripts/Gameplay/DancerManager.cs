@@ -141,6 +141,7 @@ public class DancerManager : MonoBehaviour
 
     public void TooSoonChange(GameEnums.MusicColor musicColor)
     {
+        Debug.Log("Too Soon!");
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
@@ -153,6 +154,7 @@ public class DancerManager : MonoBehaviour
 
     public void PerfectChange(GameEnums.MusicColor musicColor)
     {
+        Debug.Log("Perfect!");
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
@@ -165,6 +167,7 @@ public class DancerManager : MonoBehaviour
 
     public void TooLateChange(GameEnums.MusicColor musicColor)
     {
+        Debug.Log("Too late!");
         DancersOnFireCounter.dancersOnFire = 0;
         foreach (GameObject dancer in dancers)
         {

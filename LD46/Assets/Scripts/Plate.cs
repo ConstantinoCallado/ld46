@@ -25,6 +25,10 @@ public class Plate : MonoBehaviour
     public Transform needleTrail;
     public Transform trailTarget;
 
+    // Music status
+    public Table table;
+    public GameEnums.MusicStatus musicStatus = GameEnums.MusicStatus.Blocked;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,9 +117,11 @@ public class Plate : MonoBehaviour
 
     public IEnumerator SpinCoroutine()
     {
-        Color colorWhiteNeutral = new Vector4(2f, 2f, 2f, 1.0f);
+        Color colorWhiteNeutral = new Vector4(1f, 1f, 1f, 1.0f);
+        Color colorGreenPerfect = new Vector4(0f, 1f, 0f, 1.0f);
+        Color colorRedPerfect = new Vector4(1f, 0f, 0f, 1.0f);
+
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorWhiteNeutral);
-        Color colorGreenPerfect = new Vector4(0f, 2f, 0f, 1.0f);
 
         yield return new WaitForEndOfFrame();
         needleTrail.gameObject.SetActive(true);
@@ -133,21 +139,33 @@ public class Plate : MonoBehaviour
         Quaternion initialRotation = Quaternion.Euler(0, armStartingAngle, 0);
         Quaternion finalRotation = Quaternion.Euler(0, armEndAngle, 0);
 
+        musicStatus = GameEnums.MusicStatus.Blocked;
 
-        while (Time.time <= startSongTime + songDuration * 0.8)
+        while (Time.time <= startSongTime + songDuration * table.blockedTime)
         {
             armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
             yield return new WaitForEndOfFrame();
         }
 
+        musicStatus = GameEnums.MusicStatus.TooSoon;
+
+        while (Time.time <= startSongTime + songDuration * (table.tooSoonTime+ table.blockedTime))
+        {
+            armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
+            yield return new WaitForEndOfFrame();
+        }
+
+        musicStatus = GameEnums.MusicStatus.Perfect;
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorGreenPerfect);
 
-        while (Time.time <= startSongTime + songDuration)
+        while (Time.time <= startSongTime + songDuration * (table.tooSoonTime + table.blockedTime + table.perfectTime))
         {
             armPivot.localRotation = Quaternion.Lerp(initialRotation, finalRotation, (Time.time - startSongTime) / songDuration);
             yield return new WaitForEndOfFrame();
         }
 
-        needleTrail.gameObject.SetActive(false);
+        musicStatus = GameEnums.MusicStatus.TooLate;
+
+        needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorRedPerfect);
     }
 }
