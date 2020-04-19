@@ -153,6 +153,7 @@ public class DancerManager : MonoBehaviour
 
     public void PerfectChange(GameEnums.MusicColor musicColor)
     {
+        // TODO: ScreenShake Here!
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
