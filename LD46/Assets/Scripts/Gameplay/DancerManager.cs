@@ -41,6 +41,7 @@ public class DancerManager : MonoBehaviour
         dancingRect = new Rect(bottomLeft.x, bottomLeft.z, width, height);
 
         FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
+        AudioManager.audioManagerRef.PlaySound("sfx_ambience_crowd");
     }
 
     // Update is called once per frame
