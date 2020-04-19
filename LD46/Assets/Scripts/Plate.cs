@@ -76,14 +76,29 @@ public class Plate : MonoBehaviour
 
         disk = theDisk;
 
+        StartCoroutine(CorotuineEquipDisk());
+    }
+
+    IEnumerator CorotuineEquipDisk()
+    {
+        float launchStart = Time.time;
+        float launchingDuration = 1.5f;
+
+        disk.transform.parent = null;
+
+        while (Time.time <= launchStart + launchingDuration)
+        {
+            disk.transform.position = Vector3.Lerp(disk.transform.position, anchor.transform.position, (Time.time - launchStart) / launchingDuration);
+            disk.transform.rotation = Quaternion.Lerp(disk.transform.rotation, anchor.rotation, (Time.time - launchStart) / launchingDuration);
+
+            yield return new WaitForEndOfFrame();
+        }
+
         disk.transform.parent = anchor;
         disk.transform.localPosition = Vector3.zero;
         disk.transform.localRotation = Quaternion.identity;
 
-        //needleTrail.transform.parent = disk.transform;
-        //needleTrail.transform.localPosition = Vector3.zero;
-        //needleTrail.transform.localRotation = Quaternion.identity;
-        //trailTarget.transform.parent = disk.transform;
+        DiskManager.diskManagerRef.UseDisk(disk);
     }
 
     public void DestroyDisk()
