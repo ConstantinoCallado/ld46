@@ -18,9 +18,11 @@ public class DancerMood : MonoBehaviour
 
     public Animator animator;
 
+    public ParticleSystem likeParticle;
+    public ParticleSystem hateParticle;
+
     void Awake()
     {
-        //dancerColor = (GameEnums.MusicColor)Random.Range(0, 3);
         currentMood = GameEnums.MoodStates.Neutral;
         PlayCurrentMoodAnimation();
         defaultMaterial = bodyRenderer.materials[1];
@@ -53,15 +55,21 @@ public class DancerMood : MonoBehaviour
         {
             numericMood = (int)GameEnums.MoodStates.OnFire;
         }
+        if ((int)currentMood > numericMood)
+        {
+            hateParticle.Emit(1);
+        }
+        else if ((int)currentMood < numericMood)
+        {
+            likeParticle.Emit(1);
+        }
         currentMood = (GameEnums.MoodStates)numericMood;
         if (currentMood == GameEnums.MoodStates.RageQuit)
         {
             Leave();
         }
 
-        PlayCurrentMoodAnimation();
-
-        ShowMoodHearts_DEBUG();
+        StartCoroutine(WaitAndPlayAnimation());
     }
 
     public void MusicChanged(GameEnums.MusicColor receivedColor)
@@ -103,30 +111,6 @@ public class DancerMood : MonoBehaviour
         // The too late makes everybody lose one mood state.
         int numericMood = (int)currentMood - 1;
         SetMoodFromInt(numericMood);
-    }
-
-    public void ShowMoodHearts_DEBUG()
-    {
-        if (!GameEnums.DEBUGGING)
-        {
-            return;
-        }
-
-        int i = 0;
-        int numericMood = 1 + (int)currentMood;
-        /*foreach (Transform child in transform)
-        {
-            Renderer rendererComp = child.GetComponent<Renderer>();
-            if (i <= numericMood)
-            {
-                rendererComp.enabled = true;
-            }
-            else
-            {
-                rendererComp.enabled = false;
-            }
-            i++;
-        }*/
     }
 
     void PlayCurrentMoodAnimation()
@@ -184,7 +168,7 @@ public class DancerMood : MonoBehaviour
     {
         animator.SetBool("isBored", false);
         animator.SetBool("isFun", false);
-        animator.SetBool("isOnFire", false);
+        animator.SetBool("isOnFire", false);        
     }
 
     void PlayHavingFunAnimation()
@@ -201,6 +185,10 @@ public class DancerMood : MonoBehaviour
         animator.SetBool("isOnFire", true);
     }
 
-
+    IEnumerator WaitAndPlayAnimation()
+    {
+        yield return new WaitForSeconds(Random.value);
+        PlayCurrentMoodAnimation();
+    }
 
 }

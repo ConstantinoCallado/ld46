@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 73bfc37ad8adf9b4cadbaf2b8e39be1e
+guid: f6aa506cd202fad45b025ec94da0b5c6
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
@@ -11,37 +11,42 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dancer_m_eyes
-    second: {fileID: 2100000, guid: 3beb6f5c7916afe4a8e190d0595845ee, type: 2}
+    second: {fileID: 2100000, guid: 311e5c8261899e947af7602ded068d68, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dancer_m_goggles_glass
-    second: {fileID: 2100000, guid: 5ce8d19515d5d7040a428811ff448a61, type: 2}
+    second: {fileID: 2100000, guid: 9fbb2a92fb13f28449aa9151da4e25fa, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dancer_m_hair
-    second: {fileID: 2100000, guid: 3beb6f5c7916afe4a8e190d0595845ee, type: 2}
+    second: {fileID: 2100000, guid: 311e5c8261899e947af7602ded068d68, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dancer_m_shoes_goggles
-    second: {fileID: 2100000, guid: c79e54ecb0b906a4f8d7a9f5478dc5ee, type: 2}
+    second: {fileID: 2100000, guid: 5f200b425ae4b364fbf407d50a73b55d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: dancer_m_skin
-    second: {fileID: 2100000, guid: a7b97bb730bcd19439cc89f88f88def8, type: 2}
+    second: {fileID: 2100000, guid: e974229c949408b4aaecb73207b00b54, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: guest_color
-    second: {fileID: 2100000, guid: 5473f501354b87d41a1616732028f936, type: 2}
+      name: guest_fedora
+    second: {fileID: 2100000, guid: dddf3cdbc9cf93b4381cd6432da2470b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: guest_mat
-    second: {fileID: 2100000, guid: b9024a7b73ef2734a8a056cab84257fb, type: 2}
+    second: {fileID: 2100000, guid: efe71a25d8ebc284bae278654a0f2b5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: d799c63535376ed48b27ff5a433dde4d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -190,14 +195,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: head_JNT
-      humanName: Head
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: L_shoulder_JNT
       humanName: LeftShoulder
       limit:
@@ -286,6 +283,14 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: head_JNT
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     skeleton:
     - name: Guest(Clone)
       parentName: 
@@ -300,96 +305,6 @@ ModelImporter:
     - name: skeleton_grp
       parentName: dancer_m_RIG
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: controllers_grp
-      parentName: skeleton_grp
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: body_grp
-      parentName: controllers_grp
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: center_CTRL
-      parentName: body_grp
-      position: {x: -5.684341e-14, y: 102.443, z: -6.67674}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: lumbar_CTRL
-      parentName: center_CTRL
-      position: {x: 2.842171e-14, y: 11.238305, z: 2.374088}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: back_CTRL
-      parentName: lumbar_CTRL
-      position: {x: 7.2562433e-16, y: 10.747231, z: 1.2593482}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: chest_CTRL
-      parentName: back_CTRL
-      position: {x: 2.2080455e-15, y: 10.8386, z: -2.2790258}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: L_shoulder_ctrl_grp
-      parentName: chest_CTRL
-      position: {x: -7.162465, y: 9.653305, z: 2.58864}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: L_shoulder_CTRL
-      parentName: L_shoulder_ctrl_grp
-      position: {x: 2.6645353e-14, y: 2.5, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: R_shoulder_ctrl_grp
-      parentName: chest_CTRL
-      position: {x: 7.16247, y: 9.652863, z: 2.5886395}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: -1, y: 1, z: 1}
-    - name: R_shoulder_CTRL
-      parentName: R_shoulder_ctrl_grp
-      position: {x: 3.0198066e-14, y: 2.5, z: -2.842171e-14}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: neck_CTRL
-      parentName: chest_CTRL
-      position: {x: 4.967984e-16, y: 20.615295, z: -1.3465858}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: head_CTRL
-      parentName: neck_CTRL
-      position: {x: -5.239098e-16, y: 5.8326874, z: 2.4667006}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: pelvis_CTRL
-      parentName: center_CTRL
-      position: {x: 2.73592e-14, y: -0.9933734, z: 3.9396658}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: arms_grp
-      parentName: controllers_grp
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: L_hand_ctrl_grp
-      parentName: arms_grp
-      position: {x: -67.93619, y: 143.10165, z: -10.071294}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: L_hand_CTRL
-      parentName: L_hand_ctrl_grp
-      position: {x: -2.5867097, y: 2.772404, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: R_hand_ctrl_grp
-      parentName: arms_grp
-      position: {x: 67.93619, y: 143.10165, z: -10.071294}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: -1, y: 1, z: 1}
-    - name: R_hand_CTRL
-      parentName: R_hand_ctrl_grp
-      position: {x: -2.6124115, y: 2.346344, z: -0.04040146}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: joints_grp
@@ -421,21 +336,21 @@ ModelImporter:
       parentName: sp_back_JNT
       position: {x: -11.032361, y: -0.97787535, z: -2.208045e-15}
       rotation: {x: 0.000000049433837, y: -0.000000034302605, z: -0.03565477, w: 0.99936414}
-      scale: {x: 1.0000006, y: 1.0000007, z: 1.0000006}
+      scale: {x: 1.0000007, y: 1.0000008, z: 1.000001}
     - name: L_shoulder_JNT
       parentName: chest_JNT
       position: {x: -12.016622, y: 3.1630197, z: 7.162465}
-      rotation: {x: -0.40454677, y: 0.41751805, z: 0.5562519, w: 0.59380513}
+      rotation: {x: -0.40454665, y: 0.41751802, z: 0.55625194, w: 0.59380513}
       scale: {x: 1.0000002, y: 0.9999996, z: 0.9999996}
     - name: L_arm_JNT
       parentName: L_shoulder_JNT
       position: {x: -13.4856205, y: 2.842171e-13, z: 2.6645353e-15}
-      rotation: {x: -0.025008166, y: 0.12573364, z: 0.028001018, w: 0.9913534}
+      rotation: {x: -0.025008123, y: 0.12573391, z: 0.028000932, w: 0.99135345}
       scale: {x: 0.9999998, y: 1.0000001, z: 1.0000001}
     - name: L_elbow_JNT
       parentName: L_arm_JNT
       position: {x: -26.152624, y: 0.040708974, z: 0.04472339}
-      rotation: {x: 0.003295352, y: 0.07641225, z: -0.006489193, w: 0.99704975}
+      rotation: {x: 0.0032954526, y: 0.07641217, z: -0.0064891255, w: 0.99704975}
       scale: {x: 1.0000001, y: 0.99999964, z: 1}
     - name: L_wrist_JNT
       parentName: L_elbow_JNT
@@ -450,12 +365,12 @@ ModelImporter:
     - name: R_arm_JNT
       parentName: R_shoulder_JNT
       position: {x: 13.485581, y: -0.00049925206, z: 0.000023389706}
-      rotation: {x: -0.1692494, y: 0.12473269, z: 0.056874648, w: 0.9759927}
+      rotation: {x: -0.1692494, y: 0.12473263, z: 0.056874707, w: 0.9759927}
       scale: {x: 1.0000001, y: 0.9999999, z: 0.9999999}
     - name: R_elbow_JNT
       parentName: R_arm_JNT
       position: {x: 26.152645, y: -0.04084788, z: -0.044773072}
-      rotation: {x: 0.0033614032, y: 0.076425515, z: -0.0060238526, w: 0.9970514}
+      rotation: {x: 0.003361314, y: 0.076425694, z: -0.006024058, w: 0.9970515}
       scale: {x: 0.99999976, y: 1, z: 1.0000004}
     - name: R_wrist_JNT
       parentName: R_elbow_JNT
@@ -466,12 +381,12 @@ ModelImporter:
       parentName: chest_JNT
       position: {x: -20.655993, y: -0.36580503, z: -4.9679795e-16}
       rotation: {x: 0.000000023035593, y: -0.0000000027548452, z: -0.22194584, w: 0.97505903}
-      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000005}
+      scale: {x: 1, y: 0.99999994, z: 1.0000004}
     - name: head_JNT
       parentName: neck_JNT
       position: {x: -6.3328285, y: 2.842171e-14, z: 5.2390984e-16}
       rotation: {x: -0.00000002399509, y: 0.0000000031134808, z: 0.18830603, w: 0.98211044}
-      scale: {x: 1.0000008, y: 1.0000014, z: 1.0000007}
+      scale: {x: 1.0000008, y: 1.0000013, z: 1.0000008}
     - name: pelvis_JNT
       parentName: center_JNT
       position: {x: -1.7864078, y: 3.6491785, z: -2.73592e-14}
@@ -559,7 +474,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: dancer_m_fedora_mesh
       parentName: dancer_m_MESH
-      position: {x: -0, y: 88.56221, z: -2.234868}
+      position: {x: -0, y: -95.139465, z: -0.99203205}
       rotation: {x: -5.551115e-17, y: 0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5

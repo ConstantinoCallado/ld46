@@ -46,38 +46,42 @@ public class DancerManager : MonoBehaviour
 
     public void SpawnDancer()
     {
-        Vector3 dancerEntrance = GetDancerEntrance();
-        Vector3 dancerDestination = GetDancingSpot();
-        GameObject randomDancer = GetRandomDancer();
-        GameObject dancer = Instantiate(randomDancer, dancerEntrance, Quaternion.identity);
-        print("dancerEntrance " + dancerEntrance);
+        if (dancers.Count < MAX_DANCERS)
+        {
+            Vector3 dancerEntrance = GetDancerEntrance();
+            Vector3 dancerDestination = GetDancingSpot();
+            GameObject randomDancer = GetRandomDancer();
+            GameObject dancer = Instantiate(randomDancer, dancerEntrance, Quaternion.identity);
 
-        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
-        dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
-        dancerStateComp.MoveToDestination(dancerDestination);
-        dancerStateComp.manager = this;
-        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
-        dancerMoodComp.manager = this;
-        dancerMoodComp.PlayWalkAnimation();
+            DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+            dancerStateComp.SetState(GameEnums.DancerStateNames.Created);
+            dancerStateComp.MoveToDestination(dancerDestination);
+            dancerStateComp.manager = this;
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            dancerMoodComp.manager = this;
+            dancerMoodComp.PlayWalkAnimation();
 
-        dancers.Add(dancer);
+            dancers.Add(dancer);
+        }
     }
 
     public void SpawnDancerAtDestiny()
     {
-        Vector3 dancerDestination = GetDancingSpot();
-        GameObject randomDancer = GetRandomDancer();
-        GameObject dancer = Instantiate(randomDancer, dancerDestination, Quaternion.identity);
+        if (dancers.Count < MAX_DANCERS)
+        {
+            Vector3 dancerDestination = GetDancingSpot();
+            GameObject randomDancer = GetRandomDancer();
+            GameObject dancer = Instantiate(randomDancer, dancerDestination, Quaternion.identity);
 
-        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
-        dancerStateComp.SetState(GameEnums.DancerStateNames.Dancing);
-        dancerStateComp.manager = this;
-        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
-        dancerMoodComp.manager = this;
-        dancerMoodComp.enabled = true;
-        dancerMoodComp.ShowMoodHearts_DEBUG();
+            DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+            dancerStateComp.SetState(GameEnums.DancerStateNames.Dancing);
+            dancerStateComp.manager = this;
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            dancerMoodComp.manager = this;
+            dancerMoodComp.enabled = true;
 
-        dancers.Add(dancer);
+            dancers.Add(dancer);
+        }
     }
 
     public void LeaveDancer(GameObject dancer)

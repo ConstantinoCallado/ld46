@@ -21,7 +21,7 @@ public class Disk : MonoBehaviour
 
     public IEnumerator CoroutineThrow()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
 }
