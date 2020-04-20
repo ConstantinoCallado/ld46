@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSamplesC;
 
     public float[] scratchDelays = new float[] { 0.8f, 0.5f, 1.0f, 0.5f };
+    public float minTimeBetweenScratches = 1.1f;
+    private float timeBetweenScratches = 0.0f;
     private bool playedRecord = false;
 
     void Awake()
@@ -54,6 +56,7 @@ public class AudioManager : MonoBehaviour
             s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
         playedRecord = false;
+        timeBetweenScratches = minTimeBetweenScratches;
     }
 
     void Start()
@@ -62,6 +65,14 @@ public class AudioManager : MonoBehaviour
         musicSamplesAIndex = UnityEngine.Random.Range(0, musicSamplesA.Length - 1);
         musicSamplesBIndex = UnityEngine.Random.Range(0, musicSamplesB.Length - 1);
         musicSamplesCIndex = UnityEngine.Random.Range(0, musicSamplesC.Length - 1);
+    }
+
+    public void Update()
+    {
+        if (playedRecord)
+        {
+            timeBetweenScratches += Time.deltaTime;
+        }
     }
 
     public bool HasPlayedRecord()
@@ -99,6 +110,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayScratch()
     {
+        if (timeBetweenScratches < minTimeBetweenScratches)
+        {
+            return;
+        }
         if (_currentTurnTableAudioSource == null)
         {
             return;
@@ -115,6 +130,7 @@ public class AudioManager : MonoBehaviour
         _currentTurnTableAudioSource.volume = 0;
         StartCoroutine(ResetTurnTableVolume(_currentTurnTableAudioSource, origVolume, scratchDelays[randomId-1]));
         s.source.Play();
+        timeBetweenScratches = 0.0f;
     }
 
     IEnumerator ResetTurnTableVolume(AudioSource source, float origVolume, float waitTime)
