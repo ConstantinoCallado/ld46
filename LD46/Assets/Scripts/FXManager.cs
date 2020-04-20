@@ -101,14 +101,16 @@ public class FXManager : MonoBehaviour
             _colorGrading.brightness.value = Mathf.Lerp(_colorGrading.brightness.value, _brightnessIntensity, 0.75f * Time.deltaTime);
 
         // Testing
-        //if (Input.GetKeyDown(KeyCode.U))
-        //    SetPartyStatus(GameEnums.PartyStatus.Dead);mgmt
-        //if (Input.GetKeyDown(KeyCode.I))
-        //    SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
-        //if (Input.GetKeyDown(KeyCode.O))
-        //    SetPartyStatus(GameEnums.PartyStatus.Super);
-        //if (Input.GetKeyDown(KeyCode.P))
-        //    SetPartyStatus(GameEnums.PartyStatus.PartyHard);
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.U))
+            SetPartyStatus(GameEnums.PartyStatus.Dead);
+        if (Input.GetKeyDown(KeyCode.I))
+            SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
+        if (Input.GetKeyDown(KeyCode.O))
+            SetPartyStatus(GameEnums.PartyStatus.Super);
+        if (Input.GetKeyDown(KeyCode.P))
+            SetPartyStatus(GameEnums.PartyStatus.PartyHard);
+#endif
     }
 
     private void OnDestroy()
