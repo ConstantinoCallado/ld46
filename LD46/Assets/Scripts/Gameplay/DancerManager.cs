@@ -116,7 +116,7 @@ public class DancerManager : MonoBehaviour
 
     void CheckWinCondition()
     {
-        if (dancersOnFire < MAX_DANCERS)
+        if (dancersOnFire < MAX_DANCERS - 5)
         {
              currentOnFireTime = 0.0f;
         }

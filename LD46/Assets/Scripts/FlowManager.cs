@@ -28,6 +28,14 @@ public class FlowManager : MonoBehaviour
         OnStateStart();
     }
 
+    void Update()
+    {
+#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
+        if (Input.GetKeyUp(KeyCode.Escape))
+            Application.Quit();
+#endif
+    }
+
     void ChangeScene(GameEnums.FlowStates nextState)
     {
         currentState = nextState;
