@@ -90,7 +90,7 @@ public class DancerMood : MonoBehaviour
             }
         }
 
-        StartCoroutine(WaitAndPlayAnimation(waitValue, playMoodSound));
+        StartCoroutine(WaitAndPlayAnimation(0, playMoodSound));
     }
 
     public void SetSilenceMood(int numericMood)
