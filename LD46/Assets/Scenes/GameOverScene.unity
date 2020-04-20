@@ -559,7 +559,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: eec06a2a32aa1b04a94f93d687d1fdd8, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 42df484d19c3d954ea408b6dce5ae549, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd4e6498fbefca04d9d4f6786fdfd1c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c677cf7865424bf45a9e3d91946def86, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 368735850168020785}
   - component: {fileID: 368735850168020784}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: ReplayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
