@@ -238,6 +238,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 174917462, guid: f24fe4544a15b4f44990fcf404db5809, type: 3}
+      propertyPath: diskHolo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 174917462, guid: f24fe4544a15b4f44990fcf404db5809, type: 3}
+      propertyPath: diskHolo.Array.data[0]
+      value: 
+      objectReference: {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137,
+        type: 3}
+    - target: {fileID: 174917462, guid: f24fe4544a15b4f44990fcf404db5809, type: 3}
+      propertyPath: diskHolo.Array.data[1]
+      value: 
+      objectReference: {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137,
+        type: 3}
+    - target: {fileID: 174917462, guid: f24fe4544a15b4f44990fcf404db5809, type: 3}
+      propertyPath: diskHolo.Array.data[2]
+      value: 
+      objectReference: {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137,
+        type: 3}
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: m_LocalPosition.x
