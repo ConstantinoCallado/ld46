@@ -23,7 +23,7 @@ public class FlowManager : MonoBehaviour
     void Start()
     {
         // Play the crowd sound
-        AudioManager.audioManagerRef.PlaySound("sfx_ambience_crowd");
+        AudioManager.audioManagerRef.PlaySound("sfx_ambience_outside");
 
         OnStateStart();
     }
@@ -90,6 +90,6 @@ public class FlowManager : MonoBehaviour
         heroComponent.enabled = true;
 
         // Stop the crowd sound
-        AudioManager.audioManagerRef.StopSound("sfx_ambience_crowd");
+        AudioManager.audioManagerRef.StopSound("sfx_ambience_outside");
     }
 }
