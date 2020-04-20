@@ -26,6 +26,8 @@ public class CrossFader : MonoBehaviour
         djTable.DoCrossFade();
 
         MoveKnob();
+
+        AudioManager.audioManagerRef.PlaySound("sfx_crossfader");
     }
 
     void MoveKnob()
