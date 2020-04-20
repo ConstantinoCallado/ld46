@@ -80,7 +80,14 @@ public class DancerMood : MonoBehaviour
         currentMood = (GameEnums.MoodStates)numericMood;
         if (currentMood == GameEnums.MoodStates.RageQuit)
         {
-            Leave();
+            if (!DancerManager.dancerManagerRef.tutorialActive)
+            {
+                Leave();
+            }
+            else
+            {
+                currentMood = GameEnums.MoodStates.Bored;
+            }
         }
 
         StartCoroutine(WaitAndPlayAnimation(waitValue, playMoodSound));

@@ -83,8 +83,7 @@ public class FlowManager : MonoBehaviour
         canvas.Find("TitleScreen").gameObject.SetActive(false);
         // Enable both the manager and the spawner so the dancers start appearing
         dancerManager.GetComponent<DancerManager>().enabled = true;
-        dancerManager.GetComponent<DancerSpawner>().enabled = true;
-
+ 
         ChangeScene(GameEnums.FlowStates.Playing);
 
         heroComponent.enabled = true;

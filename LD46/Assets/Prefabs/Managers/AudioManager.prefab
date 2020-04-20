@@ -245,120 +245,147 @@ MonoBehaviour:
     volume: 0.1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_boo
     clip: {fileID: 8300000, guid: 94e406d72388adc45a6bb1795d71e9e9, type: 3}
     volume: 0.1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
+      type: 2}
     source: {fileID: 0}
   - name: sfx_broken_record
     clip: {fileID: 8300000, guid: 3a3b74294b3f31d4bbc5ee218c6faa5d, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_crossfader
     clip: {fileID: 8300000, guid: b95bcbf41fec97344acdfe9691783871, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_crossfader_blocked
     clip: {fileID: 8300000, guid: 4305db5c0732ef344b8e291e0d10d84b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_crowd_big
     clip: {fileID: 8300000, guid: 37913da2368d02f498ceb063f8bfaa3b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
+      type: 2}
     source: {fileID: 0}
   - name: sfx_crowd_small
     clip: {fileID: 8300000, guid: 7db0182cd80a3aa40977ef17ad715455, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
+      type: 2}
     source: {fileID: 0}
   - name: sfx_needle_skip
     clip: {fileID: 8300000, guid: 34bdfcb0fa9c87f4087c8f24347e496d, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_nooo
     clip: {fileID: 8300000, guid: 948904340ce5fce4eb127a12c7e4d922, type: 3}
     volume: 0.1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
+      type: 2}
     source: {fileID: 0}
   - name: sfx_scratch1
     clip: {fileID: 8300000, guid: 64f51124429d4a7428d049ae81d25f9e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_scratch2
     clip: {fileID: 8300000, guid: 962a19562e6a1d647a5b6468a12f24ad, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_scratch3
     clip: {fileID: 8300000, guid: 5d451956bfb56ed4686b6f042e1ea42e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_scratch4
     clip: {fileID: 8300000, guid: 1f52e78ff1db3ed4f8a9a9ad6600f447, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_smooth
     clip: {fileID: 8300000, guid: d45f6eedc86b49e4090ab0810d34ef39, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_smooth_scratch
     clip: {fileID: 8300000, guid: 68ec06e9da78fe540b1bdb2058b20f6e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_throw
     clip: {fileID: 8300000, guid: 1029f4b271fe09b43b57551b342efcf4, type: 3}
     volume: 0.1
     pitch: 1.1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: sfx_wohoo
     clip: {fileID: 8300000, guid: 529cae4b853a325409370940c6a701d8, type: 3}
     volume: 0.2
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
+      type: 2}
     source: {fileID: 0}
   - name: sfx_yeah
     clip: {fileID: 8300000, guid: 762d808dbb2e9604493085f6dd367a51, type: 3}
     volume: 0.1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
+      type: 2}
     source: {fileID: 0}
   - name: sfx_ambience_crowd
     clip: {fileID: 8300000, guid: b75a85fb46dbf4541988d7e72285cb4a, type: 3}
     volume: 0.35
     pitch: 1
     loop: 1
+    outputAudioMixerGroup: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
+      type: 2}
     source: {fileID: 0}
   - name: sfx_ambience_outside
     clip: {fileID: 8300000, guid: f7ab8f04c2e0ccb4fa4f3d99297712fe, type: 3}
     volume: 0.35
     pitch: 1
     loop: 1
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   musicSamplesA:
   - name: electronic1
@@ -366,66 +393,77 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic2
     clip: {fileID: 8300000, guid: 118d8806352c69c45bebba2869e70184, type: 3}
     volume: 0.4
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic3
     clip: {fileID: 8300000, guid: 127506aefb01da74fa04482083aa431b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic4
     clip: {fileID: 8300000, guid: 4e3052c328dcccb40a040cb8f70380fd, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic5
     clip: {fileID: 8300000, guid: 928e00f7728b5c6498516a5b9bbadfc7, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic6
     clip: {fileID: 8300000, guid: 92313a123e46c374b9da178f447e21d3, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic7
     clip: {fileID: 8300000, guid: 0dcabef1c6da6b74a90c630c6fa5c6e7, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic8
     clip: {fileID: 8300000, guid: 75a60109733750944ab0048b6079e3ee, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic9
     clip: {fileID: 8300000, guid: dbbf88baff93e90438e54b79ee2f277b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic10
     clip: {fileID: 8300000, guid: b1d6e457b4afd1945ac592758095d0a7, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: electronic11
     clip: {fileID: 8300000, guid: efa351a994f6a5246a206a83b84ce627, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   musicSamplesB:
   - name: funk1
@@ -433,42 +471,49 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: funk2
     clip: {fileID: 8300000, guid: 35ecb1c265709ab44bc5840c99db5aab, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: funk3
     clip: {fileID: 8300000, guid: 58b27aa2b43569f4384a60eacdfd207b, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: funk4
     clip: {fileID: 8300000, guid: 7259d1e6295c5d3428a41b4b3827bceb, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: funk5
     clip: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: funk6
     clip: {fileID: 8300000, guid: cea7b1a5242fdf642a78f411c394f38d, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: funk7
     clip: {fileID: 8300000, guid: 51aa340833bd4e543af657725327bf20, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   musicSamplesC:
   - name: pop1
@@ -476,45 +521,53 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: pop2
     clip: {fileID: 8300000, guid: c6f14e028a360fd45a9d5792df95327c, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: pop3
     clip: {fileID: 8300000, guid: 11b47a929baad9043a81a202e62f1279, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: pop4
     clip: {fileID: 8300000, guid: 6b3fab164ed8cf24d8dd44c596ca11a1, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: pop5
     clip: {fileID: 8300000, guid: 30bb00cc53df1bf4b96e90ecf9570cca, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: pop6
     clip: {fileID: 8300000, guid: bb16f29ef72354648aa3f04c3b671120, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: pop7
     clip: {fileID: 8300000, guid: fb8e10eae1e5c404a87a995f2bc5b853, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
   scratchDelays:
   - 0.8
   - 0.5
   - 1
   - 0.5
+  minTimeBetweenScratches: 1.1

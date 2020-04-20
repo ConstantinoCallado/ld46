@@ -12,8 +12,6 @@ public class Table : MonoBehaviour
     public float tooSoonTime = 0.5f;
     public float perfectTime = 0.3f;
 
-    public DancerManager dancerManager;
-
     public ParticleSystem particleTooSoon;
     public ParticleSystem particleSmooth;
     public ParticleSystem particleTooLate;
@@ -55,18 +53,22 @@ public class Table : MonoBehaviour
                     switch (plateRight.musicStatus)
                     {
                         case GameEnums.MusicStatus.Blocked:
-                            dancerManager.TooSoonChange(plateLeft.disk.musicColor);
+                            DancerManager.dancerManagerRef.TooSoonChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooSoon:
-                            dancerManager.TooSoonChange(plateLeft.disk.musicColor);
+                            DancerManager.dancerManagerRef.TooSoonChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.Perfect:
-                            dancerManager.PerfectChange(plateLeft.disk.musicColor);
+                            DancerManager.dancerManagerRef.PerfectChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
-                            dancerManager.TooLateChange();
+                            DancerManager.dancerManagerRef.TooLateChange();
                             break;
                     }
+                }
+                else
+                {
+                    DancerManager.dancerManagerRef.PerfectChange(plateLeft.disk.musicColor);
                 }
                 
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor); // Plays the music for the left turntable
@@ -110,19 +112,24 @@ public class Table : MonoBehaviour
                     switch (plateLeft.musicStatus)
                     {
                         case GameEnums.MusicStatus.Blocked:
-                            dancerManager.TooSoonChange(plateRight.disk.musicColor);
+                            DancerManager.dancerManagerRef.TooSoonChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooSoon:
-                            dancerManager.TooSoonChange(plateRight.disk.musicColor);
+                            DancerManager.dancerManagerRef.TooSoonChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.Perfect:
-                            dancerManager.PerfectChange(plateRight.disk.musicColor);
+                            DancerManager.dancerManagerRef.PerfectChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
-                            dancerManager.TooLateChange();
+                            DancerManager.dancerManagerRef.TooLateChange();
                             break;
                     }
                 }
+                else
+                {
+                    DancerManager.dancerManagerRef.PerfectChange(plateRight.disk.musicColor);
+                }
+
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
 
                 FXManager.fxManagerRef.MusicStarted(plateRight.disk.musicColor);

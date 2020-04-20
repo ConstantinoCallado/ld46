@@ -56,12 +56,12 @@ public class DancerSpawner : MonoBehaviour
     {
         manager = GetComponent<DancerManager>();
         currentTime = 0.0f;
-        nextSpawn = phases[currentPhase].GetRandomSpawn().seconds;
+        nextSpawn = 0;
 
-        for (int i = 0; i < startDancers; i++)
+        /*for (int i = 0; i < startDancers; i++)
         {
             manager.SpawnDancerAtDestiny();
-        }
+        }*/
     }
 
     // Update is called once per frame

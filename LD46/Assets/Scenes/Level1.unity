@@ -212,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 2482176202695409269, guid: c969acb1b0d8ae3459ad1d640c0bc8cc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2482176202695409269, guid: c969acb1b0d8ae3459ad1d640c0bc8cc,
         type: 3}
@@ -238,11 +238,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8380696572726908869, guid: f24fe4544a15b4f44990fcf404db5809,
-        type: 3}
-      propertyPath: dancerManager
-      value: 
-      objectReference: {fileID: 1293711232}
     - target: {fileID: 9054184333792551531, guid: f24fe4544a15b4f44990fcf404db5809,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -312,6 +307,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 358670239}
     m_Modifications:
+    - target: {fileID: 916190370, guid: d58af22d8f21a8847a167f20ac41a56b, type: 3}
+      propertyPath: startDancers
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 72888278048210888, guid: d58af22d8f21a8847a167f20ac41a56b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -366,6 +365,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72888278048210889, guid: d58af22d8f21a8847a167f20ac41a56b,
+        type: 3}
+      propertyPath: dancers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 72888278048210889, guid: d58af22d8f21a8847a167f20ac41a56b,
+        type: 3}
+      propertyPath: dancers.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 72888278048210895, guid: d58af22d8f21a8847a167f20ac41a56b,
         type: 3}
@@ -500,7 +509,7 @@ Transform:
   - {fileID: 242640045}
   - {fileID: 1349757218}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &391816337 stripped
 GameObject:
@@ -816,46 +825,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
-      propertyPath: sounds.Array.data[1].outputAudioMixerGroup
+      propertyPath: defaultMusicSample.clip
       value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
+      objectReference: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
     - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
-      propertyPath: sounds.Array.data[18].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[8].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[16].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[17].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[5].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[6].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
+      propertyPath: defaultMusicSample.name
+      value: funk5
+      objectReference: {fileID: 0}
     - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
       propertyPath: m_RootOrder
@@ -884,18 +861,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1265836530}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1293711232 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 72888278048210889, guid: d58af22d8f21a8847a167f20ac41a56b,
-    type: 3}
-  m_PrefabInstance: {fileID: 242640044}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397640354}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1edc4077f963bd46a7e3ca5404effc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1349757218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8064683244207006225, guid: 033ac5b367eac964aad2a36a30a019ed,

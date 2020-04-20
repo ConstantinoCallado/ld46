@@ -111,13 +111,13 @@ MonoBehaviour:
   - {fileID: 2352783859875165802, guid: 56ec9aa048e7b2d4cbe15a1ed2ad0d2f, type: 3}
   - {fileID: 2352783859875165802, guid: f2e5024f89396c94e96c9e92a1bc1171, type: 3}
   - {fileID: 2352783859875165802, guid: 79545a1129e34e3468be588ada41d40c, type: 3}
-  DANCERS_DELAY: 2
   MAX_DANCERS: 30
   entranceList: {fileID: 3408158670318904056}
   dancingArea: {fileID: 72888279001797145}
   exitList: {fileID: 72888279112079142}
   spawner: {fileID: 916190370}
   dancersOnFire: 0
+  maxTimeWithoutMusic: 5
 --- !u!114 &916190370
 MonoBehaviour:
   m_ObjectHideFlags: 0
