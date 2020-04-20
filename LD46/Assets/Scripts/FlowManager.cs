@@ -22,6 +22,9 @@ public class FlowManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Play the crowd sound
+        AudioManager.audioManagerRef.PlaySound("sfx_ambience_crowd");
+
         OnStateStart();
     }
 
@@ -63,7 +66,6 @@ public class FlowManager : MonoBehaviour
 
     void OnPreparingStart()
     {
-
     }
 
     void OnTutorialStart()
@@ -86,5 +88,8 @@ public class FlowManager : MonoBehaviour
         ChangeScene(GameEnums.FlowStates.Playing);
 
         heroComponent.enabled = true;
+
+        // Stop the crowd sound
+        AudioManager.audioManagerRef.StopSound("sfx_ambience_crowd");
     }
 }

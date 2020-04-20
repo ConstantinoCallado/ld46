@@ -303,7 +303,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Turntable Vocals
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 953a37f820206e84da7d73eb0f729670
   m_Children: []
@@ -379,9 +379,9 @@ AudioMixerGroupController:
   m_GroupID: 8dee0c55af6b91c4c88eaed2f9f91818
   m_Children:
   - {fileID: 4164774037540854874}
-  - {fileID: 2141454997580744449}
   - {fileID: -1370987216707480171}
   - {fileID: -2658130264172325839}
+  - {fileID: 2141454997580744449}
   m_Volume: 02f1cdfe0ad2e3446b16c5f4832672c7
   m_Pitch: d423e9cd21fe35d44ae3f15dca763b97
   m_Send: 00000000000000000000000000000000
