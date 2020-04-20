@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8909dacedffc9645ba58c6f9bbbff0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeFloorDelay: 5
+  randomizeFloorDelay: 3
   tileMaterials:
   - {fileID: 2100000, guid: f8407b589dbfc894c87f679776295a66, type: 2}
   - {fileID: 2100000, guid: f6417418d29fd2c4491c68d76020e537, type: 2}
