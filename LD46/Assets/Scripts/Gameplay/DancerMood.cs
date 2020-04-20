@@ -20,11 +20,14 @@ public class DancerMood : MonoBehaviour
     public ParticleSystem likeParticle;
     public ParticleSystem hateParticle;
 
+    public DancerState dancerState;
+
     void Awake()
     {
         currentMood = GameEnums.MoodStates.Neutral;
         PlayCurrentMoodAnimation();
         defaultMaterial = bodyRenderer.materials[1];
+        dancerState = GetComponent<DancerState>();
     }
 
     // Start is called before the first frame update
@@ -41,12 +44,13 @@ public class DancerMood : MonoBehaviour
     void Leave()
     {
         manager.LeaveDancer(this.gameObject);
-        enabled = false;
+        StartCoroutine(WaitAndPlaySound(Random.value, "sfx_boo"));
     }
 
     void SetMoodFromInt(int numericMood)
     {
         float waitValue = Random.value;
+        string playMoodSound =  "";
         if (numericMood < (int)GameEnums.MoodStates.RageQuit)
         {
             numericMood = (int)GameEnums.MoodStates.RageQuit;
@@ -58,12 +62,19 @@ public class DancerMood : MonoBehaviour
         if ((int)currentMood > numericMood)
         {
             StartCoroutine(WaitAndEmitParticle(waitValue, hateParticle));
-            //hateParticle.Emit(1);
+            if (numericMood > (int)GameEnums.MoodStates.RageQuit)
+            {
+                playMoodSound = "sfx_awww";
+            }
         }
         else if ((int)currentMood < numericMood)
         {
             StartCoroutine(WaitAndEmitParticle(waitValue, likeParticle));
-            //likeParticle.Emit(1);
+            // The yeah sound should only play when not oging to OnFire
+            if (numericMood < (int)GameEnums.MoodStates.OnFire)
+            {
+                playMoodSound = "sfx_yeah";
+            }
         }
         currentMood = (GameEnums.MoodStates)numericMood;
         if (currentMood == GameEnums.MoodStates.RageQuit)
@@ -71,12 +82,15 @@ public class DancerMood : MonoBehaviour
             Leave();
         }
 
-        StartCoroutine(WaitAndPlayAnimation(waitValue));
+        StartCoroutine(WaitAndPlayAnimation(waitValue, playMoodSound));
     }
 
     public void MusicChanged(GameEnums.MusicColor receivedColor)
     {
-        if (currentMood != GameEnums.MoodStates.OnFire)
+        bool affectedByMusic = dancerState.stateName == GameEnums.DancerStateNames.MoodActive ||
+            dancerState.stateName == GameEnums.DancerStateNames.Dancing;
+        affectedByMusic = affectedByMusic && currentMood != GameEnums.MoodStates.OnFire;
+        if (affectedByMusic)
         {
             int reaction = reactions[(int)dancerColor, (int)receivedColor];
             if (reaction != 0)
@@ -94,7 +108,10 @@ public class DancerMood : MonoBehaviour
     public void TooSoonChange(GameEnums.MusicColor currentColor)
     {
         // The too soon doesn't make us lose the OnFire state.
-        if (currentMood != GameEnums.MoodStates.OnFire)
+        bool affectedByMusic = dancerState.stateName == GameEnums.DancerStateNames.MoodActive ||
+            dancerState.stateName == GameEnums.DancerStateNames.Dancing;
+        affectedByMusic = affectedByMusic && currentMood != GameEnums.MoodStates.OnFire;
+        if (affectedByMusic)
         {
             if (dancerColor == currentColor)
             {
@@ -111,9 +128,14 @@ public class DancerMood : MonoBehaviour
     public void TooLateChange()
     {
         // The too late makes everybody lose one mood state.
-        manager.SetDancersOnFire(0);
-        int numericMood = (int)currentMood - 1;
-        SetMoodFromInt(numericMood);
+        bool affectedByMusic = dancerState.stateName == GameEnums.DancerStateNames.MoodActive ||
+          dancerState.stateName == GameEnums.DancerStateNames.Dancing;
+        if (affectedByMusic)
+        {
+            manager.SetDancersOnFire(0);
+            int numericMood = (int)currentMood - 1;
+            SetMoodFromInt(numericMood);
+        }
     }
 
     void PlayCurrentMoodAnimation()
@@ -183,21 +205,34 @@ public class DancerMood : MonoBehaviour
 
     void PlayOnFireAnimation()
     {
+        print("PlayOnFireAnimation");
         animator.SetBool("isBored", false);
         animator.SetBool("isFun", true);
         animator.SetBool("isOnFire", true);
+        Debug.Log("Play wohoo!!");
+        AudioManager.audioManagerRef.PlaySound("sfx_wohoo");
     }
 
-    IEnumerator WaitAndPlayAnimation(float waitTime)
+    IEnumerator WaitAndPlayAnimation(float waitTime, string playMoodSound)
     {
         yield return new WaitForSeconds(waitTime);
         PlayCurrentMoodAnimation();
+        if (playMoodSound.Length > 0)
+        {
+            AudioManager.audioManagerRef.PlaySound(playMoodSound);
+        }
     }
 
     IEnumerator WaitAndEmitParticle(float waitTime, ParticleSystem particleSys)
     {
         yield return new WaitForSeconds(waitTime);
         particleSys.Emit(1);
+    }
+
+    IEnumerator WaitAndPlaySound(float waitTime, string sound)
+    {
+        yield return new WaitForSeconds(waitTime);
+        AudioManager.audioManagerRef.PlaySound(sound);
     }
 
 }

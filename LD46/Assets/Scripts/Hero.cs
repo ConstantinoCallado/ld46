@@ -32,6 +32,7 @@ public class Hero : MonoBehaviour
                 // If player clicked a disk after clicking a plate
                 if (lastPlateClicked != null && objectHit.GetComponent<Disk>() != null)
                 {
+                    
                     // Equip disk!
                     Disk clickedDisk = objectHit.GetComponent<Disk>();
                     lastPlateClicked.EquipDisk(clickedDisk);
@@ -50,7 +51,13 @@ public class Hero : MonoBehaviour
                     CrossFader crossFader = objectHit.GetComponent<CrossFader>();
                     crossFader.Interact();
                 }
-
+                else if (lastPlateClicked == null && objectHit.GetComponent<Plate>() != null && objectHit.GetComponent<Plate>().isSpinning)
+                {
+                    // TODO: Think how to pause the music when teh scratch is playing
+                    int randomScratchNum = Random.Range(1,5);
+                    string scratchSound = "sfx_scratch" + randomScratchNum;
+                    AudioManager.audioManagerRef.PlaySound(scratchSound);
+                }
                 
                 // Player clicked somewhere else
                 else

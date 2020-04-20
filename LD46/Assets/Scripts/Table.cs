@@ -58,7 +58,7 @@ public class Table : MonoBehaviour
             if (plateLeft.disk)
             {
                 plateLeft.StartSpinning();
-                dancerManager.PerfectChange(plateLeft.disk.musicColor);
+                //dancerManager.PerfectChange(plateLeft.disk.musicColor);
 
                 if(plateRight.disk)
                 {
