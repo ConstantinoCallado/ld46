@@ -172,6 +172,7 @@ MonoBehaviour:
   animator: {fileID: 6192182306580882909}
   likeParticle: {fileID: 2986413584222124419}
   hateParticle: {fileID: 8838120506627168913}
+  dancerState: {fileID: 0}
 --- !u!114 &-5797393497642695284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +366,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2352783859875165806}
     m_Modifications:
+    - target: {fileID: -6811808706074207396, guid: f6aa506cd202fad45b025ec94da0b5c6,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: f6aa506cd202fad45b025ec94da0b5c6,
         type: 3}
       propertyPath: m_Controller
@@ -375,11 +381,21 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4819717945242814975, guid: f6aa506cd202fad45b025ec94da0b5c6,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4429339513535105021, guid: f6aa506cd202fad45b025ec94da0b5c6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c2ad2981816f4ef4aab32604fe4174c3, type: 2}
+    - target: {fileID: -4429339513535105021, guid: f6aa506cd202fad45b025ec94da0b5c6,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f6aa506cd202fad45b025ec94da0b5c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -445,16 +461,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 93148a5989ec7c14fa04a81dcfd5309d, type: 2}
+    - target: {fileID: 4238945842364264408, guid: f6aa506cd202fad45b025ec94da0b5c6,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5317820769263950751, guid: f6aa506cd202fad45b025ec94da0b5c6,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 0a4b2d2e6b1f8144c96da3ad9256ef11, type: 2}
+    - target: {fileID: 5317820769263950751, guid: f6aa506cd202fad45b025ec94da0b5c6,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6192014918631983581, guid: f6aa506cd202fad45b025ec94da0b5c6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 98a816d9fa642fb42bc7d37cd38eb50a, type: 2}
+    - target: {fileID: 6192014918631983581, guid: f6aa506cd202fad45b025ec94da0b5c6,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6aa506cd202fad45b025ec94da0b5c6, type: 3}
 --- !u!4 &4279843246166952103 stripped
