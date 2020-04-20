@@ -790,6 +790,7 @@ MonoBehaviour:
   plateLeft: {fileID: 3429953893069254487}
   plateRight: {fileID: 9212773201492698402}
   crossFader: {fileID: 2733753064053863197}
+  crossFaderGauge: {fileID: 355644382734539740}
   blockedTime: 0.2
   tooSoonTime: 0.5
   perfectTime: 0.3

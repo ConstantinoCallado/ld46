@@ -8,6 +8,9 @@ public class Table : MonoBehaviour
     public Plate plateRight;
     public CrossFader crossFader;
 
+    public GameObject crossFaderGauge;
+    private Material gaugeMaterial = null;
+
     public float blockedTime = 0.2f;
     public float tooSoonTime = 0.5f;
     public float perfectTime = 0.3f;
@@ -18,8 +21,20 @@ public class Table : MonoBehaviour
     public ParticleSystem particleSmooth;
     public ParticleSystem particleTooLate;
 
+    void Start()
+    {
+        if (crossFaderGauge != null)
+        {
+            gaugeMaterial = crossFaderGauge.GetComponent<Renderer>().material;
+            gaugeMaterial.DisableKeyword("_EMISSION");
+        }
+    }
+
     public void DoCrossFade()
     {
+        if(gaugeMaterial != null)
+            gaugeMaterial.DisableKeyword("_EMISSION");
+
         if (crossFader.isLeft)
         {
             if (plateRight.disk)
@@ -43,7 +58,7 @@ public class Table : MonoBehaviour
             if (plateLeft.disk)
             {
                 plateLeft.StartSpinning();
-                dancerManager.PerfectChange(plateLeft.disk.musicColor);
+                //dancerManager.PerfectChange(plateLeft.disk.musicColor);
 
                 if(plateRight.disk)
                 {
@@ -65,11 +80,15 @@ public class Table : MonoBehaviour
                 }
                 
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor); // Plays the music for the left turntable
+
                 FXManager.fxManagerRef.MusicStarted(plateLeft.disk.musicColor);
             }
             else
             {
                 FXManager.fxManagerRef.MusicStopped();
+
+                if (gaugeMaterial != null)
+                    gaugeMaterial.EnableKeyword("_EMISSION");
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Right); // Stops the right turntable record
             plateRight.DestroyDisk();
@@ -117,13 +136,16 @@ public class Table : MonoBehaviour
                             break;
                     }
                 }
-
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
+
                 FXManager.fxManagerRef.MusicStarted(plateRight.disk.musicColor);
             }
             else
             {
                 FXManager.fxManagerRef.MusicStopped();
+
+                if (gaugeMaterial != null)
+                    gaugeMaterial.EnableKeyword("_EMISSION");
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Left); // Stops the right turntable record
             plateLeft.DestroyDisk();
