@@ -465,6 +465,13 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: electronic12
+    clip: {fileID: 8300000, guid: de5e82038f3b88b4f924a1ba4df35f55, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
   musicSamplesB:
   - name: funk1
     clip: {fileID: 8300000, guid: fafbcffd06846ba498258df1a99191c6, type: 3}
@@ -515,6 +522,34 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: funk8
+    clip: {fileID: 8300000, guid: 46e252327caed3c4b9599bc1f932c171, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: funk9
+    clip: {fileID: 8300000, guid: c35a0313e81d15c4ead8f8fa685ceee1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: funk10
+    clip: {fileID: 8300000, guid: 96c850ddc3123da4a9ec7934bde54bb5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: funk11
+    clip: {fileID: 8300000, guid: e66cea502b0567f49a82d518977b78f1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
   musicSamplesC:
   - name: pop1
     clip: {fileID: 8300000, guid: 31922bee5216eee469996d20e17b935d, type: 3}
@@ -560,6 +595,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: pop7
     clip: {fileID: 8300000, guid: fb8e10eae1e5c404a87a995f2bc5b853, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: pop8
+    clip: {fileID: 8300000, guid: 1ea0d7a64c4049549aee8e698b86f5b2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  defaultMusicSample:
+    name: funk5
+    clip: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
     volume: 1
     pitch: 1
     loop: 0
