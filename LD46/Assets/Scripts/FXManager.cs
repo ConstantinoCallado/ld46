@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using Cinemachine;
 
 public class FXManager : MonoBehaviour
 {
     public static FXManager fxManagerRef;
 
     public static GameEnums.PartyStatus status;
+
+    public CinemachineVirtualCamera vcam;
+    public NoiseSettings myNoiseProfile1, myNoiseProfile2, myNoiseProfile3;
+    private NoiseSettings currentNoiseProfile;
 
     private float _bloomIntensity = 0f;
     private float _chromaticAberrationIntensity = 0f;
@@ -23,6 +28,8 @@ public class FXManager : MonoBehaviour
     {
         fxManagerRef = this;
         status = GameEnums.PartyStatus.Dead;
+
+        
 
         _bloom = ScriptableObject.CreateInstance<Bloom>();
         _bloom.enabled.Override(true);
@@ -49,24 +56,28 @@ public class FXManager : MonoBehaviour
                 _chromaticAberrationIntensity = 0f;
                 _saturationIntensity = -35f;
                 _brightnessIntensity = -10f;
+                vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = null;
                 break;
             case GameEnums.PartyStatus.WarmingUp:
                 _bloomIntensity = 0.15f;
                 _chromaticAberrationIntensity = 0.1f;
                 _saturationIntensity = 0f;
                 _brightnessIntensity = 0f;
+                vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = myNoiseProfile1;
                 break;
             case GameEnums.PartyStatus.Super:
                 _bloomIntensity = 0.6f;
                 _chromaticAberrationIntensity = 0.3f;
                 _saturationIntensity = 5f;
                 _brightnessIntensity = 5f;
+                vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = myNoiseProfile2;
                 break;
             case GameEnums.PartyStatus.PartyHard:
                 _bloomIntensity = 1.1f;
                 _chromaticAberrationIntensity = 0.6f;
                 _saturationIntensity = 10f;
                 _brightnessIntensity = 10f;
+                vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_NoiseProfile = myNoiseProfile3;
                 break;
             default:
                 break;
@@ -91,14 +102,14 @@ public class FXManager : MonoBehaviour
             _colorGrading.brightness.value = Mathf.Lerp(_colorGrading.brightness.value, _brightnessIntensity, 0.75f * Time.deltaTime);
 
         // Testing
-        if (Input.GetKeyDown(KeyCode.U))
-            SetPartyStatus(GameEnums.PartyStatus.Dead);
-        if (Input.GetKeyDown(KeyCode.I))
-            SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
-        if (Input.GetKeyDown(KeyCode.O))
-            SetPartyStatus(GameEnums.PartyStatus.Super);
-        if (Input.GetKeyDown(KeyCode.P))
-            SetPartyStatus(GameEnums.PartyStatus.PartyHard);
+        //if (Input.GetKeyDown(KeyCode.U))
+        //    SetPartyStatus(GameEnums.PartyStatus.Dead);mgmt
+        //if (Input.GetKeyDown(KeyCode.I))
+        //    SetPartyStatus(GameEnums.PartyStatus.WarmingUp);
+        //if (Input.GetKeyDown(KeyCode.O))
+        //    SetPartyStatus(GameEnums.PartyStatus.Super);
+        //if (Input.GetKeyDown(KeyCode.P))
+        //    SetPartyStatus(GameEnums.PartyStatus.PartyHard);
     }
 
     private void OnDestroy()

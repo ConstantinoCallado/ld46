@@ -36,7 +36,6 @@ public class Hero : MonoBehaviour
                     Disk clickedDisk = objectHit.GetComponent<Disk>();
                     lastPlateClicked.EquipDisk(clickedDisk);
                     lastPlateClicked = null;
-                    DiskManager.diskManagerRef.UseDisk(clickedDisk);
                 }
 
                 // Player clicked a plate not spinning
