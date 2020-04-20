@@ -197,5 +197,7 @@ public class Plate : MonoBehaviour
 
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorRedBad);
         AudioManager.audioManagerRef.PlaySound("sfx_needle_skip");
+        
+        FXManager.fxManagerRef.MusicStopped();
     }
 }

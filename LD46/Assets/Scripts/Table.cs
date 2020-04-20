@@ -20,7 +20,7 @@ public class Table : MonoBehaviour
 
     public void DoCrossFade()
     {
-        if(crossFader.isLeft)
+        if (crossFader.isLeft)
         {
             if (plateRight.disk)
             {
@@ -65,6 +65,11 @@ public class Table : MonoBehaviour
                 }
                 
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor); // Plays the music for the left turntable
+                FXManager.fxManagerRef.MusicStarted(plateLeft.disk.musicColor);
+            }
+            else
+            {
+                FXManager.fxManagerRef.MusicStopped();
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Right); // Stops the right turntable record
             plateRight.DestroyDisk();
@@ -114,6 +119,11 @@ public class Table : MonoBehaviour
                 }
 
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
+                FXManager.fxManagerRef.MusicStarted(plateRight.disk.musicColor);
+            }
+            else
+            {
+                FXManager.fxManagerRef.MusicStopped();
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Left); // Stops the right turntable record
             plateLeft.DestroyDisk();
