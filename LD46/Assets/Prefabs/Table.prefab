@@ -56,11 +56,9 @@ MonoBehaviour:
   - {fileID: 3680430633056951466, guid: 5dfc102211455854bae4e49e69073951, type: 3}
   - {fileID: 3680430633056951466, guid: 79595f76b6c1bcf44b4707dd8da877d8, type: 3}
   - {fileID: 3680430633056951466, guid: a3f185319cd136941a58bc54e971f07e, type: 3}
-  diskHolo:
-  - {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137, type: 3}
-  - {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137, type: 3}
-  - {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137, type: 3}
-  refreshDiskDelay: 1
+  holoDiskPrefab: {fileID: 2611484487711249921, guid: fd1ea8f432c7ca64ea6308f8dd584137,
+    type: 3}
+  refreshDiskDelay: 3
   amountDisksInDeck: 3
   disksInDeck:
   - {fileID: 3680430633778619127}
@@ -6127,6 +6125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlateR
       objectReference: {fileID: 0}
+    - target: {fileID: 5160256815235486334, guid: ef522020f45497a48863320356c2a7f5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fd00796f78bd7743a1fcc45527de2dd, type: 2}
     - target: {fileID: 5608008667082602183, guid: ef522020f45497a48863320356c2a7f5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6624,6 +6627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlateL
       objectReference: {fileID: 0}
+    - target: {fileID: 5160256815235486334, guid: ef522020f45497a48863320356c2a7f5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fd00796f78bd7743a1fcc45527de2dd, type: 2}
     - target: {fileID: 5608008667082602183, guid: ef522020f45497a48863320356c2a7f5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
