@@ -1,4 +1,5 @@
-﻿using UnityEngine.Audio;
+﻿using System.Collections;
+using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSamplesA;
     public Sound[] musicSamplesB;
     public Sound[] musicSamplesC;
+
+    public float[] scratchDelays = new float[] { 0.8f, 0.5f, 1.0f, 0.5f };
 
     void Awake()
     {
@@ -78,6 +81,32 @@ public class AudioManager : MonoBehaviour
         }
         s.source.pitch = UnityEngine.Random.Range(0.8f,1.2f);
         s.source.Play();
+    }
+
+    public void PlayScratch()
+    {
+        if (_currentTurnTableAudioSource == null)
+        {
+            return;
+        }
+        int randomId = UnityEngine.Random.Range(1,5);
+        string scratchSound = "sfx_scratch" + randomId;
+        Sound s = Array.Find(sounds, sounds => sounds.name == scratchSound);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        float origVolume = _currentTurnTableAudioSource.volume;
+        _currentTurnTableAudioSource.volume = 0;
+        StartCoroutine(ResetTurnTableVolume(_currentTurnTableAudioSource, origVolume, scratchDelays[randomId-1]));
+        s.source.Play();
+    }
+
+    IEnumerator ResetTurnTableVolume(AudioSource source, float origVolume, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        source.volume = origVolume;
     }
 
     public void StopSound(string name)

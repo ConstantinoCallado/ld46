@@ -53,10 +53,7 @@ public class Hero : MonoBehaviour
                 }
                 else if (lastPlateClicked == null && objectHit.GetComponent<Plate>() != null && objectHit.GetComponent<Plate>().isSpinning)
                 {
-                    // TODO: Think how to pause the music when teh scratch is playing
-                    int randomScratchNum = Random.Range(1,5);
-                    string scratchSound = "sfx_scratch" + randomScratchNum;
-                    AudioManager.audioManagerRef.PlaySound(scratchSound);
+                    AudioManager.audioManagerRef.PlayScratch();
                 }
                 
                 // Player clicked somewhere else
