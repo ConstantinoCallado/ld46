@@ -46,3 +46,4 @@ MonoBehaviour:
   currentState: 0
   canvas: {fileID: 0}
   dancerManager: {fileID: 0}
+  heroComponent: {fileID: 0}

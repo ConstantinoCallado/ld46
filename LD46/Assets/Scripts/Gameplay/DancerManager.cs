@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class DancerManager : MonoBehaviour
 {
+    public static DancerManager dancerManagerRef;
     public List<GameObject> dancerPrefabs;
 
     public int MAX_DANCERS = 30;
@@ -13,7 +14,7 @@ public class DancerManager : MonoBehaviour
     public Transform dancingArea;
     public Transform exitList;
 
-    private List<GameObject> dancers;
+    public List<GameObject> dancers = new List<GameObject>();
 
     public DancerSpawner spawner;
 
@@ -24,9 +25,11 @@ public class DancerManager : MonoBehaviour
     public float maxTimeWithoutMusic = 3.0f;
     private float timeWithoutMusic;
     private bool hasPlayedMusic = false;
+    public bool tutorialActive = false;
 
     void Awake()
     {
+        dancerManagerRef = this;
         dancers = new List<GameObject>();
         spawner = GetComponent<DancerSpawner>();
         dancersOnFire = 0;
@@ -58,19 +61,22 @@ public class DancerManager : MonoBehaviour
 
     void SilencePenalty()
     {
-        if (AudioManager.audioManagerRef.HasPlayedRecord() && !AudioManager.audioManagerRef.IsPlayingMusic())
+        if(!tutorialActive)
         {
-            Debug.Log("");
-            timeWithoutMusic += Time.deltaTime;
-            if (timeWithoutMusic > maxTimeWithoutMusic)
+            if (AudioManager.audioManagerRef.HasPlayedRecord() && !AudioManager.audioManagerRef.IsPlayingMusic())
             {
-                timeWithoutMusic -= maxTimeWithoutMusic;
-                TooLateChange();
+                Debug.Log("");
+                timeWithoutMusic += Time.deltaTime;
+                if (timeWithoutMusic > maxTimeWithoutMusic)
+                {
+                    timeWithoutMusic -= maxTimeWithoutMusic;
+                    TooLateChange();
+                }
             }
-        }
-        else
-        {
-            timeWithoutMusic = 0.0f;
+            else
+            {
+                timeWithoutMusic = 0.0f;
+            }
         }
     }
 
@@ -112,6 +118,20 @@ public class DancerManager : MonoBehaviour
 
             dancers.Add(dancer);
         }
+    }
+
+    public void SpawnDancerAtDestiny(Vector3 position, GameObject dancerPrefab)
+    {
+        GameObject dancer = Instantiate(dancerPrefab, position, Quaternion.identity);
+
+        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+        dancerStateComp.SetState(GameEnums.DancerStateNames.Dancing);
+        dancerStateComp.manager = this;
+        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+        dancerMoodComp.manager = this;
+        dancerMoodComp.enabled = true;
+
+        dancers.Add(dancer);
     }
 
     public void LeaveDancer(GameObject dancer)
@@ -281,4 +301,10 @@ public class DancerManager : MonoBehaviour
         }
     }
 
+    public void SetTutorialActive(bool tutorial)
+    {
+        tutorialActive = tutorial;
+
+        gameObject.GetComponent<DancerSpawner>().enabled = !tutorial;
+    }
 }

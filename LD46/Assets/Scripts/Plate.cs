@@ -75,6 +75,16 @@ public class Plate : MonoBehaviour
         }
     }
 
+    public void SetDisk(Disk theDisk)
+    {
+        disk = theDisk;
+        disk.transform.parent = anchor;
+        disk.transform.localPosition = Vector3.zero;
+        disk.transform.localRotation = Quaternion.identity;
+
+        //DiskManager.diskManagerRef.UseDisk(disk);
+    }
+
     public void EquipDisk(Disk theDisk)
     {
         if(disk)
