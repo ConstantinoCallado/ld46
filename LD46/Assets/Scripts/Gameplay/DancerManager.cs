@@ -110,13 +110,13 @@ public class DancerManager : MonoBehaviour
         {
             //SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
             Initiate.Fade("GameOverScene", Color.black, 2.0f);
+            enabled = false;
         }
-        enabled = false;
     }
 
     void CheckWinCondition()
     {
-        Debug.Log("dancersOnFire " + dancersOnFire);
+            Debug.Log("dancersOnFire " + dancersOnFire);
         if (dancersOnFire < MAX_DANCERS)
         {
              currentOnFireTime = 0.0f;
@@ -133,10 +133,9 @@ public class DancerManager : MonoBehaviour
                     dancerMoodComp.enabled = false;
                 }
                 Initiate.Fade("WinScene", Color.black, 2.0f);
-                //SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+                enabled = false;
             }
         }
-        enabled = false;
     }
 
     public void SpawnDancer()
