@@ -56,6 +56,10 @@ MonoBehaviour:
   - {fileID: 3680430633056951466, guid: 5dfc102211455854bae4e49e69073951, type: 3}
   - {fileID: 3680430633056951466, guid: 79595f76b6c1bcf44b4707dd8da877d8, type: 3}
   - {fileID: 3680430633056951466, guid: a3f185319cd136941a58bc54e971f07e, type: 3}
+  diskHolo:
+  - {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137, type: 3}
+  - {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137, type: 3}
+  - {fileID: 4701237025755430940, guid: fd1ea8f432c7ca64ea6308f8dd584137, type: 3}
   refreshDiskDelay: 1
   amountDisksInDeck: 3
   disksInDeck: []
@@ -5440,7 +5444,6 @@ MonoBehaviour:
   plateLeft: {fileID: 3429953893069254487}
   plateRight: {fileID: 9212773201492698402}
   crossFader: {fileID: 2733753064053863197}
-  crossFaderGauge: {fileID: 355644382734539740}
   blockedTime: 0
   tooSoonTime: 0.7
   perfectTime: 0.3

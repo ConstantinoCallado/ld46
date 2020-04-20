@@ -80,7 +80,13 @@ PrefabInstance:
     - target: {fileID: 4650715657132554943, guid: 398fbea998b23f2408b17ad67c5663fc,
         type: 3}
       propertyPath: m_Name
-      value: DiscHolo
+      value: DiscHolo 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4756891831114708936, guid: 398fbea998b23f2408b17ad67c5663fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4756891831114708936, guid: 398fbea998b23f2408b17ad67c5663fc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 398fbea998b23f2408b17ad67c5663fc, type: 3}
