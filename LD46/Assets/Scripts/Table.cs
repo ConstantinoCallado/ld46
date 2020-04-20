@@ -24,7 +24,10 @@ public class Table : MonoBehaviour
     void Start()
     {
         if (crossFaderGauge != null)
+        {
             gaugeMaterial = crossFaderGauge.GetComponent<Renderer>().material;
+            gaugeMaterial.DisableKeyword("_EMISSION");
+        }
     }
 
     public void DoCrossFade()
