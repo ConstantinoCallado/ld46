@@ -210,7 +210,7 @@ public class DancerMood : MonoBehaviour
         animator.SetBool("isFun", true);
         animator.SetBool("isOnFire", true);
         Debug.Log("Play wohoo!!");
-        AudioManager.audioManagerRef.PlaySound("sfx_wohoo");
+        AudioManager.audioManagerRef.PlaySoundWithRandomPitch("sfx_wohoo");
     }
 
     IEnumerator WaitAndPlayAnimation(float waitTime, string playMoodSound)
@@ -219,7 +219,7 @@ public class DancerMood : MonoBehaviour
         PlayCurrentMoodAnimation();
         if (playMoodSound.Length > 0)
         {
-            AudioManager.audioManagerRef.PlaySound(playMoodSound);
+            AudioManager.audioManagerRef.PlaySoundWithRandomPitch(playMoodSound);
         }
     }
 
@@ -232,7 +232,7 @@ public class DancerMood : MonoBehaviour
     IEnumerator WaitAndPlaySound(float waitTime, string sound)
     {
         yield return new WaitForSeconds(waitTime);
-        AudioManager.audioManagerRef.PlaySound(sound);
+        AudioManager.audioManagerRef.PlaySoundWithRandomPitch(sound);
     }
 
 }
