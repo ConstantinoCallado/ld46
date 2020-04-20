@@ -403,7 +403,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: sfx_put_record
     clip: {fileID: 8300000, guid: 62bcb9f14060e604180f30010bee2f88, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 0}
