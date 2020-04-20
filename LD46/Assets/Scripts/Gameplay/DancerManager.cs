@@ -116,7 +116,6 @@ public class DancerManager : MonoBehaviour
 
     void CheckWinCondition()
     {
-            Debug.Log("dancersOnFire " + dancersOnFire);
         if (dancersOnFire < MAX_DANCERS)
         {
              currentOnFireTime = 0.0f;
@@ -124,7 +123,6 @@ public class DancerManager : MonoBehaviour
         else
         {
             currentOnFireTime += Time.deltaTime;
-            Debug.Log("currentOnFireTime " + currentOnFireTime);
             if (currentOnFireTime >= timeToWin)
             {
                 foreach (GameObject dancer in dancers)
