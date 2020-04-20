@@ -7,8 +7,6 @@ public class DancerManager : MonoBehaviour
 {
     public List<GameObject> dancerPrefabs;
 
-    public float DANCERS_DELAY = 10f;
-
     public int MAX_DANCERS = 30;
 
     public Transform entranceList;
@@ -23,11 +21,17 @@ public class DancerManager : MonoBehaviour
 
     public int dancersOnFire;
 
+    public float maxTimeWithoutMusic = 3.0f;
+    private float timeWithoutMusic;
+    private bool hasPlayedMusic = false;
+
     void Awake()
     {
         dancers = new List<GameObject>();
         spawner = GetComponent<DancerSpawner>();
         dancersOnFire = 0;
+        timeWithoutMusic = 0;
+        hasPlayedMusic = false;
     }
 
     // Start is called before the first frame update
@@ -47,7 +51,27 @@ public class DancerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TEST_MusicChange();
+        CheatMusicChange();
+
+        SilencePenalty();
+    }
+
+    void SilencePenalty()
+    {
+        if (AudioManager.audioManagerRef.HasPlayedRecord() && !AudioManager.audioManagerRef.IsPlayingMusic())
+        {
+            Debug.Log("");
+            timeWithoutMusic += Time.deltaTime;
+            if (timeWithoutMusic > maxTimeWithoutMusic)
+            {
+                timeWithoutMusic -= maxTimeWithoutMusic;
+                TooLateChange();
+            }
+        }
+        else
+        {
+            timeWithoutMusic = 0.0f;
+        }
     }
 
     public void SpawnDancer()
@@ -141,7 +165,6 @@ public class DancerManager : MonoBehaviour
 
     public void TooSoonChange(GameEnums.MusicColor musicColor)
     {
-        Debug.Log("Too Soon!");
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
@@ -155,7 +178,6 @@ public class DancerManager : MonoBehaviour
     public void PerfectChange(GameEnums.MusicColor musicColor)
     {
         // Add screen shake here
-        Debug.Log("Perfect!");
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
@@ -166,11 +188,10 @@ public class DancerManager : MonoBehaviour
         }
     }
 
-    public void TooLateChange(GameEnums.MusicColor musicColor)
+    public void TooLateChange()
     {
         if (dancersOnFire > 0)
         {
-            Debug.Log("Noooooo ");
             AudioManager.audioManagerRef.PlaySound("sfx_nooo");
         }
 
@@ -185,8 +206,9 @@ public class DancerManager : MonoBehaviour
         }
     }
 
-    void TEST_MusicChange()
+    void CheatMusicChange()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Q))
         {
             TooSoonChange(GameEnums.MusicColor.Cyan);
@@ -213,17 +235,17 @@ public class DancerManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            TooLateChange(GameEnums.MusicColor.Cyan);
+            TooLateChange();
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            TooLateChange(GameEnums.MusicColor.Magenta);
+            TooLateChange();
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
-            TooLateChange(GameEnums.MusicColor.Yellow);
+            TooLateChange();
         }
-
+#endif
     }
 
     public void IncreaseDancersOnFire(int quantity)
