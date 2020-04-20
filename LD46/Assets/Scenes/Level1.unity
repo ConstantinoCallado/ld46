@@ -816,46 +816,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
-      propertyPath: sounds.Array.data[1].outputAudioMixerGroup
+      propertyPath: defaultMusicSample.clip
       value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
+      objectReference: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
     - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
-      propertyPath: sounds.Array.data[18].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[8].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[16].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[17].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[5].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: sounds.Array.data[6].outputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 2141454997580744449, guid: 6ab2a499510a4f745b2ce1bb900ed64f,
-        type: 2}
+      propertyPath: defaultMusicSample.name
+      value: funk5
+      objectReference: {fileID: 0}
     - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
       propertyPath: m_RootOrder
