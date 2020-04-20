@@ -242,13 +242,13 @@ MonoBehaviour:
   sounds:
   - name: sfx_awww
     clip: {fileID: 8300000, guid: 07560148a79f94545bbc1e46c7daf7cc, type: 3}
-    volume: 1
-    pitch: 3
+    volume: 0.1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: sfx_boo
     clip: {fileID: 8300000, guid: 94e406d72388adc45a6bb1795d71e9e9, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -290,7 +290,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: sfx_nooo
     clip: {fileID: 8300000, guid: 948904340ce5fce4eb127a12c7e4d922, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -338,13 +338,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: sfx_wohoo
     clip: {fileID: 8300000, guid: 529cae4b853a325409370940c6a701d8, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: sfx_yeah
     clip: {fileID: 8300000, guid: 762d808dbb2e9604493085f6dd367a51, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -507,3 +507,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  scratchDelays:
+  - 0.8
+  - 0.5
+  - 1
+  - 0.5
