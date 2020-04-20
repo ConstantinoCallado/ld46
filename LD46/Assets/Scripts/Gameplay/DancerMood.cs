@@ -245,7 +245,6 @@ public class DancerMood : MonoBehaviour
 
     void PlayOnFireAnimation()
     {
-        print("PlayOnFireAnimation");
         animator.SetBool("isBored", false);
         animator.SetBool("isFun", true);
         animator.SetBool("isOnFire", true);
