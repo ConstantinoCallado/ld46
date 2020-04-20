@@ -155,6 +155,7 @@ public class DancerManager : MonoBehaviour
 
     public void PerfectChange(GameEnums.MusicColor musicColor)
     {
+        // Add screen shake here
         Debug.Log("Perfect!");
         foreach (GameObject dancer in dancers)
         {
