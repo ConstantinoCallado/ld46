@@ -25,8 +25,11 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSamplesB;
     public Sound[] musicSamplesC;
 
+    public Sound defaultMusicSample;
+
     public float[] scratchDelays = new float[] { 0.8f, 0.5f, 1.0f, 0.5f };
     public float minTimeBetweenScratches = 1.1f;
+
     private float timeBetweenScratches = 0.0f;
     private bool playedRecord = false;
 
@@ -52,6 +55,8 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
         playedRecord = false;
         timeBetweenScratches = minTimeBetweenScratches;
@@ -148,13 +153,31 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
-    public void PlayRecord(GameEnums.TurnTable turntable, GameEnums.MusicColor recordType) 
+    public void PlayRecord(GameEnums.TurnTable turntable, GameEnums.MusicColor recordType)
+    {
+        Sound musicSample = GetMusicSample(recordType);
+
+        if (musicSample == null)
+            return;
+
+        PlaySample(turntable, musicSample);
+    }
+
+    public void PlayDefaultRecord(GameEnums.TurnTable turntable)
+    {
+        if (defaultMusicSample != null)
+            PlaySample(turntable, defaultMusicSample);
+    }
+
+    private void PlaySample(GameEnums.TurnTable turntable, Sound sample) 
     {
         AudioSource turntableAudioSource = null;
         AudioSource otherTurntableAudioSource = null;
-        Sound musicSample = null;
 
-        switch (turntable) 
+        if (sample == null)
+            return;
+
+        switch (turntable)
         {
             case GameEnums.TurnTable.Left:
                 turntableAudioSource = _leftTurnTableAudioSource;
@@ -169,23 +192,18 @@ public class AudioManager : MonoBehaviour
                 break;
         }
 
-        if (turntableAudioSource == null || otherTurntableAudioSource == null) 
+        if (turntableAudioSource == null || otherTurntableAudioSource == null)
         {
             Debug.LogWarning("An AudioSource component for the turntable is missing. Please add both AudioSource components to the AudioManager object.");
             return;
         }
 
-        musicSample = GetMusicSample(recordType);
-
-        if (musicSample == null)
-            return;
-
         otherTurntableAudioSource.Stop(); // TO DO : Should be crossfaded
 
-        turntableAudioSource.clip = musicSample.clip;
-        turntableAudioSource.volume = musicSample.volume;
-        turntableAudioSource.pitch = musicSample.pitch;
-        turntableAudioSource.loop = musicSample.loop;
+        turntableAudioSource.clip = sample.clip;
+        turntableAudioSource.volume = sample.volume;
+        turntableAudioSource.pitch = sample.pitch;
+        turntableAudioSource.loop = sample.loop;
         turntableAudioSource.Play();
 
         playedRecord = true;

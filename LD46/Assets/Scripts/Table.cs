@@ -8,9 +8,6 @@ public class Table : MonoBehaviour
     public Plate plateRight;
     public CrossFader crossFader;
 
-    public GameObject crossFaderGauge;
-    private Material gaugeMaterial = null;
-
     public float blockedTime = 0.2f;
     public float tooSoonTime = 0.5f;
     public float perfectTime = 0.3f;
@@ -23,18 +20,11 @@ public class Table : MonoBehaviour
 
     void Start()
     {
-        if (crossFaderGauge != null)
-        {
-            gaugeMaterial = crossFaderGauge.GetComponent<Renderer>().material;
-            gaugeMaterial.DisableKeyword("_EMISSION");
-        }
+       
     }
 
     public void DoCrossFade()
     {
-        if(gaugeMaterial != null)
-            gaugeMaterial.DisableKeyword("_EMISSION");
-
         if (crossFader.isLeft)
         {
             if (plateRight.disk)
@@ -86,9 +76,6 @@ public class Table : MonoBehaviour
             else
             {
                 FXManager.fxManagerRef.MusicStopped();
-
-                if (gaugeMaterial != null)
-                    gaugeMaterial.EnableKeyword("_EMISSION");
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Right); // Stops the right turntable record
             plateRight.DestroyDisk();
@@ -143,9 +130,6 @@ public class Table : MonoBehaviour
             else
             {
                 FXManager.fxManagerRef.MusicStopped();
-
-                if (gaugeMaterial != null)
-                    gaugeMaterial.EnableKeyword("_EMISSION");
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Left); // Stops the right turntable record
             plateLeft.DestroyDisk();
