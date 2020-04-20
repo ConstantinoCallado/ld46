@@ -16,10 +16,7 @@ public class Table : MonoBehaviour
     public ParticleSystem particleSmooth;
     public ParticleSystem particleTooLate;
 
-    void Start()
-    {
-       
-    }
+    private int numRecordsPlayed = 0;
 
     public void DoCrossFade()
     {
@@ -72,6 +69,7 @@ public class Table : MonoBehaviour
                 }
                 
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor); // Plays the music for the left turntable
+                numRecordsPlayed++;
 
                 FXManager.fxManagerRef.MusicStarted(plateLeft.disk.musicColor);
             }
@@ -130,7 +128,15 @@ public class Table : MonoBehaviour
                     DancerManager.dancerManagerRef.PerfectChange(plateRight.disk.musicColor);
                 }
 
-                AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
+                if(numRecordsPlayed > 0)
+                {
+                    AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
+                }
+                else
+                {
+                    AudioManager.audioManagerRef.PlayDefaultRecord(GameEnums.TurnTable.Right);  // Plays the music for the right turntable
+                }
+                numRecordsPlayed++;
 
                 FXManager.fxManagerRef.MusicStarted(plateRight.disk.musicColor);
             }

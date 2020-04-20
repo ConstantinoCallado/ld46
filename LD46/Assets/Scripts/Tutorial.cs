@@ -30,7 +30,7 @@ public class Tutorial : MonoBehaviour
     void Stage0()
     {
         DancerManager.dancerManagerRef.tutorialActive = true;
-        DancerManager.dancerManagerRef.SpawnDancerAtDestiny(new Vector3(0, 1, 5.5f), initialCustomerPrefab);
+        DancerManager.dancerManagerRef.SpawnDancerAtDestiny(new Vector3(0.5f, 1, 5.5f), initialCustomerPrefab);
         moodInitialCustomer = DancerManager.dancerManagerRef.dancers[0].GetComponent<DancerMood>();
 
         StartCoroutine(Stage1());
@@ -83,7 +83,7 @@ public class Tutorial : MonoBehaviour
         crossFader.gameObject.GetComponent<Collider>().enabled = false;
         plateRight.gameObject.GetComponent<Collider>().enabled = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         plateLeft.gameObject.GetComponent<Collider>().enabled = true;
         onboardingText3.gameObject.SetActive(true);
 

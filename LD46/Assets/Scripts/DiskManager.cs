@@ -21,11 +21,11 @@ public class DiskManager : MonoBehaviour
     void Start()
     {
         diskPool = new List<Disk>(playList);
-        disksInDeck = new List<Disk>(amountDisksInDeck);
+        //disksInDeck = new List<Disk>(amountDisksInDeck);
 
         for (int i = 0; i < amountDisksInDeck; i++)
         {
-            SpawnDiskAtDeck(i);
+            //SpawnDiskAtDeck(i);
         }
     }
 

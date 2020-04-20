@@ -623,7 +623,7 @@ MonoBehaviour:
     source: {fileID: 0}
   defaultMusicSample:
     name: funk5
-    clip: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
+    clip: {fileID: 8300000, guid: 7259d1e6295c5d3428a41b4b3827bceb, type: 3}
     volume: 1
     pitch: 1
     loop: 0
