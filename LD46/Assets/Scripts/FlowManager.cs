@@ -28,12 +28,6 @@ public class FlowManager : MonoBehaviour
         OnStateStart();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void ChangeScene(GameEnums.FlowStates nextState)
     {
         currentState = nextState;

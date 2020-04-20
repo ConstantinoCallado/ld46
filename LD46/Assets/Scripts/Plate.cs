@@ -104,6 +104,8 @@ public class Plate : MonoBehaviour
 
         disk.transform.parent = null;
 
+        DiskManager.diskManagerRef.UseDisk(disk);
+
         while (Time.time <= launchStart + launchingDuration)
         {
             disk.transform.position = Vector3.Lerp(disk.transform.position, anchor.transform.position, (Time.time - launchStart) / launchingDuration);
@@ -116,7 +118,9 @@ public class Plate : MonoBehaviour
         disk.transform.localPosition = Vector3.zero;
         disk.transform.localRotation = Quaternion.identity;
 
-        DiskManager.diskManagerRef.UseDisk(disk);
+        AudioManager.audioManagerRef.PlaySound("sfx_put_record");
+
+        //DiskManager.diskManagerRef.UseDisk(disk);
     }
 
     public void DestroyDisk()
