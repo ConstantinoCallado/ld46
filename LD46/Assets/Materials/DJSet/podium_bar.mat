@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: podium_bar
-  m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: a6da473b89caeb1409bac856668af764, type: 3}
+  m_ShaderKeywords: TCP2_SPEC_TOON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -73,9 +73,9 @@ Material:
     - _Parallax: 0.02
     - _RampSmooth: 0.01
     - _RampThreshold: 1
-    - _Shininess: 0.1
+    - _Shininess: 0.077
     - _SmoothnessTextureChannel: 0
-    - _SpecSmooth: 0.05
+    - _SpecSmooth: 0.494
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
@@ -83,6 +83,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.41509432, g: 0.34769228, b: 0.12726949, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
-    - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
-    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _HColor: {r: 1, g: 0.8042355, b: 0, a: 1}
+    - _SColor: {r: 0.49056602, g: 0.3885911, b: 0.2707369, a: 1}
+    - _SpecColor: {r: 0.6981132, g: 0.51006436, b: 0.23380208, a: 1}

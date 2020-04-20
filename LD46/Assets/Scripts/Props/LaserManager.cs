@@ -114,7 +114,6 @@ public class LaserManager : MonoBehaviour
 
     public void MusicStarted(GameEnums.MusicColor musicColor)
     {
-        Debug.Log("Music changed to " + musicColor);
         Color cyan = new Vector4(0f, 2f, 1.5f, 1.0f);
         Color magenta = new Vector4(2f, 0f, 1.6f, 1f);
         Color yellow = new Vector4(2f, 1.5f, 0f, 1.0f);

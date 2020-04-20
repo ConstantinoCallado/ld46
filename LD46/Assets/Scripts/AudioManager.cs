@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSamplesC;
 
     public float[] scratchDelays = new float[] { 0.8f, 0.5f, 1.0f, 0.5f };
+    private bool playedRecord = false;
 
     void Awake()
     {
@@ -50,6 +51,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        playedRecord = false;
     }
 
     void Start()
@@ -58,6 +60,16 @@ public class AudioManager : MonoBehaviour
         musicSamplesAIndex = UnityEngine.Random.Range(0, musicSamplesA.Length - 1);
         musicSamplesBIndex = UnityEngine.Random.Range(0, musicSamplesB.Length - 1);
         musicSamplesCIndex = UnityEngine.Random.Range(0, musicSamplesC.Length - 1);
+    }
+
+    public bool HasPlayedRecord()
+    {
+        return playedRecord;
+    }
+
+    public bool IsPlayingMusic()
+    {
+        return _leftTurnTableAudioSource.isPlaying || _rightTurnTableAudioSource.isPlaying;
     }
 
     public void PlaySound(string name) 
@@ -79,7 +91,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        s.source.pitch = UnityEngine.Random.Range(0.8f,1.2f);
+        s.source.pitch = UnityEngine.Random.Range(0.9f,1.3f);
         s.source.Play();
     }
 
@@ -160,6 +172,7 @@ public class AudioManager : MonoBehaviour
         turntableAudioSource.loop = musicSample.loop;
         turntableAudioSource.Play();
 
+        playedRecord = true;
         _currentTurnTableAudioSource = turntableAudioSource;
     }
 

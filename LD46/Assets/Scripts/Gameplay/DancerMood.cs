@@ -209,7 +209,6 @@ public class DancerMood : MonoBehaviour
         animator.SetBool("isBored", false);
         animator.SetBool("isFun", true);
         animator.SetBool("isOnFire", true);
-        Debug.Log("Play wohoo!!");
         AudioManager.audioManagerRef.PlaySoundWithRandomPitch("sfx_wohoo");
     }
 

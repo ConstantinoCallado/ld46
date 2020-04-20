@@ -155,6 +155,7 @@ public class Plate : MonoBehaviour
         Color colorGreenPerfect = new Vector4(0f, 1f, 0f, 1.0f);
         Color colorRedBad = new Vector4(1f, 0f, 0f, 1.0f);
 
+        needleTrail.GetComponent<Renderer>().material.SetColor("_Color", colorWhiteNeutral);
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorWhiteNeutral);
 
         yield return new WaitForEndOfFrame();
@@ -185,6 +186,7 @@ public class Plate : MonoBehaviour
         }
 
         musicStatus = GameEnums.MusicStatus.Perfect;
+        needleTrail.GetComponent<Renderer>().material.SetColor("_Color", colorGreenPerfect);
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorGreenPerfect);
 
         while (Time.time <= startSongTime + songDuration * (table.tooSoonTime + table.blockedTime + table.perfectTime))
@@ -195,7 +197,9 @@ public class Plate : MonoBehaviour
 
         musicStatus = GameEnums.MusicStatus.TooLate;
 
+        needleTrail.GetComponent<Renderer>().material.SetColor("_Color", colorRedBad);
         needleTrail.GetComponent<Renderer>().material.SetColor("_EmissionColor", colorRedBad);
+        //colorRedBad
         AudioManager.audioManagerRef.PlaySound("sfx_needle_skip");
         
         FXManager.fxManagerRef.MusicStopped();

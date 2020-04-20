@@ -64,7 +64,7 @@ public class Table : MonoBehaviour
                             dancerManager.PerfectChange(plateLeft.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
-                            dancerManager.TooLateChange(plateLeft.disk.musicColor);
+                            dancerManager.TooLateChange();
                             break;
                     }
                 }
@@ -119,7 +119,7 @@ public class Table : MonoBehaviour
                             dancerManager.PerfectChange(plateRight.disk.musicColor);
                             break;
                         case GameEnums.MusicStatus.TooLate:
-                            dancerManager.TooLateChange(plateRight.disk.musicColor);
+                            dancerManager.TooLateChange();
                             break;
                     }
                 }

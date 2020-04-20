@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: equ_info
+    second: {fileID: 2100000, guid: eb12e6c2b0e27a44cb3751aa46b02b49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: equ_switch
     second: {fileID: 2100000, guid: f11c39d5b47fda24db6b251a0a6d0d05, type: 2}
   - first:
@@ -18,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: pletina_base
-    second: {fileID: 2100000, guid: 020d31db7676f194abfea5b4e5d850b8, type: 2}
+    second: {fileID: 2100000, guid: 7ac63a43ed85cb947b6485393f3ab5a8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
