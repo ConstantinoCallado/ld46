@@ -58,7 +58,7 @@ public class Table : MonoBehaviour
             if (plateLeft.disk)
             {
                 plateLeft.StartSpinning();
-                dancerManager.PerfectChange(plateLeft.disk.musicColor);
+                //dancerManager.PerfectChange(plateLeft.disk.musicColor);
 
                 if(plateRight.disk)
                 {
@@ -80,6 +80,12 @@ public class Table : MonoBehaviour
                 }
                 
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Left, plateLeft.disk.musicColor); // Plays the music for the left turntable
+
+                FXManager.fxManagerRef.MusicStarted(plateLeft.disk.musicColor);
+            }
+            else
+            {
+                FXManager.fxManagerRef.MusicStopped();
 
                 if (gaugeMaterial != null)
                     gaugeMaterial.EnableKeyword("_EMISSION");
@@ -132,9 +138,14 @@ public class Table : MonoBehaviour
                 }
                 AudioManager.audioManagerRef.PlayRecord(GameEnums.TurnTable.Right, plateRight.disk.musicColor);  // Plays the music for the right turntable
 
+                FXManager.fxManagerRef.MusicStarted(plateRight.disk.musicColor);
+            }
+            else
+            {
+                FXManager.fxManagerRef.MusicStopped();
+
                 if (gaugeMaterial != null)
                     gaugeMaterial.EnableKeyword("_EMISSION");
-
             }
             AudioManager.audioManagerRef.StopRecord(GameEnums.TurnTable.Left); // Stops the right turntable record
             plateLeft.DestroyDisk();

@@ -32,6 +32,7 @@ public class Hero : MonoBehaviour
                 // If player clicked a disk after clicking a plate
                 if (lastPlateClicked != null && objectHit.GetComponent<Disk>() != null)
                 {
+                    
                     // Equip disk!
                     Disk clickedDisk = objectHit.GetComponent<Disk>();
                     lastPlateClicked.EquipDisk(clickedDisk);
@@ -50,7 +51,10 @@ public class Hero : MonoBehaviour
                     CrossFader crossFader = objectHit.GetComponent<CrossFader>();
                     crossFader.Interact();
                 }
-
+                else if (lastPlateClicked == null && objectHit.GetComponent<Plate>() != null && objectHit.GetComponent<Plate>().isSpinning)
+                {
+                    AudioManager.audioManagerRef.PlayScratch();
+                }
                 
                 // Player clicked somewhere else
                 else

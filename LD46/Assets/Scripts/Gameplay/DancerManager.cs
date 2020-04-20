@@ -97,7 +97,6 @@ public class DancerManager : MonoBehaviour
         dancerStateComp.SetState(GameEnums.DancerStateNames.Leaving);
         dancerStateComp.MoveToDestination(dancerExit);
         DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
-        dancerMoodComp.enabled = true;
         dancerMoodComp.PlayWalkAnimation();
     }
 
@@ -169,8 +168,13 @@ public class DancerManager : MonoBehaviour
 
     public void TooLateChange(GameEnums.MusicColor musicColor)
     {
-        Debug.Log("Too late!");
-        DancersOnFireCounter.dancersOnFire = 0;
+        if (dancersOnFire > 0)
+        {
+            Debug.Log("Noooooo ");
+            AudioManager.audioManagerRef.PlaySound("sfx_nooo");
+        }
+
+        dancersOnFire = 0;
         foreach (GameObject dancer in dancers)
         {
             DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
@@ -254,4 +258,5 @@ public class DancerManager : MonoBehaviour
             FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.PartyHard);
         }
     }
+
 }

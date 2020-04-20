@@ -7,7 +7,6 @@ using Cinemachine;
 public class FXManager : MonoBehaviour
 {
     public static FXManager fxManagerRef;
-
     public static GameEnums.PartyStatus status;
 
     public CinemachineVirtualCamera vcam;
@@ -115,5 +114,21 @@ public class FXManager : MonoBehaviour
     private void OnDestroy()
     {
         RuntimeUtilities.DestroyVolume(_volume, true, true);
+    }
+
+    public void MusicStopped()
+    {
+        if(LaserManager.laserManagerRef)
+        {
+            LaserManager.laserManagerRef.MusicStopped();
+        }
+    }
+
+    public void MusicStarted(GameEnums.MusicColor musicColor)
+    {
+        if (LaserManager.laserManagerRef)
+        {
+            LaserManager.laserManagerRef.MusicStarted(musicColor);
+        }
     }
 }
