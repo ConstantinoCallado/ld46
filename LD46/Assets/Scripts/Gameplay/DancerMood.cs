@@ -126,6 +126,7 @@ public class DancerMood : MonoBehaviour
                 int numericMood = (int)currentMood + reaction;
                 if (numericMood >= (int)GameEnums.MoodStates.OnFire)
                 {
+                    Debug.Log("IncreaseDancersOnFire");
                     manager.IncreaseDancersOnFire(1);
                 }
                 SetMoodFromInt(numericMood);
@@ -245,7 +246,6 @@ public class DancerMood : MonoBehaviour
 
     void PlayOnFireAnimation()
     {
-        print("PlayOnFireAnimation");
         animator.SetBool("isBored", false);
         animator.SetBool("isFun", true);
         animator.SetBool("isOnFire", true);

@@ -6,6 +6,7 @@ public class DiskManager : MonoBehaviour
 {
     public static DiskManager diskManagerRef;
     public List<Disk> playList;
+    public List<Disk> diskHolo;
     private List<Disk> diskPool = new List<Disk>();
     public int refreshDiskDelay = 2;
     public int amountDisksInDeck = 3;
@@ -47,6 +48,18 @@ public class DiskManager : MonoBehaviour
         diskAnchors[position].gameObject.SetActive(false);
     }
 
+
+    public Disk SpawnHoloAtDeck(int position)
+    {
+        Disk instantiatedDisk = GameObject.Instantiate(diskHolo[position], transform.position, Quaternion.identity);
+ 
+        instantiatedDisk.transform.parent = diskAnchors[position].transform;
+        instantiatedDisk.transform.localPosition = Vector3.zero;
+        instantiatedDisk.transform.localRotation = Quaternion.identity;
+        //diskAnchors[position].gameObject.SetActive(false);
+        return instantiatedDisk;
+    }
+
     private Disk InstantiateDiskFromList()
     {
         if(diskPool.Count == 0)
@@ -65,13 +78,18 @@ public class DiskManager : MonoBehaviour
     public void UseDisk(Disk disk)
     {
         int position = disksInDeck.IndexOf(disk);
-        disksInDeck[position] = null;
+        //disksInDeck[position] = null;
+        disksInDeck[position] = SpawnHoloAtDeck(position);
         StartCoroutine(RefillDiskAtPosition(position));
     }
 
     private IEnumerator RefillDiskAtPosition(int position)
     {
         yield return new WaitForSeconds(refreshDiskDelay);
+        if (disksInDeck[position] != null) 
+        {
+            Destroy(disksInDeck[position].gameObject);
+        }
         SpawnDiskAtDeck(position);
     }
 

@@ -108,12 +108,15 @@ public class DancerManager : MonoBehaviour
     {
         if (dancers.Count == 0)
         {
-            SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
+            //SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
+            Initiate.Fade("GameOverScene", Color.black, 2.0f);
+            enabled = false;
         }
     }
 
     void CheckWinCondition()
     {
+            Debug.Log("dancersOnFire " + dancersOnFire);
         if (dancersOnFire < MAX_DANCERS)
         {
              currentOnFireTime = 0.0f;
@@ -121,9 +124,16 @@ public class DancerManager : MonoBehaviour
         else
         {
             currentOnFireTime += Time.deltaTime;
+            Debug.Log("currentOnFireTime " + currentOnFireTime);
             if (currentOnFireTime >= timeToWin)
             {
-                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+                foreach (GameObject dancer in dancers)
+                {
+                    DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+                    dancerMoodComp.enabled = false;
+                }
+                Initiate.Fade("WinScene", Color.black, 2.0f);
+                enabled = false;
             }
         }
     }
