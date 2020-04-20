@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class DancerManager : MonoBehaviour
 {
+    public static DancerManager dancerManagerRef;
     public List<GameObject> dancerPrefabs;
 
     public int MAX_DANCERS = 30;
@@ -13,7 +15,7 @@ public class DancerManager : MonoBehaviour
     public Transform dancingArea;
     public Transform exitList;
 
-    private List<GameObject> dancers;
+    public List<GameObject> dancers = new List<GameObject>();
 
     public DancerSpawner spawner;
 
@@ -24,14 +26,20 @@ public class DancerManager : MonoBehaviour
     public float maxTimeWithoutMusic = 3.0f;
     private float timeWithoutMusic;
     private bool hasPlayedMusic = false;
+    public bool tutorialActive = false;
+
+    public float timeToWin = 30.0f;
+    private float currentOnFireTime = 0.0f;
 
     void Awake()
     {
+        dancerManagerRef = this;
         dancers = new List<GameObject>();
         spawner = GetComponent<DancerSpawner>();
         dancersOnFire = 0;
         timeWithoutMusic = 0;
         hasPlayedMusic = false;
+        currentOnFireTime = 0.0f;
     }
 
     // Start is called before the first frame update
@@ -51,26 +59,72 @@ public class DancerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheatMusicChange();
+        CheckLoseCondition();
+        CheckWinCondition();
+        CheckSilence();
 
-        SilencePenalty();
+        CheatMusicChange();
+    }
+
+    void CheckSilence()
+    {
+        if(!tutorialActive)
+        {
+            if (AudioManager.audioManagerRef.HasPlayedRecord() && !AudioManager.audioManagerRef.IsPlayingMusic())
+        	{
+            	timeWithoutMusic += Time.deltaTime;
+            	if (timeWithoutMusic > maxTimeWithoutMusic)
+            	{
+                	timeWithoutMusic -= maxTimeWithoutMusic;
+                	SilencePenalty();
+            	}
+        	}
+        	else
+        	{
+            	timeWithoutMusic = 0.0f;
+        	}
+        }
     }
 
     void SilencePenalty()
     {
-        if (AudioManager.audioManagerRef.HasPlayedRecord() && !AudioManager.audioManagerRef.IsPlayingMusic())
+        if (dancersOnFire > 0)
         {
-            Debug.Log("");
-            timeWithoutMusic += Time.deltaTime;
-            if (timeWithoutMusic > maxTimeWithoutMusic)
+            AudioManager.audioManagerRef.PlaySound("sfx_nooo");
+        }
+
+        dancersOnFire = 0;
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
             {
-                timeWithoutMusic -= maxTimeWithoutMusic;
-                TooLateChange();
+                dancerMoodComp.SilencePenalty();
             }
+        }
+    }
+
+    void CheckLoseCondition()
+    {
+        if (dancers.Count == 0)
+        {
+            SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
+        }
+    }
+
+    void CheckWinCondition()
+    {
+        if (dancersOnFire < MAX_DANCERS)
+        {
+             currentOnFireTime = 0.0f;
         }
         else
         {
-            timeWithoutMusic = 0.0f;
+            currentOnFireTime += Time.deltaTime;
+            if (currentOnFireTime >= timeToWin)
+            {
+                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+            }
         }
     }
 
@@ -112,6 +166,20 @@ public class DancerManager : MonoBehaviour
 
             dancers.Add(dancer);
         }
+    }
+
+    public void SpawnDancerAtDestiny(Vector3 position, GameObject dancerPrefab)
+    {
+        GameObject dancer = Instantiate(dancerPrefab, position, Quaternion.identity);
+
+        DancerState dancerStateComp = dancer.GetComponent<DancerState>();
+        dancerStateComp.SetState(GameEnums.DancerStateNames.Dancing);
+        dancerStateComp.manager = this;
+        DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+        dancerMoodComp.manager = this;
+        dancerMoodComp.enabled = true;
+
+        dancers.Add(dancer);
     }
 
     public void LeaveDancer(GameObject dancer)
@@ -281,4 +349,10 @@ public class DancerManager : MonoBehaviour
         }
     }
 
+    public void SetTutorialActive(bool tutorial)
+    {
+        tutorialActive = tutorial;
+
+        gameObject.GetComponent<DancerSpawner>().enabled = !tutorial;
+    }
 }
