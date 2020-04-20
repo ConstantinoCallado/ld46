@@ -100,16 +100,19 @@ public class Plate : MonoBehaviour
     IEnumerator CorotuineEquipDisk()
     {
         float launchStart = Time.time;
-        float launchingDuration = 1.5f;
+        float launchingDuration = 0.25f;
 
         disk.transform.parent = null;
 
         DiskManager.diskManagerRef.UseDisk(disk);
 
+        Vector3 initialPosition = disk.transform.position;
+        Quaternion initialRotation = disk.transform.rotation;
+
         while (Time.time <= launchStart + launchingDuration)
         {
-            disk.transform.position = Vector3.Lerp(disk.transform.position, anchor.transform.position, (Time.time - launchStart) / launchingDuration);
-            disk.transform.rotation = Quaternion.Lerp(disk.transform.rotation, anchor.rotation, (Time.time - launchStart) / launchingDuration);
+            disk.transform.position = Vector3.Lerp(initialPosition, anchor.transform.position, (Time.time - launchStart) / launchingDuration);
+            disk.transform.rotation = Quaternion.Lerp(initialRotation, anchor.rotation, (Time.time - launchStart) / launchingDuration);
 
             yield return new WaitForEndOfFrame();
         }
