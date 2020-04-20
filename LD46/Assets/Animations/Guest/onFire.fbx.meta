@@ -21,18 +21,15 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
       in configuration does not match rotation in animation file:\n\t'guest_rig:L_ball_JNT'
-      : rotation error = 0.827624 deg\n\t'guest_rig:R_ball_JNT' : rotation error
-      = 0.818330 deg\n"
+      : rotation error = 0.819820 deg\n\t'guest_rig:R_ball_JNT' : rotation error
+      = 0.814960 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'guest_rig:neck_JNT' has translation animation
       that will be discarded.\n\t'guest_rig:L_shoulder_JNT' has translation animation
       that will be discarded.\n\t'guest_rig:R_shoulder_JNT' has translation animation
-      that will be discarded.\n\t'guest_rig:pelvis_JNT' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'guest_rig:L_ball_JNT'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'guest_rig:R_ball_JNT'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+      that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -73,7 +70,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
