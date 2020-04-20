@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class DancerManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class DancerManager : MonoBehaviour
     private float timeWithoutMusic;
     private bool hasPlayedMusic = false;
 
+    public float timeToWin = 30.0f;
+    private float currentOnFireTime = 0.0f;
+
     void Awake()
     {
         dancers = new List<GameObject>();
@@ -32,6 +36,7 @@ public class DancerManager : MonoBehaviour
         dancersOnFire = 0;
         timeWithoutMusic = 0;
         hasPlayedMusic = false;
+        currentOnFireTime = 0.0f;
     }
 
     // Start is called before the first frame update
@@ -51,26 +56,69 @@ public class DancerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheatMusicChange();
+        CheckLoseCondition();
+        CheckWinCondition();
+        CheckSilence();
 
-        SilencePenalty();
+        CheatMusicChange();
     }
 
-    void SilencePenalty()
+    void CheckSilence()
     {
         if (AudioManager.audioManagerRef.HasPlayedRecord() && !AudioManager.audioManagerRef.IsPlayingMusic())
         {
-            Debug.Log("");
             timeWithoutMusic += Time.deltaTime;
             if (timeWithoutMusic > maxTimeWithoutMusic)
             {
                 timeWithoutMusic -= maxTimeWithoutMusic;
-                TooLateChange();
+                SilencePenalty();
             }
         }
         else
         {
             timeWithoutMusic = 0.0f;
+        }
+    }
+
+    void SilencePenalty()
+    {
+        if (dancersOnFire > 0)
+        {
+            AudioManager.audioManagerRef.PlaySound("sfx_nooo");
+        }
+
+        dancersOnFire = 0;
+        foreach (GameObject dancer in dancers)
+        {
+            DancerMood dancerMoodComp = dancer.GetComponent<DancerMood>();
+            if (dancerMoodComp.enabled)
+            {
+                dancerMoodComp.SilencePenalty();
+            }
+        }
+    }
+
+    void CheckLoseCondition()
+    {
+        if (dancers.Count == 0)
+        {
+            SceneManager.LoadScene("GameOverScene", LoadSceneMode.Single);
+        }
+    }
+
+    void CheckWinCondition()
+    {
+        if (dancersOnFire < MAX_DANCERS)
+        {
+             currentOnFireTime = 0.0f;
+        }
+        else
+        {
+            currentOnFireTime += Time.deltaTime;
+            if (currentOnFireTime >= timeToWin)
+            {
+                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+            }
         }
     }
 

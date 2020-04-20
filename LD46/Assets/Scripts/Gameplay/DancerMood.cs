@@ -19,6 +19,7 @@ public class DancerMood : MonoBehaviour
 
     public ParticleSystem likeParticle;
     public ParticleSystem hateParticle;
+    public ParticleSystem silenceParticle;
 
     public DancerState dancerState;
 
@@ -85,6 +86,26 @@ public class DancerMood : MonoBehaviour
         StartCoroutine(WaitAndPlayAnimation(waitValue, playMoodSound));
     }
 
+    public void SetSilenceMood(int numericMood)
+    {
+        float waitValue = Random.value;
+        if (numericMood < (int)GameEnums.MoodStates.RageQuit)
+        {
+            numericMood = (int)GameEnums.MoodStates.RageQuit;
+        }
+        else if (numericMood > (int)GameEnums.MoodStates.OnFire)
+        {
+            numericMood = (int)GameEnums.MoodStates.OnFire;
+        }
+        currentMood = (GameEnums.MoodStates)numericMood;
+        if (currentMood == GameEnums.MoodStates.RageQuit)
+        {
+            Leave();
+        }
+        silenceParticle.Emit(1);
+        StartCoroutine(WaitAndPlayAnimation(waitValue, ""));
+    }
+
     public void MusicChanged(GameEnums.MusicColor receivedColor)
     {
         bool affectedByMusic = dancerState.stateName == GameEnums.DancerStateNames.MoodActive ||
@@ -135,6 +156,18 @@ public class DancerMood : MonoBehaviour
             manager.SetDancersOnFire(0);
             int numericMood = (int)currentMood - 1;
             SetMoodFromInt(numericMood);
+        }
+    }
+
+    public void SilencePenalty()
+    {
+        bool affectedByMusic = dancerState.stateName == GameEnums.DancerStateNames.MoodActive ||
+          dancerState.stateName == GameEnums.DancerStateNames.Dancing;
+        if (affectedByMusic)
+        {
+            manager.SetDancersOnFire(0);
+            int numericMood = (int)currentMood - 1;
+            SetSilenceMood(numericMood);
         }
     }
 
