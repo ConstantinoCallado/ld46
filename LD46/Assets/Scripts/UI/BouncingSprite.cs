@@ -35,7 +35,7 @@ public class BouncingSprite : MonoBehaviour
         if (currentDuration <= bounceDuration)
         {
             currentDuration += Time.deltaTime;
-            transform.localPosition += Vector3.up * shakeMagnitude * sign;
+            transform.position += transform.up * shakeMagnitude * sign * Time.deltaTime;
         }
         else
         {
