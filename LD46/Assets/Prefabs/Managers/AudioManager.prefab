@@ -387,6 +387,20 @@ MonoBehaviour:
     loop: 1
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: win_music
+    clip: {fileID: 8300000, guid: 3edf63710dc18944b96cd182bb550be8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: lose_music
+    clip: {fileID: 8300000, guid: c775c0478bb061e42be4179f96c2b7e1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    outputAudioMixerGroup: {fileID: 0}
+    source: {fileID: 0}
   musicSamplesA:
   - name: electronic1
     clip: {fileID: 8300000, guid: d3a0b6e2b7f2b6a4eb9f9f02bd9e0441, type: 3}
