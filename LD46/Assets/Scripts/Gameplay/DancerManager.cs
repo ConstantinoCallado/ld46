@@ -339,6 +339,7 @@ public class DancerManager : MonoBehaviour
     void UpdatePartyStatus()
     {
         int percentage = (100 * dancersOnFire) / MAX_DANCERS;
+
         if (percentage == 0)
         {
             FXManager.fxManagerRef.SetPartyStatus(GameEnums.PartyStatus.Dead);

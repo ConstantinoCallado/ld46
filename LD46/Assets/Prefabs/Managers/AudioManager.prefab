@@ -501,8 +501,8 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: funk2
-    clip: {fileID: 8300000, guid: 35ecb1c265709ab44bc5840c99db5aab, type: 3}
+  - name: funk10
+    clip: {fileID: 8300000, guid: 96c850ddc3123da4a9ec7934bde54bb5, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -522,8 +522,8 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: funk5
-    clip: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
+  - name: funk11
+    clip: {fileID: 8300000, guid: e66cea502b0567f49a82d518977b78f1, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -557,15 +557,15 @@ MonoBehaviour:
     loop: 0
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: funk10
-    clip: {fileID: 8300000, guid: 96c850ddc3123da4a9ec7934bde54bb5, type: 3}
+  - name: funk2
+    clip: {fileID: 8300000, guid: 35ecb1c265709ab44bc5840c99db5aab, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: funk11
-    clip: {fileID: 8300000, guid: e66cea502b0567f49a82d518977b78f1, type: 3}
+  - name: funk5
+    clip: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
     volume: 1
     pitch: 1
     loop: 0

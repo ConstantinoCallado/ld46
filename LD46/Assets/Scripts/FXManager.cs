@@ -81,6 +81,7 @@ public class FXManager : MonoBehaviour
             default:
                 break;
         }
+        status = s;
     }
 
     // Update is called once per frame
