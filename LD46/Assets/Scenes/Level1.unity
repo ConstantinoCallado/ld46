@@ -842,16 +842,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: defaultMusicSample.clip
-      value: 
-      objectReference: {fileID: 8300000, guid: a9760b32f8c9a3b498882d17eba8b9c9, type: 3}
-    - target: {fileID: 7730137739001616188, guid: d59f47f9dd75c6542a5a8d290379406a,
-        type: 3}
-      propertyPath: defaultMusicSample.name
-      value: funk5
-      objectReference: {fileID: 0}
     - target: {fileID: 7730137739001616189, guid: d59f47f9dd75c6542a5a8d290379406a,
         type: 3}
       propertyPath: m_RootOrder
