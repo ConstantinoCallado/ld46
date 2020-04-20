@@ -25,7 +25,7 @@ public class Hero : MonoBehaviour
             {
                 GameObject objectHit = hit.transform.gameObject;
 
-                Debug.Log("Clicked " + objectHit.name);
+                //Debug.Log("Clicked " + objectHit.name);
 
                 // Check the behaviour depending on the object clicked
 
