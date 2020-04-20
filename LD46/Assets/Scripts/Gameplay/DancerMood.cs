@@ -36,12 +36,6 @@ public class DancerMood : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void Leave()
     {
         manager.LeaveDancer(this.gameObject);
